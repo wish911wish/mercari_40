@@ -54,9 +54,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|evaluator_id|references|foreign_key: { to_table: :users }|
-|evaluatee_id|references|foreign_key: { to_table: :users }|
-|evaluation|integer||
+|evaluator_id|references|null: false, foreign_key: { to_table: :users }|
+|evaluatee_id|references|null: false, foreign_key: { to_table: :users }|
+|evaluation|integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -67,8 +67,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|seller_id|references|foreign_key: { to_table: :users }|
-|buyer_id|references|foreign_key: { to_table: :users }|
+|seller_id|references|null: false, foreign_key: { to_table: :users }|
+|buyer_id|references|null: false, foreign_key: { to_table: :users }|
 |name|string|index: true, null: false|
 |description|text||
 |big_category_id|references|foreign_key: { to_table: :users }|
@@ -100,7 +100,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true|
+|name|string|null: false, index: true|
 |parent|integer||
 
 ### Association
@@ -112,8 +112,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|index: true|
-|category_id|references|foreign_key: true|
+|name|string|null: false, index: true|
+|category_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :items
@@ -124,8 +124,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
-|user_id|references|foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -137,8 +137,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|foreign_key: true|
-|image|string||
+|item_id|references|null: false, foreign_key: true|
+|image|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -149,8 +149,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
-|category_id|references|foreign_key: true|
+|name|string|null: false|
+|category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :category
@@ -161,7 +161,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -171,7 +171,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -182,7 +182,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -192,7 +192,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -203,7 +203,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
