@@ -76,9 +76,9 @@
 |small_category_id|references|foreign_key: { to_table: :users }|
 |brand_id|references|foreign_key: true|
 |size_id|references|foreign_key: true|
-|condition_id|integer|null: false, foreign_key: true|
-|shipping_cost_id|integer|null: false, foreign_key: true|
-|shipping_method_id|integer|null: false, foreign_key: true|
+|condition_id|references|null: false, foreign_key: true|
+|shipping_cost_id|references|null: false, foreign_key: true|
+|shipping_method_id|references|null: false, foreign_key: true|
 |sender_prefecture|string|null: false|
 |days_for_shipment_id|references|null: false, foreign_key: true|
 |status_id|references|null: false, foreign_key: true|
