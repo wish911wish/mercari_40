@@ -4,7 +4,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
+|nickname|string|index: true, null: false|
 |family_name_kanji|string|null: false|
 |first_name_kanji|string|null: false|
 |family_name_kana|string|null: false|
@@ -74,11 +74,11 @@
 |big_category_id|references|foreign_key: { to_table: :users }|
 |middle_category_id|references|foreign_key: { to_table: :users }|
 |small_category_id|references|foreign_key: { to_table: :users }|
-|brand_id|references|foreign_key: { to_table: :users }|
-|size_id|references|foreign_key: true|
-|condition_id|integer|null: false|
-|shipping_cost_id|integer|null: false|
-|shipping_method_id|integer|null: false|
+|brand_id|references|foreign_key: true, foreign_key: true|
+|size_id|references|foreign_key: true, foreign_key: true|
+|condition_id|integer|null: false, foreign_key: true|
+|shipping_cost_id|integer|null: false, foreign_key: true|
+|shipping_method_id|integer|null: false, foreign_key: true|
 |sender_prefecture|string|null: false|
 |days_for_shipment_id|references|foreign_key: true|
 |status_id|references|foreign_key: true|
@@ -91,6 +91,7 @@
 - has_many :item_evaluations
 - has_one :condition
 - has_one :shipping_cost
+- has_one :shipping_method
 - has_one :days_for_shipment
 - has_one :status
 
@@ -100,7 +101,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true|
-|parent_category|integer||
+|parent|integer||
 
 ### Association
 - has_many :items
@@ -148,8 +149,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|category_id|references|foreign_key: true|
 |name|string||
+|category_id|references|foreign_key: true|
 
 ### Association
 - belongs_to :category
