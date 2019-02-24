@@ -23,8 +23,8 @@
 
 ### Association
 - has_one :address
-- has_many :evaluations
-- has_many :transactions
+- has_many :user_evaluations
+- has_many :item_evaluations
 - has_many :items
 
 
@@ -54,8 +54,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|evaluator|references|foreign_key: { to_table: :users }|
-|evaluatee|references|foreign_key: { to_table: :users }|
+|evaluator_id|references|foreign_key: { to_table: :users }|
+|evaluatee_id|references|foreign_key: { to_table: :users }|
 |evaluation|integer||
 
 ### Association
@@ -67,28 +67,32 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|seller|references|foreign_key: { to_table: :users }|
-|buyer|references|foreign_key: { to_table: :users }|
+|seller_id|references|foreign_key: { to_table: :users }|
+|buyer_id|references|foreign_key: { to_table: :users }|
 |name|string|index: true, null: false|
-|description|text|null: false|
+|description|text||
 |big_category_id|references|foreign_key: { to_table: :users }|
 |middle_category_id|references|foreign_key: { to_table: :users }|
-|middle_category_id|references|foreign_key: { to_table: :users }|
+|small_category_id|references|foreign_key: { to_table: :users }|
 |brand_id|references|foreign_key: { to_table: :users }|
 |size_id|references|foreign_key: true|
-|item_status|integer|null: false|
-|delivery_fee|integer|null: false|
-|delivery_method|integer|null: false|
-|delivery_date|integer|null: false|
-|price|integer||
-|transaction_status|string||
+|condition_id|integer|null: false|
+|shipping_cost_id|integer|null: false|
+|shipping_method_id|integer|null: false|
+|sender_prefecture|string|null: false|
+|days_for_shipment_id|references|foreign_key: true|
+|status_id|references|foreign_key: true|
+|price|integer|null: false|
 
 ### Association
 - belongs_to :user
-- belongs_to :transaction
 - has_many :categories
 - has_many :item_images
-
+- has_many :item_evaluations
+- has_one :condition
+- has_one :shipping_cost
+- has_one :days_for_shipment
+- has_one :status
 
 
 ## categories table
@@ -96,24 +100,35 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|index: true|
-|parent|integer||
+|parent_category|integer||
 
 ### Association
 - has_many :items
 - has_many :sizes
 
 
-
-## sizes table
+## brands table
 
 |Column|Type|Options|
 |------|----|-------|
-|category_id|string||
-|size|string||
+|name|string|index: true|
+|category_id|references|foreign_key: true|
 
 ### Association
-- belongs_to :category
 - has_many :items
+
+
+
+## item_evaluations table
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
 
 
 
@@ -129,11 +144,65 @@
 
 
 
-## brands table
+## sizes table
+
+|Column|Type|Options|
+|------|----|-------|
+|category_id|references|foreign_key: true|
+|name|string||
+
+### Association
+- belongs_to :category
+- has_many :items
+
+
+## conditions table
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 
 ### Association
-- has_many :items
+- belongs_to :item
+
+
+## shipping_costs table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+
+### Association
+- belongs_to :item
+
+
+
+## shipping_methods table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+
+### Association
+- belongs_to :item
+
+
+## days_for_shipments table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+
+### Association
+- belongs_to :item
+
+
+
+## statuses table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string||
+
+### Association
+- belongs_to :item
