@@ -1,0 +1,34 @@
+%header
+  .header-inner
+    .header-top
+      .mer-image
+        = link_to root_path do
+          = image_tag("logo.svg", size: "134x34")
+      .header__form
+        = form_tag(root_path, class: "serch", method: :get) do
+          = text_field :serch_item, "", class: "input-default", placeholder: "キーワードから探す"
+          = fa_icon 'search'
+
+    .header-nav
+      .list-left
+        %ul.header-nav__left
+          %li
+            %h2
+              = link_to "カテゴリーから探す", root_path, class: "header-nav-root"
+          %li
+            %h2
+              = link_to "ブランドから探す", root_path, class: "header-nav-root"
+      .list-right
+        %ul.header-nav__right
+          %li
+            = link_to root_path, class: "header-nav-root" do
+              = image_tag("member_photo_noimage_thumb.png", size: "32x32")
+              %div マイページ
+          %li
+            = link_to root_path, class: "header-nav-root" do
+              = fa_icon 'bell'
+              %span お知らせ
+          %li
+            = link_to root_path, class: "header-nav-root" do
+              = fa_icon 'check'
+              %span やることリスト
