@@ -21,12 +21,13 @@
       .list-right
         %ul.header-nav__right
           %li
-            = link_to root_path, class: "header-nav-root" do
+            = link_to root_path, class: "header-nav-root header-user-icon" do
               = image_tag("member_photo_noimage_thumb.png", size: "32x32")
               %div マイページ
           %li
             = link_to root_path, class: "header-nav-root" do
               = fa_icon 'bell'
+              .header-nav-count 23
               %span お知らせ
           %li
             = link_to root_path, class: "header-nav-root" do
