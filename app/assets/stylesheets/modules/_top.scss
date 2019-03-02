@@ -1,0 +1,371 @@
+header {
+  background-color: $white;
+}
+
+footer{
+
+}
+
+a{
+  color: $light-blue;
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+.font-2{
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.font-5{
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+
+////////ヘッダー///////////
+
+
+.header{
+  &-inner{
+    width: 700px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+  }
+  &-top{
+    display: flex;
+    justify-content : space-between;
+  }
+  &-nav{
+    margin: 8px 0 0;
+    display: flex;
+    justify-content : space-between;
+    & a {
+      display: flex;
+      align-items: center;
+      color: $black-for-font;
+    }
+    & h2 {
+      font-weight: 400;
+    }
+    & li{
+      text-align: -webkit-match-parent;
+    }
+    & li {
+      padding: 0 0 0 16px;
+    }
+    & li:first-child {
+      padding: 0;
+    }
+    &__left{
+      display: flex;
+    }
+    &__right{
+      display: flex;
+    }
+    &-root{
+      position: relative;
+      line-height: 32px;
+      height: 38px;
+    }
+    &-root>div{
+      font-size: 14px;
+      margin: 0 0 0 8px;
+    }
+
+    &-root>img{
+      border-radius: 50%;
+    }
+
+    &-root>span{
+      margin: 0 0 0 8px;
+    }
+
+    &-count{
+      background-color: $red;
+      border-radius: 50%;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      color: $white;
+      font-size: 12px;
+      top: -2px;
+      left: -3px;
+    }
+
+  }
+}
+
+.header__form{
+  position: relative;
+  width: calc(100% - (134px + 16px));
+  & i{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    top: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+.input-default{
+  width: 100%;
+  height: 34px;
+  padding: 9px 32px 9px 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+////////ヘッダー///////////
+////////メイン///////////
+
+/////バナー
+
+.owl-carousel{
+  height: 390px;
+}
+
+.owl-stage-outer{
+  height: 100%;
+}
+
+.owl-stage{
+  height: 100%;
+}
+
+.owl-item{
+  height: 100%;
+}
+
+
+.top-banner.main-visual{
+  background-image: url(banner-bokurano-heisei.jpg);
+}
+
+.top-banner{
+
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+
+}
+
+/////バナー
+
+
+/////カテゴリー
+
+
+.pickup-container{
+  padding: 40px 0;
+}
+
+.pickup-head{
+  font-size: 28px;
+  text-align: center;
+}
+
+
+.text-center{
+  text-align: center;
+}
+
+.view-all{
+  padding: 20px 0 30px;
+  margin: 0 5px 0 0;
+  text-align: right;
+}
+
+
+/////カテゴリー
+
+/////商品画像
+
+.items-box-container{
+  margin: 0 auto;
+  width: 940px;
+}
+
+.items-box-container>h3{
+  font-size: 22px;
+  margin: 26px 11px;
+}
+
+.items-box{
+  margin: 0 0 0 20px;
+  width: 213px;
+  &>a{
+    color: $black-for-font;
+    display: block;
+    background-color: $white;
+  }
+  &-content{
+    display: flex;
+  }
+  &-body{
+    height: 110px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  &-num{
+    margin: 8px 0 0;
+  }
+  &-name{
+    overflow: hidden;
+    position: relative;
+    font-weight: 400;
+    height: 3em;
+    line-height: 1.5;
+    word-break: break-word;
+    white-space: normal;
+  }
+  &-price{
+    float: left;
+  }
+  &-likes{
+    float: right;
+  }
+  &-tax{
+    font-size: 10px;
+    clear: both;
+  }
+}
+
+
+
+/////商品画像
+
+/////app-banner
+
+.app-banner{
+  background-image: url(download_bg_pc.jpg);
+  background-position: center;
+  &-container{
+    width: 750px;
+    height: 260px;
+    margin: 0 auto;
+    display: flex;
+    justify-content : space-between;
+    align-items: center;
+  }
+  &-inner h2{
+    color: $white;
+    font-size: 24px;
+    margin: 0;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  }
+
+  &-inner p{
+    color: $white;
+    font-size: 35px;
+    margin: 10px 0 0;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  }
+
+  &-icon{
+    margin: 20px 0 0;
+    display: flex;
+    align-items: center;
+  }
+  &-appstore{
+    margin: 0 0 0 24px;
+    display: flex;
+    & li:last-child{
+      margin: 0 0 0 16px;
+    }
+  }
+}
+
+////////メイン///////////
+
+////////フッター///////////
+
+.global-footer{
+  text-align: center;
+  background-color: #212121;
+  padding: 60px 0;
+  & a {
+    color: $white;
+  }
+  & nav {
+    width: 1020px;
+    margin: 0 auto;
+  }
+}
+.footer{
+  &-items{
+    display: flex;
+    align-items: flex-start;
+  }
+  &-head{
+    color: $white;
+    font-size: 16px;
+  }
+  &-cell{
+    width: 23%;
+    margin: 0 2% 0 0;
+    & li {
+      margin: 16px 0;
+    }
+    & li:first-child{
+      margin: 24px 0;
+    }
+  }
+  &-logo{
+    text-align: center;
+  }
+  &-copyright{
+    color: $white;
+    margin: 8px 0 0;
+    text-align: center;
+  }
+  &-lang a {
+    opacity: 0.3;
+    display: inline-flex;
+    align-items: center;
+  }
+  &-lang .active{
+    opacity: 1;
+  }
+  &-lang img {
+    margin: 0 8px 0 0;
+  }
+}
+
+.footer-sell-btn{
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 160px;
+  height: 160px;
+  text-align: center;
+  background-color: $red;
+  color: $white;
+  border-radius: 50%;
+  & div {
+    font-size: 22px;
+    margin: 32px 0 0;
+  }
+  & .fa-camera{
+    font-size: 54px;
+    margin: 8px 0 0;
+  }
+}
+////////フッター///////////
+
+
+
