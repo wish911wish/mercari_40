@@ -70,9 +70,9 @@ li{
     display: flex;
     justify-content : space-between;
     & a {
-      display: flex;
-      align-items: center;
-      color: $black-for-font;
+      // display: flex;
+      // align-items: center;
+      // color: $black-for-font;
     }
     & h2 {
       font-weight: 400;
@@ -99,18 +99,19 @@ li{
       position: relative;
       line-height: 32px;
       height: 38px;
-    }
-    &-root>div{
-      font-size: 14px;
-      margin: 0 0 0 8px;
-    }
-
-    &-root>img{
-      border-radius: 50%;
-    }
-
-    &-root>span{
-      margin: 0 0 0 8px;
+      display: flex;
+      align-items: center;
+      color: $black-for-font;
+      &>div{
+        font-size: 14px;
+        margin: 0 0 0 8px;
+      }
+      &>img{
+        border-radius: 50%;
+      }
+      &>span{
+        margin: 0 0 0 8px;
+      }
     }
 
     &-count{
@@ -129,29 +130,34 @@ li{
   }
 }
 
-//テスト用！！！後で消すこと！！！/////////////
-.js-header-nav-parent-wrap {
-  background-color: $white;
-}
-.js-header-nav-child-wrap {
-  background-color: $gray-for-background;
-}
-
-//テスト用！！！後で消すこと！！！/////////////
-
-
 
 ///////////プルダウンメニュー
 .header-nav__left>li:hover .header-nav-parent{
   display: block;
 }
 
+.header-nav__right>li:hover .header-nav__user-box{
+  display: block;
+}
+
+.header-nav__right>li:hover .header-nav__notification-box{
+  display: block;
+}
+
+.header-nav__right>li:hover .header-nav__todo-box{
+  display: block;
+}
 
 .header-nav-parent-wrap{
   width: auto;
   position: absolute;
   background-color: $white;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+  & a {
+    display: flex;
+    align-items: center;
+    color: $black-for-font;
+  }
 }
 
 
@@ -239,6 +245,7 @@ li{
 
 .header-nav__right a {
   font-size: 14px;
+  display: flex;
   color: $black-for-font;
 }
 
@@ -247,9 +254,8 @@ li{
 }
 
 .header-nav__user-box{
+  display: none;
   position: absolute;
-  // top: 38px;
-  display: block;
   background-color: $white;
   width: 320px;
 }
@@ -307,6 +313,9 @@ li{
   display: flex;
   justify-content: space-between;
   line-height: 40px;
+  &:hover{
+    opacity: .6;
+  }
 }
 
 .mypage-nav-list{
@@ -336,8 +345,109 @@ li{
   position: absolute;
   top: 38%;
   right: 20px;
-  // transform: translate(0, -38%);
 }
+
+.mypage-nav-list__item i{
+  -webkit-transition: all .2s ease-out;
+     -moz-transition: all .2s ease-out;
+      -ms-transition: all .2s ease-out;
+       -o-transition: all .2s ease-out;
+          transition: all .2s ease-out;
+}
+
+.mypage-nav-list__item:hover i{
+  position: absolute;
+  color: $black-for-font;
+  transform: translate(5px, 0);
+  -webkit-transition: all .2s ease-out;
+     -moz-transition: all .2s ease-out;
+      -ms-transition: all .2s ease-out;
+       -o-transition: all .2s ease-out;
+          transition: all .2s ease-out;
+}
+
+/////////////ユーザーページ
+
+/////////////お知らせ部分
+.header-nav__notification-box{
+  display: none;
+  position: absolute;
+  left: 51%;
+  width: 320px;
+  background-color: $white;
+  &>li{
+    position: relative;
+    border-bottom: 1px solid #eee;
+    &:hover{
+      background-color: $gray-for-caption;
+    }
+  }
+}
+
+.mypage-item{
+  &-link{
+    padding: 16px;
+    min-height: 80px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    & a{
+      display: flex;
+      align-items: flex-start;
+    }
+    &>.fa-chevron-right{
+      position: absolute;
+      top: 40%;
+      right: 16px;
+    }
+    & time {
+      color: #888;
+      margin: 3px 0 0 0;
+      display: inline-block;
+    }
+  }
+  &-image{
+    position: absolute;
+  }
+  &-body{
+    margin: 0 40px 0 68px;
+  }
+  &-text{
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      max-height: 4.4em;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+  }
+
+}
+
+
+/////////////お知らせ部分
+
+.header-nav__todo-box{
+  background-color: $white;
+  position: absolute;
+  left: 53%;
+  display: none;
+  width: 320px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+}
+
+.mypage-item-not-found{
+  background-image: url(logo-gray-icon.svg);
+  background-size: 78px 85px;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 160px 0 60px;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+}
+
 
 ///////////プルダウンメニュー
 
