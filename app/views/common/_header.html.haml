@@ -13,17 +13,72 @@
       .list-left
         %ul.header-nav__left
           %li
-            %h2
-              = link_to "カテゴリーから探す", root_path, class: "header-nav-root"
+            = render "./common/cat-parent"
           %li
-            %h2
-              = link_to "ブランドから探す", root_path, class: "header-nav-root"
+            = render "./common/brand"
+
       .list-right
         %ul.header-nav__right
           %li
             = link_to root_path, class: "header-nav-root header-user-icon" do
               = image_tag("member_photo_noimage_thumb.png", size: "32x32")
               %div マイページ
+            .header-nav__user-box
+              .mypage-state
+                %figure
+                  %div
+                    = image_tag("member_photo_noimage_thumb.png", size: "60x60")
+                  %figcaption カワカミ
+                %ul.mypage-review-listing
+                  %li
+                    =link_to "評価:1", root_path
+                  %li
+                    =link_to "出品数:0", root_path
+                %ul.mypage-sales-point
+                  %li
+                    =link_to root_path, class: "salse-point" do
+                      .salse-point__left 売上金
+                      .salse-point__right
+                        ¥ 100
+                        =fa_icon 'chevron-right'
+                  %li
+                    =link_to root_path, class: "salse-point" do
+                      .salse-point__left ポイント
+                      .salse-point__right
+                        P 100
+                        =fa_icon 'chevron-right'
+              %ul.mypage-nav-list
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left いいね！一覧
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left 出品した商品 - 出品中
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left 出品した商品 - 取引中
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left 出品した商品 - 売却済み
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left 購入した商品 - 取引中
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+                %li
+                  =link_to root_path, class: "mypage-nav-list__item" do
+                    .salse-point__left 購入した商品 - 過去の取引
+                    .salse-point__right
+                      =fa_icon 'chevron-right'
+
           %li
             = link_to root_path, class: "header-nav-root" do
               = fa_icon 'bell'
