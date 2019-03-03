@@ -1,0 +1,48 @@
+= link_to root_path, class: "header-nav-root" do
+  = fa_icon 'bell'
+  .header-nav-count 23
+  %span お知らせ
+%ul.header-nav__notification-box
+  %li
+    = link_to root_path, class: "mypage-item-link" do
+      .mypage-item-image
+        =image_tag("mercari_profile.png", size: "48x48")
+      .mypage-item-body
+        .mypage-item-text ○○さんからメッセージ「【¥200分のお得チケット獲得！】欲しかったあの商品をお得にゲットしませんか？」
+        %time
+          = fa_icon 'clock-o'
+          %span 19時間前
+      = fa_icon 'chevron-right'
+  %li
+    = link_to root_path, class: "mypage-item-link" do
+      .mypage-item-image
+        =image_tag("mercari_profile.png", size: "48x48")
+      .mypage-item-body
+        .mypage-item-text ○○さんからメッセージ「ゲットしませんか？」
+        %time
+          = fa_icon 'clock-o'
+          %span 19時間前
+      = fa_icon 'chevron-right'
+
+  %li
+    = link_to root_path, class: "mypage-item-link" do
+      .mypage-item-image
+        =image_tag("mercari_profile.png", size: "48x48")
+      .mypage-item-body
+        .mypage-item-text ○○さんからメッセージ「ゲットしませんか？」
+        %time
+          = fa_icon 'clock-o'
+          %span 19時間前
+      = fa_icon 'chevron-right'
+
+  %li
+    = link_to root_path, class: "mypage-item-link" do
+      .mypage-item-image
+        =image_tag("mercari_profile.png", size: "48x48")
+      .mypage-item-body
+        .mypage-item-text ○○さんからメッセージ「ゲットしませんか？」
+        %time
+          = fa_icon 'clock-o'
+          %span 19時間前
+      = fa_icon 'chevron-right'
+
