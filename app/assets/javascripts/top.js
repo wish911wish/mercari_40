@@ -115,7 +115,7 @@ $(document).on("turbolinks:load", function() {
 
   if ($(".owl-carousel")[0]){
     if (window.set_timer_on == null || window.set_timer_on == false){
-      window.timer = setInterval('autoImageSlide()', 5000);
+      window.timer = setInterval(autoImageSlide, 5000);
       window.set_timer_on = true;
     }
   }
