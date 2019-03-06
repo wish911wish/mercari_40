@@ -118,7 +118,7 @@ li{
             background: $red;
             color: $white;
           }
-          &.active{
+          &.active-for-header{
             background: $red;
             color: $white;
           }
@@ -146,7 +146,7 @@ li{
         &:hover{
           background: #eee;
         }
-        &.active{
+        &.active-for-header{
           background: #eee;
         }
       }
@@ -652,7 +652,7 @@ li{
     display: inline-flex;
     align-items: center;
   }
-  &-lang .active{
+  &-lang .active-for-footer{
     opacity: 1;
   }
   &-lang img {

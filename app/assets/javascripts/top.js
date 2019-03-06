@@ -1,15 +1,15 @@
 $(document).on("turbolinks:load", function() {
 
   $(".js-header-nav-child").hover(function() {
-    $(this).parent().parent().children("h3").children().addClass("active")
+    $(this).parent().parent().children("h3").children().addClass("active-for-header")
   }, function() {
-    $(this).parent().parent().children("h3").children().removeClass("active")
+    $(this).parent().parent().children("h3").children().removeClass("active-for-header")
   });
 
   $(".js-header-nav-grand-child").hover(function() {
-    $(this).parent().parent().children("a").addClass("active")
+    $(this).parent().parent().children("a").addClass("active-for-header")
   }, function() {
-    $(this).parent().parent().children("a").removeClass("active")
+    $(this).parent().parent().children("a").removeClass("active-for-header")
   });
 
   function moveTopImage(direction){
