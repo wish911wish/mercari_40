@@ -244,7 +244,7 @@ li{
   &-state{
     & figure{
     padding: 28px 0 0;
-    background-image: url(user-bg.jpg);
+    background-image: url(/assets/user-bg.jpg);
     background-size: 320px 80px;
     background-repeat: no-repeat;
     &>div{
@@ -364,7 +364,7 @@ li{
         line-height: 1.5;
     }
     &-not-found{
-      background-image: url(logo-gray-icon.svg);
+      background-image: url(/assets/logo-gray-icon.svg);
       background-size: 78px 85px;
       background-position: center;
       background-repeat: no-repeat;
@@ -398,15 +398,15 @@ li{
     background-position: center;
     height: 100%;
     &.banner-new-life{
-      background-image: url(banner-new-life.jpg);
+      background-image: url(/assets/banner-new-life.jpg);
       height: 100%;
     }
     &.banner-bokurano-heisei{
-      background-image: url(banner-bokurano-heisei.jpg);
+      background-image: url(/assets/banner-bokurano-heisei.jpg);
       height: 100%;
     }
     &.main-visual{
-      background-image: url(main_bg_pc.jpg);
+      background-image: url(/assets/main_bg_pc.jpg);
       width: auto;
       height: 100%;
     }
@@ -472,11 +472,11 @@ li{
     top: 50%;
   }
   &-prev{
-    background-image: url(carousel-prev.png);
+    background-image: url(/assets/carousel-prev.png);
     left: 60px;
   }
   &-next{
-    background-image: url(carousel-next.png);
+    background-image: url(/assets/carousel-next.png);
     right: 60px;
   }
   &-dots{
@@ -570,7 +570,7 @@ li{
 }
 
 .app-banner{
-  background-image: url(download_bg_pc.jpg);
+  background-image: url(/assets/download_bg_pc.jpg);
   background-position: center;
   &-container{
     width: 750px;
