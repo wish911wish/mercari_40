@@ -88,7 +88,7 @@
               発送元の地域
               %span.form-require 必須
             .select-wrap
-              = select_tag :sender_prefecture, options_for_select({"---": "none", レディース: "redis", メンズ: "men", ベビーキッズ: "men"}), class: "select-default"
+              = select_tag :sender_prefecture, options_from_collection_for_select(Prefecture.all, :id, :name), class: "select-default"
               = fa_icon 'angle-down 2x'
           .form-group
             = label :item, :days_for_shipment do
