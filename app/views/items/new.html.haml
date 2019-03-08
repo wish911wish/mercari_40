@@ -103,13 +103,13 @@
               .sell-price-input
                 %span ¥
                 .sell-price-input-box
-                  = text_field :item, :price, class: "input-default" ,placeholder: "例）300"
+                  = text_field :item, :price, class: "input-default js-price" ,placeholder: "例）300"
             %li.flex-space-between
               .l-left 販売手数料（10%）
-              .l-right ¥100
+              .l-right.js-price-fee -
             %li.flex-space-between.bold
               .l-left 販売利益
-              .l-right ¥900
+              .l-right.js-price-margin -
       .sell-content.sell-btn-box
         .discription
           %p

@@ -98,4 +98,19 @@ $(document).on("turbolinks:load", function() {
     adjustWidthOfUploadBox();
     decisionItemsListNumber();
   })
+
+  $(".form-require").on("click", function(){
+    console.log("クリック")
+    $(".js-price-fee").val("sss")
+    $(".js-price-fee").val("sss")
+  })
+
+  $(".js-price").on("keyup",function(){
+    var inputValue = $(this).val()
+    if ( $.isNumeric(inputValue) && inputValue >= 300 && inputValue <= 9999999 ){
+      var fee = Math.floor(inputValue*0.1)
+      $(".js-price-fee").text(`¥${fee}`)
+      $(".js-price-margin").text(`¥${inputValue - fee}`)
+    }
+  })
 })
