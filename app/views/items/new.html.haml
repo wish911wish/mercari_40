@@ -10,17 +10,13 @@
         %p 最大10枚までアップロード出来ます
         .sell-dropbox-container
           .sell-upload-items-container
-            .sell-upload-items.have-item-0
-              %ul
-                %li
-                %li
-                %li
-                %li
-          .sell-upload-drop-box
-            = file_field :image, class: "js-upload-image"
-            %pre
-              ドラッグアンドドロップ
-              またはクリックしてファイルをアップロード
+            .sell-upload-items
+              %ul.sell-upload-items-list
+              = label :item, :image , class: "sell-upload-drop-box width-for-item-0"do
+                %pre
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+          = file_field :item, :image, multiple: "",class: "sell-upload-input js-upload-image-input"
       .sell-content
         .form-group
           = label :item, :name do
@@ -55,14 +51,12 @@
             .select-wrap
               = select_tag :item, options_for_select({"---": "none", XXS: "xxs", XS: "xs", S: "S"}), class: "select-default"
               = fa_icon 'angle-down 2x'
-
           .form-group
             = label :item, :brand do
               ブランド
               %span.form-arbitrary 任意
             .select-wrap
               = text_field :item, :brand, class: "input-default" ,placeholder: "例）シャネル"
-
           .form-group
             = label :item, :condition do
               商品の状態
@@ -70,7 +64,6 @@
             .select-wrap
               = select_tag :item, options_for_select({"---": "none", "新品・未使用": 1, "未使用に近い": 2, "目立った傷や汚れ無し": 3}), class: "select-default"
               = fa_icon 'angle-down 2x'
-
       .sell-content.flex-space-between
         %h3.sell-sub-head
           発送について
@@ -97,7 +90,6 @@
             .select-wrap
               = select_tag :days_for_shipment, options_for_select({"---": "none", "1~2日で発送": "1", "2~3日で発送": "2", "4~7日で発送": "3"}), class: "select-default"
               = fa_icon 'angle-down 2x'
-
       .sell-content.flex-space-between
         %h3.sell-sub-head
           販売価格(300〜9,999,999)
@@ -118,7 +110,6 @@
             %li.flex-space-between.bold
               .l-left 販売利益
               .l-right ¥900
-
       .sell-content.sell-btn-box
         .discription
           %p
@@ -136,5 +127,4 @@
             に同意したことになります。
         = submit_tag "出品する", class: "btn-default btn-red"
         = link_to "戻る", root_path, class: "btn-default btn-gray"
-
 %footer.items-new__test

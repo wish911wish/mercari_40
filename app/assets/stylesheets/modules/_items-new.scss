@@ -170,11 +170,86 @@
   &-form{
     border-top: 1px solid #eee;
   }
+  &-upload{
+    &-figure{
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 116px;
+      padding: 0;
+      background: $gray-for-background;
+      &.portrait img{
+        position: absolute;
+        transform: translate(-50%, 0);
+        height: 100%;
+        top: 0;
+        left: 50%;
+      }
+      &.landscape img{
+        position: absolute;
+        transform: translate(0, -50%);
+        width: 100%;
+        top: 50%;
+        left: 0;
+      }
+      &.square img{
+        width: 100%;
+      }
+    }
+    &-items{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      &-container{
+        width: 100%;
+      }
+      &>.width-for-item-0{
+        width: 620px;
+        margin-left: 0;
+      }
+      &>.width-for-item-1{
+        width: 491px;
+      }
+      &>.width-for-item-2{
+        width: 363px;
+      }
+      &>.width-for-item-3{
+        width: 234px;
+      }
+      &>.width-for-item-4{
+        width: 106px;
+      }
+
+
+
+    }
+    &-button{
+      font-size: 14px;
+      display: flex;
+      & a {
+        pointer-events: none;
+        display: inline-block;
+        width: 50%;
+        background: #f5f5f5;
+        line-height: 44px;
+        text-align: center;
+      }
+    }
+    &-items-list{
+      display: flex;
+    }
+    &-item{
+      width: 116px;
+      margin: 0 0 10px 10px;
+      &:first-child{
+        margin:  0 0 10px 0;
+      }
+    }
+  }
   &-upload-box{
     white: 620px;
     padding: 40px;
   }
-
   &-upload-head{
     font-size: 16px;
     &+p{
@@ -183,24 +258,24 @@
     }
   }
   &-dropbox-container{
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     width: 620px;
     margin: 16px auto 0;
   }
   &-upload-drop-box{
+    display: block;
     padding: 40px;
-    width: 100%;
+    width: 620px;
     box-sizing: border-box;
     position: relative;
-    min-height: 162px;
+    height: 162px;
     background-color: $gray-for-background;
     border: 1px dashed #ccc;
     text-align: center;
     transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
     cursor: pointer;
-    &>input{
-      display: none;
-    }
+    margin-left: 2%;
     & pre{
       position: absolute;
       top: 50%;
@@ -215,6 +290,12 @@
       white-space: pre-wrap;
       word-wrap: break-word;
     }
+  }
+  &-upload-label{
+    width: 100%;
+  }
+  &-upload-input{
+    display: none;
   }
   &-content{
     padding: 40px;
@@ -252,8 +333,6 @@
       width: 45%;
       margin: 24px auto 0;
     }
-
-
   }
 }
 
