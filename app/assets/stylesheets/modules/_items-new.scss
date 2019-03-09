@@ -239,16 +239,50 @@
         margin:  0 0 10px 0;
       }
     }
-  }
-  &-upload-box{
-    white: 620px;
-    padding: 40px;
-  }
-  &-upload-head{
-    font-size: 16px;
-    &+p{
-      margin: 8px 0 0;
-      line-height: 1.5;
+    &-box{
+      white: 620px;
+      padding: 40px;
+    }
+    &-head{
+      font-size: 16px;
+      &+p{
+        margin: 8px 0 0;
+        line-height: 1.5;
+      }
+    }
+    &-drop-box{
+      display: block;
+      padding: 40px;
+      width: 620px;
+      box-sizing: border-box;
+      position: relative;
+      height: 162px;
+      background-color: $gray-for-background;
+      border: 1px dashed #ccc;
+      text-align: center;
+      transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+      cursor: pointer;
+      margin-left: 2%;
+      & pre{
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    }
+    &-label{
+      width: 100%;
+    }
+    &-input{
+     display: none;
     }
   }
   &-dropbox-container{
@@ -256,40 +290,6 @@
     flex-wrap: wrap;
     width: 620px;
     margin: 16px auto 0;
-  }
-  &-upload-drop-box{
-    display: block;
-    padding: 40px;
-    width: 620px;
-    box-sizing: border-box;
-    position: relative;
-    height: 162px;
-    background-color: $gray-for-background;
-    border: 1px dashed #ccc;
-    text-align: center;
-    transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
-    cursor: pointer;
-    margin-left: 2%;
-    & pre{
-      position: absolute;
-      top: 50%;
-      left: 16px;
-      right: 16px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.5;
-      -webkit-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-      pointer-events: none;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-  }
-  &-upload-label{
-    width: 100%;
-  }
-  &-upload-input{
-    display: none;
   }
   &-content{
     padding: 40px;
