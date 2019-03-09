@@ -1,5 +1,19 @@
 $(document).on("turbolinks:load", function() {
 
+
+  $(document).on('dragenter', function (e){
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  $(document).on('dragover', function (e){
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  $(document).on('drop', function (e){
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
   function decisionItemsNumber(){
     if ($(".sell-upload-items-list:last").hasClass(`have-item-5`)){
       $(".sell-upload-items-list:last").after('<ul class="sell-upload-items-list have-item-0"></ul>')
@@ -53,7 +67,6 @@ $(document).on("turbolinks:load", function() {
   }
 
   function buildSellUploadItem(){
-    console.log("HTMLの構築")
     var html = `
 <li class="sell-upload-item">
   <figure class="sell-upload-figure">
@@ -67,9 +80,42 @@ $(document).on("turbolinks:load", function() {
     return html;
   }
 
-
   $(".js-upload-image-input").change(function(e) {
     var files = this.files
+    for (var i = 0; i < files.length; i++){
+      var file = files[i];
+      if( file.type.indexOf("image") < 0 ) {
+         continue;
+      }
+      $(".sell-upload-items-list:last").append(buildSellUploadItem())
+      var uploadImage = $(".sell-upload-item:last img")
+      uploadImage[0].file = file;
+      var reader = new FileReader;
+      reader.onload = function(e){
+        uploadImage.attr('src', e.target.result);
+      }
+      reader.readAsDataURL(file);
+      adjustWidthOfUploadBox();
+      decisionItemsListNumber();
+      decisionAspectRatio(uploadImage);
+      renameHaveItemClass()
+    }
+  });
+
+  $(".sell-upload-drop-box").on("dragenter", function (e){
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+  $(".sell-upload-drop-box").on("dragover", function (e){
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
+  $(".sell-upload-drop-box").on("drop", function (e){
+    e.stopPropagation();
+    e.preventDefault();
+    var files = e.originalEvent.dataTransfer.files;
     for (var i = 0; i < files.length; i++){
       var file = files[i];
       if( file.type.indexOf("image") < 0 ) {
@@ -97,12 +143,6 @@ $(document).on("turbolinks:load", function() {
     removeItemsList();
     adjustWidthOfUploadBox();
     decisionItemsListNumber();
-  })
-
-  $(".form-require").on("click", function(){
-    console.log("クリック")
-    $(".js-price-fee").val("sss")
-    $(".js-price-fee").val("sss")
   })
 
   $(".js-price").on("keyup",function(){
