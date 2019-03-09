@@ -1,4 +1,4 @@
-%header.items-new__test tesutoyou
+= render "./common/header-singleheader"
 %main
   %section.l-single-container.buy-item-container
     %h2.l-single-head 商品の情報を入力
@@ -127,4 +127,4 @@
             に同意したことになります。
         = submit_tag "出品する", class: "btn-default btn-red"
         = link_to "戻る", root_path, class: "btn-default btn-gray"
-%footer.items-new__test
+= render "./common/footer-singlefooter"
