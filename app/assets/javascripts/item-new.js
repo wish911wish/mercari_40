@@ -27,11 +27,6 @@ $(document).on("turbolinks:load", function() {
       decisionItemsNumber()
     }
   }
-  function decisionItemsListDisplay(){
-    if ($(".have-item-5").length = 2) {
-      $(".sell-upload-drop-box").css("display", "block");
-    }
-  }
 
   function removeItemsList(){
     if ($(".sell-upload-items-list").hasClass(`have-item-0`)){
@@ -90,7 +85,7 @@ $(document).on("turbolinks:load", function() {
       $(".sell-upload-items-list:last").append(buildSellUploadItem())
       var uploadImage = $(".sell-upload-item:last img")
       uploadImage[0].file = file;
-      var reader = new FileReader;
+      var reader = new FileReader();
       reader.onload = function(e){
         uploadImage.attr('src', e.target.result);
       }
@@ -124,7 +119,7 @@ $(document).on("turbolinks:load", function() {
       $(".sell-upload-items-list:last").append(buildSellUploadItem())
       var uploadImage = $(".sell-upload-item:last img")
       uploadImage[0].file = file;
-      var reader = new FileReader;
+      var reader = new FileReader();
       reader.onload = function(e){
         uploadImage.attr('src', e.target.result);
       }
@@ -137,7 +132,7 @@ $(document).on("turbolinks:load", function() {
 
   $(document).on("click", ".sell-upload-delete", function(){
     $(this).parents("li").remove();
-    if ($(".have-item-5").length = 2) {
+    if ($(".have-item-5").length === 2) {
       $(".sell-upload-drop-box").css("display", "block");
     }
     removeItemsList();
