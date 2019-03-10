@@ -68,4 +68,4 @@ gem 'haml-rails'
 
 gem 'erb2haml'
 
-gem 'active_hash'
+gem 'active_hash', '~> 1.5.3'
