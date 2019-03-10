@@ -112,7 +112,6 @@
 .single-footer{
   &{
     text-decoration: none;
-<<<<<<< HEAD
     position: absolute;
     bottom: 0;
     left: 0;
@@ -124,18 +123,6 @@
     text-align: center;
     z-index: -99;
       nav{
-=======
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 456px;
-    padding-top: 40px;
-    font-size: 12px;
-    margin: 0 auto;
-      nav{
-        margin-top: 160px;
->>>>>>> master
       ul{
           display: flex;
           justify-content: center;
@@ -156,10 +143,6 @@
   &-logo{
     display: flex;
     flex-direction: column;
-<<<<<<< HEAD
-=======
-    display: inline;
->>>>>>> master
     img{
       padding:40px 0 3px;
     }
@@ -168,16 +151,9 @@
       cursor: pointer;
     }
   }
-<<<<<<< HEAD
   &-logo-copyright{
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 }
-
-
-
-=======
-}
->>>>>>> master
