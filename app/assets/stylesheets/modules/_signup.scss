@@ -8,6 +8,7 @@
   &{
     min-height: 128px;
     margin: 0 auto;
+    background-color: $gray-for-background;
     h1{
       text-align: center;
       padding: 40px 0 0;
@@ -111,16 +112,17 @@
 .single-footer{
   &{
     text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 456px;
-    padding-top: 40px;
+    padding: 40px 0;
     font-size: 12px;
     margin: 0 auto;
+    text-align: center;
+    z-index: -99;
       nav{
-        margin-top: 160px;
       ul{
           display: flex;
           justify-content: center;
@@ -141,7 +143,6 @@
   &-logo{
     display: flex;
     flex-direction: column;
-    display: inline;
     img{
       padding:40px 0 3px;
     }
@@ -149,5 +150,10 @@
       opacity: 0.6;
       cursor: pointer;
     }
+  }
+  &-logo-copyright{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 }
