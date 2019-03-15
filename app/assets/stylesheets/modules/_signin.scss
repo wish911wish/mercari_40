@@ -6,25 +6,30 @@
     background: white;
 }
 
-.login-no-account{
-  padding: 40px 60px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-  a{
-    display: block;
-    margin: 8px 0 0;
-    border: 1px solid #0099e8;
-    background: #0099e8;
-    color: #fff;
-    line-height: 40px;
+.login{
+  &-no-account{
+    padding: 40px 60px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    & a{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+  &-form-inner{
+    padding: 32px 64px;
+  }
+
+  &-submit{
+    margin-top: 20px;
   }
 }
 
-.login-form-inner{
-  padding: 32px 64px;
-}
-
-.form-group-signup{
+.form-group-signin{
   margin: 0;
   width: calc(100% - 32px);
   &:focus{
@@ -33,7 +38,7 @@
   }
 }
 
-.input-default-signup{
+.input-default-signin{
   padding: 10px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -50,10 +55,6 @@
 .g-recaptcha{
   height: 80px;
   //this height is set temporarily
-}
-
-.login-submit{
-  margin-top: 20px;
 }
 
 .password-forget{

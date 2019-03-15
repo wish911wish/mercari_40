@@ -17,8 +17,8 @@
               = image_tag "google.svg", class: "fa-pull-left"
               %p.text-google Googleでログイン
           .login-form-inner
-            = email_field_tag :email, '', class: "form-group-signup input-default-signup", placeholder: "メールアドレス"
-            = password_field_tag :password, '', class: "form-group-signup input-default-signup", placeholder: "パスワード"
+            = email_field_tag :email, '', class: "form-group-signin input-default-signin", placeholder: "メールアドレス"
+            = password_field_tag :password, '', class: "form-group-signin input-default-signin", placeholder: "パスワード"
             .g-recaptcha{data:{sitekey:"6LcGypcUAAAAABBeMQbu1CCxJb_pb_Au9P4aLGAy"}}
             = button_to "ログイン","#", class: "login-submit btn-default btn-red"
             = link_to "パスワードをお忘れの方", "#", class: "password-forget underline-opacity"
