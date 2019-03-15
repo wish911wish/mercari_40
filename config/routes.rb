@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :signup, only: [:index]
   resources :signin, only: [:index]
+  resources :identification, only: [:index]
 
 end
