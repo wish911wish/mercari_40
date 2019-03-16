@@ -1,0 +1,65 @@
+.l-single-container-signin{
+    margin: 0 auto;
+    text-align: center;
+    max-width: 456px;
+    min-width: 320px;
+    background: white;
+}
+
+.login{
+  &-no-account{
+    padding: 40px 60px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    & a{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+    }
+  }
+  &-form-inner{
+    padding: 32px 64px;
+  }
+
+  &-submit{
+    margin-top: 20px;
+  }
+}
+
+.form-group-signin{
+  margin: 0;
+  width: calc(100% - 32px);
+  &:focus{
+    border: 1px solid #0099e8;
+    outline: 0;
+  }
+}
+
+.input-default-signin{
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin: 0 0 22px;
+}
+
+.btn-sns-facebook:first-child{
+  margin-top: 0;
+}
+
+.g-recaptcha{
+  height: 80px;
+  //this height is set temporarily
+}
+
+.password-forget{
+  display: block;
+  width: 100%;
+  margin: 24px 0 0;
+  text-align: left;
+}

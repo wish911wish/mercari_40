@@ -1,0 +1,25 @@
+%script{ type: 'text/javascript', src: 'https://www.google.com/recaptcha/api.js'}
+.single-container-signin
+  = render "./common/header-singleheader"
+  %main.single-main-signin
+    %section.l-single-container-signin
+      .l-single-main-box
+        .login-panel
+          .login-no-account
+            %p アカウントをお持ちでない方はこちら
+            = link_to "新規会員登録", "#"
+          .login-form-inner
+            = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
+              .fa-pull-left
+                = fa_icon "facebook-official"
+              %p.text-facebook Facebookでログイン
+            = link_to "#", class: "btn-default btn-sns btn-sns-google", id:"google-login" do
+              = image_tag "google.svg", class: "fa-pull-left"
+              %p.text-google Googleでログイン
+          .login-form-inner
+            = email_field_tag :email, '', class: "form-group-signin input-default-signin", placeholder: "メールアドレス"
+            = password_field_tag :password, '', class: "form-group-signin input-default-signin", placeholder: "パスワード"
+            .g-recaptcha{data:{sitekey:"6LcGypcUAAAAABBeMQbu1CCxJb_pb_Au9P4aLGAy"}}
+            = button_to "ログイン","#", class: "login-submit btn-default btn-red"
+            = link_to "パスワードをお忘れの方", "#", class: "password-forget underline-opacity"
+  = render "./common/footer-singlefooter"

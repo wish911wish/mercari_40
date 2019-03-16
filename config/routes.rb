@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new]
   resources :users, only: [:index]
   resources :signup, only: [:index]
+  resources :signin, only: [:index]
 
 end
