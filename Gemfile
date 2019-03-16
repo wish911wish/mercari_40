@@ -71,3 +71,5 @@ gem 'erb2haml'
 gem 'active_hash', '~> 1.5.3'
 
 gem 'devise'
+
+gem 'rails-i18n', '~> 5.1'
