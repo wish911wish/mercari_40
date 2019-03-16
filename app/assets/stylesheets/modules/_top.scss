@@ -209,6 +209,38 @@ li{
       width: 320px;
       box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
     }
+    &-right-login{
+      display: flex;
+      &>li{
+        margin-left: 8px;
+      }
+    }
+    &-login{
+      display: block;
+      background-color: $red;
+      color: $white;
+      line-height: 30px;
+      border-radius: 4px;
+      padding: 0 10px;
+    }
+    &-sign-up{
+      display: block;
+      background-color: $white;
+      border: 1px solid $light-blue;
+      color: $light-blue;
+      line-height: 30px;
+      border-radius: 4px;
+      padding: 0 10px;
+      &:hover{
+        background-color: $light-blue;
+        color: $white;
+        -webkit-transition: all .3s ease-out;
+           -moz-transition: all .3s ease-out;
+            -ms-transition: all .3s ease-out;
+             -o-transition: all .3s ease-out;
+                transition: all .3s ease-out;
+      }
+    }
   }
 }
 
