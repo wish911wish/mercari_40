@@ -83,9 +83,18 @@ GEM
       html2haml
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.1)
+      factory_bot (~> 5.0.0)
+      railties (>= 4.2.0)
+    faker (1.9.3)
+      i18n (>= 0.7)
     ffi (1.10.0)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    gimei (0.3.0)
+      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -177,6 +186,8 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -262,7 +273,10 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   erb2haml
+  factory_bot_rails
+  faker
   font-awesome-rails
+  gimei
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
