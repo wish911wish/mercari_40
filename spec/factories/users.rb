@@ -15,7 +15,7 @@ FactoryBot.define do
     postal_code               { "#{Faker::Number.number(3)}-#{Faker::Number.number(4)}" }
     prefectures               { address.prefecture.kanji }
     city                      { address.city.kanji }
-    street_address            { "#{address.town.to_s}#{rand(10)}-#{rand(10)}-#{rand(10)}"   }
+    street_address            { "#{address.town}#{rand(10)}-#{rand(10)}-#{rand(10)}"   }
     building                  { address.town.katakana }
     phone_number              { Faker::PhoneNumber.phone_number }
     introduction              { Faker::Lorem.sentences(1) }
