@@ -267,13 +267,13 @@
   background: white;
 }
 
-figure{
+.message-item figure{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-figcaption{
+.message-item figcaption{
   width: 600px;
 }
 
