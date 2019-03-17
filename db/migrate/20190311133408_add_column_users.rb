@@ -15,5 +15,4 @@ class AddColumnUsers < ActiveRecord::Migration[5.0]
     add_column :users, :introduction, :string
     add_column :users, :image, :string
   end
-  change_table :users, bulk: true
 end
