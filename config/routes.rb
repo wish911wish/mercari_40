@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :signup, only: [:index]
   resources :signin, only: [:index]
   resources :identification, only: [:index]
+  resources :card, only: [:index]
 
 end

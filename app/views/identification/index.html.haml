@@ -56,11 +56,11 @@
           %span.form-arbitrary 任意
           = text_field_tag "adress2", "", class: "input-identification", placeholder: "例) 柳ビル103"
         .form-group
-        = button_to "登録する", "#", class: "btn-default btn-red"
-        .form-group.text-right
-          = link_to "#", class: "underline-opacity" do
-            %span 本人情報の登録について
-            = fa_icon "angle-right"
+          = button_to "登録する", "#", class: "btn-default btn-red"
+          .form-group.text-right
+            = link_to "#", class: "underline-opacity" do
+              %span 本人情報の登録について
+              = fa_icon "angle-right"
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"
