@@ -1,1 +1,157 @@
-items index
+= render "./common/header"
+
+%nav.bread-crumbs
+  %ul
+    %li
+      %span.mercari
+        = link_to "メルカリ  ", "#", class: "underline-opacity"
+      = fa_icon "angle-right"
+    %li
+      %span HHKB Professional 2 英語配列 墨 静電容量無接点
+%section.item-box-container.l-single-container
+  %h1.item-name HHKB Professional 2 英語配列 墨 静電容量無接点
+  %p.item-wording
+  .item-main-content
+    .item-photo
+      .item-photo-main#mainImage
+        = image_tag "item-1.jpg", width: "300", height: "250"
+      .item-photo-sub#imageList
+        = image_tag "item-1.jpg",class: "opacity1", width: "70", height: "70"
+        = image_tag "item-2.jpg", class: "opacity06", width: "70", height: "70"
+        = image_tag "flag_us.png", class: "opacity06", width: "70", height: "70"
+        = image_tag "flag_jp.png", class: "opacity06", width: "70", height: "70"
+    .table
+      %item.item-detail-table
+        %table.item-detail-table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to "Kenji Rusudo", "#", class: "underline-opacity"
+                .item-user-ratings
+                  =image_tag "good-icon.svg", width:"20", height: "20"
+                  %span 99
+                  =image_tag "normal-icon.svg", width:"20", height: "20"
+                  %span 4
+                  =image_tag "bad-icon.svg", width:"20", height: "20"
+                  %span 2
+            %tr
+              %th カテゴリー
+              %td
+                .item-detail-table-category.underline-opacity
+                  = link_to "家電・スマホ・カメラ", "#"
+                .item-detail-table-sub-category.underline-opacity
+                  = link_to "#" do
+                    %i.fa.fa-angle-right
+                    %span PC/タブレット
+                .item-detail-table-sub-sub-category.underline-opacity
+                  = link_to "#" do
+                    %i.fa.fa-angle-right
+                    %span PC周辺機器
+            %tr
+              %th ブランド
+              %td.underline-opacity
+                = link_to "富士通", "#"
+            %tr
+              %th 商品の状態
+              %td 目立った傷や汚れなし
+
+            %tr
+              %th 配送料の負担
+              %td 送料込み(出品者負担)
+            %tr
+              %th 配送の方法
+              %td 未定
+            %tr
+              %th 配送元地域
+              %td.underline-opacity
+                = link_to "東京都", href: "#"
+            %tr
+              %th 発送日の目安
+              %td 1~2日で発送
+  .item-price-box.text-center
+    %span.item-price.bold ¥ 2,300
+    %span.item-tax  (税込)
+    %span.item-shipping-fee 送料込み
+  = link_to "購入画面に進む", "#", class: "item-buy-btn f18-24"
+  .item-description.f14
+    %div.item-description-inner
+      %p Happy Hacking KeyBoard
+      %p macbook pro 2018
+      %p osmo pocket
+      %p 洗濯機
+  .item-button-container
+    .item-button-left
+      = link_to "javascript:void(0)", class: "item-button item-button-like" do
+        %span いいね!
+        %span.item-button-like-count 0
+      = link_to "#", class: "item-button item-button-report" do
+        =fa_icon "flag-o"
+        %span 不適切な商品の報告
+    .item-button-right
+      = link_to "#", class: "item-button" do
+        = fa_icon "lock"
+        %span あんしん・あんぜんへの取り組み
+.item-detail-message
+  .message-container
+    .message-content-items
+      %ul.message-items
+        %li.message-item
+          %figure
+            = image_tag "member_photo_noimage_thumb.png", class: "message-item-picture", width: "40", height: "40"
+            %figcaption.bold ユーザー名
+      .message-body-icon
+      .message-body
+        %span.message-body-text コメントコメントコメント
+        .message-body-date-report
+          .message-body-date
+            = fa_icon "clock-o"
+            %span 〇〇日前
+          = link_to "#", class: "message-body-report" do
+            = fa_icon "flag-o"
+    .message-content-items
+      %ul.message-items
+        %li.message-item
+          %figure
+            = image_tag "member_photo_noimage_thumb.png", class: "message-item-picture", width: "40", height: "40"
+            %figcaption.bold ユーザー名
+      .message-body-icon
+      .message-body
+        %span.message-body-text コメントコメントコメント
+        .message-body-date-report
+          .message-body-date
+            = fa_icon "clock-o"
+            %span 〇〇日前
+          = link_to "#", class: "message-body-report" do
+            = fa_icon "flag-o"
+    .message-content-comment
+      %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.textarea-default
+      = link_to "コメントする", "#", class: "message-submit"
+  .nav-item-link-prev-next
+    = link_to "#", class: "nav-item-link-prev" do
+      = fa_icon "angle-left"
+      %span コンビミニ カーディガン 95
+    = link_to "#", class: "nav-item-link-next" do
+      %span わたしはマララ: タリバンに撃たれた少女
+      = fa_icon "angle-right"
+  .item-detail-message
+    .message-container
+  .item-social-media-box
+    %ul.social-media-box
+      %li
+        = link_to "#", class: "share-btn opacity-hover" do
+          = fa_icon "facebook-square"
+      %li
+        = link_to "#", class: "share-btn opacity-hover" do
+          = fa_icon "twitter"
+      %li
+        = link_to "#", class: "share-btn opacity-hover" do
+          = image_tag "icon-line", class: "icon-line", width: "60", height: "60"
+      %li
+        = link_to "#", class: "share-btn opacity-hover" do
+          = fa_icon "pinterest"
+  = render "pickup-items", name: "kenji Rusudohさん"
+  = render "pickup-items", name: "キーボード"
+= render "./common/app-banner"
+= render "./common/footer"
