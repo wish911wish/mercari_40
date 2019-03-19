@@ -43,6 +43,10 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'gimei'
 end
 
 group :production do
@@ -69,3 +73,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 
 gem 'active_hash', '~> 1.5.3'
+
+gem 'devise'
+
+gem 'rails-i18n', '~> 5.1'
