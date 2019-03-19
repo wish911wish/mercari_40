@@ -1,3 +1,5 @@
+Faker::Config.locale = :ja
+
 FactoryBot.define do
   factory :user do
     password = Faker::Internet.password(8)
