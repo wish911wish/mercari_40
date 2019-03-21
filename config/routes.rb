@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :identification, only: [:index]
   resources :card, only: [:index]
 
+  get 'card/create'
+  get 'card/registered'
+
 end
