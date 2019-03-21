@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190321095900) do
+ActiveRecord::Schema.define(version: 20190321100232) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20190321095900) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
+  end
+
+  create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category_id"
+    t.integer  "size_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_sizes_on_category_id", using: :btree
+    t.index ["size_id"], name: "index_category_sizes_on_size_id", using: :btree
   end
 
   create_table "conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -133,6 +142,8 @@ ActiveRecord::Schema.define(version: 20190321095900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "sizes"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "conditions"
