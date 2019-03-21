@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190321064712) do
+ActiveRecord::Schema.define(version: 20190321065907) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -38,6 +38,40 @@ ActiveRecord::Schema.define(version: 20190321064712) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "seller_id",                          null: false
+    t.integer  "buyer_id",                           null: false
+    t.string   "name",                               null: false
+    t.text     "description",          limit: 65535
+    t.integer  "big_category_id"
+    t.integer  "middle_category_id"
+    t.integer  "small_category_id"
+    t.integer  "brand_id"
+    t.integer  "size_id"
+    t.integer  "condition_id",                       null: false
+    t.integer  "shipping_cost_id",                   null: false
+    t.integer  "shipping_method_id",                 null: false
+    t.string   "sender_prefecture",                  null: false
+    t.integer  "days_for_shipment_id",               null: false
+    t.integer  "status_id",                          null: false
+    t.integer  "price",                              null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["big_category_id"], name: "index_items_on_big_category_id", using: :btree
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
+    t.index ["condition_id"], name: "index_items_on_condition_id", using: :btree
+    t.index ["days_for_shipment_id"], name: "index_items_on_days_for_shipment_id", using: :btree
+    t.index ["middle_category_id"], name: "index_items_on_middle_category_id", using: :btree
+    t.index ["name"], name: "index_items_on_name", using: :btree
+    t.index ["seller_id"], name: "index_items_on_seller_id", using: :btree
+    t.index ["shipping_cost_id"], name: "index_items_on_shipping_cost_id", using: :btree
+    t.index ["shipping_method_id"], name: "index_items_on_shipping_method_id", using: :btree
+    t.index ["size_id"], name: "index_items_on_size_id", using: :btree
+    t.index ["small_category_id"], name: "index_items_on_small_category_id", using: :btree
+    t.index ["status_id"], name: "index_items_on_status_id", using: :btree
   end
 
   create_table "shipping_costs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -92,4 +126,16 @@ ActiveRecord::Schema.define(version: 20190321064712) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "conditions"
+  add_foreign_key "items", "days_for_shipments"
+  add_foreign_key "items", "shipping_costs"
+  add_foreign_key "items", "shipping_methods"
+  add_foreign_key "items", "sizes"
+  add_foreign_key "items", "statuses"
+  add_foreign_key "items", "users", column: "big_category_id"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "middle_category_id"
+  add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "items", "users", column: "small_category_id"
 end
