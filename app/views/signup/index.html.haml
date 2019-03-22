@@ -1,19 +1,23 @@
-.single-container-signup
-  = render "./common/header-singleheader"
+.signup-single-container
+  %header.signup-single-header
+    %h1
+      = link_to image_tag("logo.svg",  width: "185", alt: "logo", class: "single-header-logo"), "#"
   %main.single-main
-    %section.l-single-container
-      %h2.l-single-head 新規会員登録
-      .l-single-inner
-        .l-single-content
-          = link_to new_user_registration_path, class: "btn-default btn-mail" do
-            .fa-pull-left
-              = fa_icon "envelope", class: "btn-mail-icon"
-            %p.text-mail メールアドレスで登録
-          = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
-            .fa-pull-left
-              = fa_icon "facebook-official"
-            %p.text-facebook Facebookで登録
-          = link_to "#", class: "btn-default btn-sns btn-sns-google", id:"google-login" do
-            = image_tag "google.svg", class: "fa-pull-left"
-            %p.text-google Googleで登録
+    %section.single-container
+    .content-identification
+      .l-single-main-box
+        %h2.signup-single-head 新規会員登録
+        .signup-l-single-content
+          .single-inner-top
+            = link_to new_user_registration_path, class: "btn-default btn-mail" do
+              .fa-pull-left
+                = fa_icon "envelope-o", class: "btn-mail-icon"
+              %p.text-mail メールアドレスで登録
+            = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
+              .fa-pull-left
+                = fa_icon "facebook-official"
+              %p.text-facebook Facebookで登録
+            = link_to "#", class: "btn-default btn-sns btn-sns-google", id:"google-login" do
+              = image_tag "google.svg", class: "fa-pull-left"
+              %p.text-google Googleで登録
   = render "./common/footer-singlefooter"
