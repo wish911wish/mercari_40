@@ -21,42 +21,42 @@
           .progress-status__last
   %main.single-main
     %section.single-container
-    .content-identification
+    .signup-content
       .l-single-main-box
         %h2.signup-single-head クレジットカード情報入力
-        .signup-l-single-content
+        .signup-single-content.single-inner-top
+          .form-group
+            %label カード
+            %span.form-require 必須
+            = text_field_tag "card-id", "", class: "signup-input", placeholder: "半角数字のみ"
+            .signup-card-list
+              = image_tag "card-icon-visa.svg", alt: "visa", size: "49x20"
+              = image_tag "card-icon-master-card.svg", alt: "master-card", size: "34x20"
+              = image_tag "card-icon-saison-card.svg", alt: "saison-card", size: "30x20"
+              = image_tag "card-icon-jcb.svg", alt: "jcb", size: "32x20"
+              = image_tag "card-icon-american_express.svg", alt: "american_express", size: "21x20"
+              = image_tag "card-icon-dinersclub.svg", alt: "dinersclub", size: "32x20"
+              = image_tag "card-icon-discover.svg", alt: "discover", size: "32x20"
+          .form-group
+            %label 有効期限
+            %span.form-require 必須
+            .signup-select-wrap.select-birthday
+              = select "month", "", ["--","1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10", "11", "12"], {} ,{class: "signup-input-card"}
+              = fa_icon "angle-down 2x"
+              %span 月
+            .signup-select-wrap.select-birthday
+              = select "year", "", ["--","2019",  "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029"], {} ,{class: "signup-input-card"}
+              = fa_icon "angle-down 2x"
+              %span 年
+          .form-group
+            %label セキュリティコード
+            %span.form-require 必須
+            = text_field_tag "card-id", "", class: "signup-input", placeholder: "カード背面4桁もしくは3桁の番号"
+          .text-right
+            = link_to "#", class: "underline-opacity" do
+              = fa_icon "question-circle"
+              %span カード裏面の番号とは？
+          .form-group
           = form_for(current_user, url: "/signup/completion", method: :get) do |f|
-            .form-group
-              %label カード
-              %span.form-require 必須
-              = text_field_tag "card-id", "", class: "input-identification", placeholder: "半角数字のみ"
-              .signup-card-list
-                = image_tag "card-icon-visa.svg", alt: "visa", size: "49x20"
-                = image_tag "card-icon-master-card.svg", alt: "master-card", size: "34x20"
-                = image_tag "card-icon-saison-card.svg", alt: "saison-card", size: "30x20"
-                = image_tag "card-icon-jcb.svg", alt: "jcb", size: "32x20"
-                = image_tag "card-icon-american_express.svg", alt: "american_express", size: "21x20"
-                = image_tag "card-icon-dinersclub.svg", alt: "dinersclub", size: "32x20"
-                = image_tag "card-icon-discover.svg", alt: "discover", size: "32x20"
-            .form-group
-              %label 有効期限
-              %span.form-require 必須
-              .select-wrap-identification.select-birthday
-                = select "month", "", ["--","1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10", "11", "12"], {} ,{class: "input-card"}
-                = fa_icon "angle-down 2x"
-                %span 月
-              .select-wrap-identification.select-birthday
-                = select "year", "", ["--","2019",  "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029"], {} ,{class: "input-card"}
-                = fa_icon "angle-down 2x"
-                %span 年
-            .form-group
-              %label セキュリティコード
-              %span.form-require 必須
-              = text_field_tag "card-id", "", class: "input-identification", placeholder: "カード背面4桁もしくは3桁の番号"
-            .text-right
-              = link_to "#", class: "underline-opacity" do
-                = fa_icon "question-circle"
-                %span カード裏面の番号とは？
-            .form-group
-              = f.submit "追加する", class: "btn-default btn-red"
+            = f.submit "追加する", class: "btn-default btn-red"
     = render "./common/footer-singlefooter"

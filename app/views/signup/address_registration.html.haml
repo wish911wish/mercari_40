@@ -21,31 +21,31 @@
           .progress-status__last
   %main.single-main
     %section.single-container
-    .content-identification
+    .signup-content
       .l-single-main-box
         %h2.signup-single-head お届け先住所入力
-        .signup-l-single-content
+        .signup-single-content
           = form_for(current_user, url: "/signup/payment_registration") do |f|
             .form-group
               = f.label :postal_code
               %span.form-require 必須
-              = f.text_field :postal_code, autofocus: true, placeholder: "例）329-4421", class: "input-identification"
+              = f.text_field :postal_code, autofocus: true, placeholder: "例）329-4421", class: "signup-input"
             .form-group
               = f.label :prefectures
               %span.form-require 必須
-              = f.text_field :prefectures, autofocus: true, placeholder: "例）島根県", class: "input-identification"
+              = f.text_field :prefectures, autofocus: true, placeholder: "例）島根県", class: "signup-input"
             .form-group
               = f.label :city
               %span.form-require 必須
-              = f.text_field :city, autofocus: true,  placeholder: "例）出雲市", class: "input-identification"
+              = f.text_field :city, autofocus: true,  placeholder: "例）出雲市", class: "signup-input"
             .form-group
               = f.label :street_address
               %span.form-require 必須
-              = f.text_field :street_address, autofocus: true, placeholder: "例）朝山町２番４号", class: "input-identification"
+              = f.text_field :street_address, autofocus: true, placeholder: "例）朝山町２番４号", class: "signup-input"
             .form-group
               = f.label :building
               %span.form-arbitrary 任意
-              = f.text_field :building, autofocus: true, placeholder: "例）イーリス103", class: "input-identification"
+              = f.text_field :building, autofocus: true, placeholder: "例）イーリス103", class: "signup-input"
             .form-group
               = f.submit "住所登録", class: "btn-default btn-red"
     = render "./common/footer-singlefooter"

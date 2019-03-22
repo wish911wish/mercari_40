@@ -21,15 +21,15 @@
           .progress-status__last
   %main.single-main
     %section.single-container
-    .content-identification
+    .signup-content
       .l-single-main-box
         %h2.signup-single-head 電話番号登録
-        .signup-l-single-content
+        .signup-single-content
           = form_for(current_user, url: "/signup/address_registration") do |f|
             .form-group
               = f.label "携帯電話の番号"
               %br
-              = f.text_field :phone_number, autofocus: true, placeholder: "携帯電話の番号を入力", class: "input-identification"
+              = f.text_field :phone_number, autofocus: true, placeholder: "携帯電話の番号を入力", class: "signup-input"
               = f.hidden_field :user_id, value: current_user.id
             %p.single-text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
             .form-group
