@@ -7,7 +7,12 @@ ja:
 #      already_confirmed: "was already confirmed"
       not_locked: "は凍結されていません"
 #      not_locked: "was not locked"
-
+      not_saved:
+        # "このフォームは登録されていません"
+        one: "1つのエラーにより %{resource}情報は保存されませんでした:"
+#      "1 error prohibited this %{resource} from being saved:"
+        other: "複数のエラーにより%{resource}情報は保存されませんでした:"
+#      "%{count} errors prohibited this %{resource} from being saved:"
   devise:
     failure:
       unauthenticated: 'ログインしてください。'
@@ -61,4 +66,3 @@ ja:
       unlock_instructions:
         subject: 'アカウントの凍結解除'
 #        subject: 'Unlock Instructions'
-
