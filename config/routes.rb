@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'top#index'
-  resources :items, only: [:index, :new]
+  resources :items, only: [:index, :new, :create]
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
