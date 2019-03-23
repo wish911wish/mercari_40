@@ -3,13 +3,13 @@
     %h1
       = link_to image_tag("logo.svg",  width: "185", alt: "logo", class: "single-header-logo"), "#"
     %nav.progress-bar
-      %ol.flexbox-row-center
+      %ol.progress-bar-flexbox
         %li
           会員情報
-          .progress-status__redline.circle-red
-        %li.color-red
+          .progress-status__redline.progress-bar-circleRed
+        %li.progress-bar-textRedBold
           電話番号認証
-          .progress-status.circle-red
+          .progress-status.progress-bar-circleRed
         %li
           お届け先住所入力
           .progress-status
@@ -26,16 +26,16 @@
         %h2.signup-single-head 電話番号登録
         .signup-single-content
           = form_for(current_user, url: "/signup/address_registration") do |f|
-            .form-group
+            .signup-form-group
               = f.label "携帯電話の番号"
               %br
               = f.text_field :phone_number, autofocus: true, placeholder: "携帯電話の番号を入力", class: "signup-input"
               = f.hidden_field :user_id, value: current_user.id
             %p.single-text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-            .form-group
+            .signup-form-group
               = f.submit "SMSを送信する", class: "btn-default btn-red"
             %p.single-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-            .form-group
+            .signup-form-group
               .text-right
                 = link_to "#" do
                   %span.underline-opacity 電話番号の確認が必要な理由
