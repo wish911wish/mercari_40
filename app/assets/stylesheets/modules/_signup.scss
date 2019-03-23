@@ -230,6 +230,16 @@
   &>.inline-block{
     display: inline-block;
   }
+  &>.has-error{
+    &>input{
+      border: 1px solid red;
+      outline: 0;
+    }
+    &>.has-error-text{
+      color: red;
+      line-height: 1.5;
+    }
+  }
 }
 
 [id^= "user_birthday"]{
