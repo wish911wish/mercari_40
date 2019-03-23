@@ -1,0 +1,56 @@
+.btn{
+  &-default{
+    position: relative;
+    width:100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+  }
+  &-mail{
+    background: #eee;
+    color: #000;
+    transition: 0.5s;
+  }
+  &mail:hover{
+    transition: 0.5s;
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  &-sns-facebook{
+    margin: 18px 0 0;
+    background: #385185;
+    color: #fff;
+    cursor: pointer;
+  }
+  &-sns-google{
+    margin: 18px 0 0;
+    background: #fff;
+    border: #979797 solid 1px;
+    color: #333;
+    cursor: pointer;
+  }
+}
+
+.fa{
+  &-pull-left{
+    width:46px;
+    height:46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+  }
+  &-envelope-o.fa{
+    color: #ccc;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  &-facebook-official.fa{
+    font-size: 20px;
+  }
+}
