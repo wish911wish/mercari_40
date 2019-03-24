@@ -1,9 +1,13 @@
-.l-container{
+@mixin container{
   width: 1020px;
-  height: 1292px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
+}
+
+.l-container{
+  @include container;
+  height: 1292px;
 }
 
 //メイン-------------------------------------
@@ -308,22 +312,6 @@ img{
       color: #ccc;
     }
   }
-}
-
-.salse-point{
-  padding: 0 8px;
-  justify-content: space-between;
-  line-height: 40px;
-  &__left{
-    margin-left:40px;
-  }
-  &__right{
-    margin-right: 5px;
-  }
-}
-
-.icon-arrow-right{
-  margin-right: 20px;
 }
 
 .fa-chevron-right{
