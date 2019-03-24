@@ -171,10 +171,29 @@
         line-height: 1.5;
       }
     }
-    &>.card-image-list{
+    .card-image-list{
       margin-top: 8px;
       img{
         padding-left: 3px;
+        height: 20px;
+        &.visa{
+          width: 49px;
+        }
+        &.master-card{
+          width: 34px;
+        }
+        &.saison-card{
+          width: 30px;
+        }
+        &.jcb{
+          width: 21px;
+        }
+        &.dinersclub{
+          width: 32px;
+        }
+        &.discover{
+          width: 32px;
+        }
       }
     }
   }

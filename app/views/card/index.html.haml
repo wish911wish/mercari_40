@@ -3,7 +3,7 @@
   %ul
     %li
       %span.mercari
-        = link_to "メルカリ", "#", class: "underline-opacity"
+        = link_to "メルカリ", root_path, class: "underline-opacity"
       = fa_icon "angle-right"
     %li
       %span.mercari
@@ -21,7 +21,7 @@
           %section.card-settings-label
             クレジットカード一覧
           %section.card-settings-button
-            = link_to "#", class: "btn-default btn-red opacity-hover" do
+            = link_to new_card_path, class: "btn-default btn-red opacity-hover" do
               =fa_icon "credit-card"
               %span クレジットカードを登録する
           .card-settings-line

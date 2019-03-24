@@ -3,7 +3,7 @@
   %ul
     %li
       %span.mercari
-        = link_to "メルカリ", "#", class: "underline-opacity"
+        = link_to "メルカリ", root_path, class: "underline-opacity"
       = fa_icon "angle-right"
     %li
       %span.mercari
@@ -21,7 +21,8 @@
           %label クレジットカード一覧
           .card-flexbox
             .add-card-settings-left
-              =image_tag "card-icon-visa.svg", alt: "visa", size: "34x20"
+              .card-image-list
+                =image_tag "card-icon-visa.svg", alt: "visa", class: "visa"
               .card-settings-payment-num ************1010
               .card-settings-payment-num 05 / 23
             .card-settings-add-right
