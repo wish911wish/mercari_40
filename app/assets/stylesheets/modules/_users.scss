@@ -5,14 +5,6 @@
   margin: 0 auto;
 }
 
-@mixin tab{
-  text-align: center;
-  display: block;
-  font-size: 16px;
-  line-height: 72px;
-  width: 50%;
-}
-
 .l-container{
   @include container;
   height: 1292px;
@@ -37,10 +29,29 @@
   width: 60px;
 }
 
+.mercari_profile{
+  height: 48px;
+  width: 48px;
+}
+
 img{
   vertical-align: middle;
 }
 
+
+.not-active{
+  border-top: 2px solid gray;
+  position: relative;
+  display: block;
+  font-size: 16px;
+  line-height: 72px;
+  background-color: white;
+}
+
+.lazyloaded{
+  width: 48px;
+  height: 48px;
+}
 
 //サイド-------------------------------------
 .l-side{
@@ -82,8 +93,12 @@ img{
     background-color: white;
   & li{
     &.active{
-      @include tab;
       position: relative;
+      text-align: center;
+      display: block;
+      font-size: 16px;
+      line-height: 72px;
+      width: 50%;
       border-top: 2px solid red;
       & a{
       }
@@ -102,7 +117,11 @@ img{
       }
     }
     &.notactive{
-      @include tab;
+      text-align: center;
+      display: block;
+      font-size: 16px;
+      line-height: 72px;
+      width: 50%;
       background-color: #EEEEEE;
       & a{
         }
@@ -288,7 +307,7 @@ img{
         color: $black-for-font;
     }
     &-not-found{
-      background-image: url(/images/logo-gray-icon.svg);
+      background-image: url(logo-gray-icon.svg);
       background-size: 78px 85px;
       background-position: center;
       background-repeat: no-repeat;

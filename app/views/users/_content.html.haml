@@ -2,15 +2,13 @@
   %section.userpage-user-icon
     =link_to root_path, class: "user-stats" do
       %figure
-        =image_tag("member_photo_noimage_thumb.png", size: "60x60", class: "user-pic")
+        =image_tag("member_photo_noimage_thumb.png", class: "user-pic")
       %h2.bold ryota0308
       .userpage-number
-        %div
-          評価
-          %span.bold 0
-        %div
-          出品数
-          %span.bold 0
+        評価
+        %span.bold 0
+        出品数
+        %span.bold 0
   %section.userpage-tab-container-notification-todo
     %ul.userpage-tabs
       %li.active
@@ -29,9 +27,9 @@
       %li
         =link_to root_path, class: "userpage-item-link" do
           %figure
-            =image_tag("mercari_profile.png", size: "48x48")
-          %div.userpage-item-body
-            %div.userpage-item-text
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
               テストテストテストテストテスト
             %time
               =fa_icon "clock-o"
@@ -41,9 +39,9 @@
       %li
         =link_to root_path, class: "userpage-item-link" do
           %figure
-            =image_tag("mercari_profile.png", size: "48x48")
-          %div.userpage-item-body
-            %div.userpage-item-text
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
               テストテストテストテストテスト
             %time
               =fa_icon "clock-o"
@@ -54,9 +52,9 @@
       %li
         =link_to root_path, class: "userpage-item-link" do
           %figure
-            =image_tag("mercari_profile.png", size: "48x48")
-          %div.userpage-item-body
-            %div.userpage-item-text
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
               テストテストテストテストテスト
             %time
               =fa_icon "clock-o"
@@ -66,9 +64,9 @@
       %li
         =link_to root_path, class: "userpage-item-link" do
           %figure
-            =image_tag("mercari_profile.png", size: "48x48")
-          %div.userpage-item-body
-            %div.userpage-item-text
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
               テストテストテストテストテスト
             %time
               =fa_icon "clock-o"
