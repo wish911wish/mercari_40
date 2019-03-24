@@ -21,6 +21,8 @@
 
 .user-pic{
   border-radius: 50%;
+  height: 60px;
+  width: 60px;
 }
 
 img{
@@ -305,18 +307,6 @@ img{
       font-size: 16px;
       color: #ccc;
     }
-  }
-}
-
-.salse-point{
-  padding: 0 8px;
-  justify-content: space-between;
-  line-height: 40px;
-  &__left{
-    margin-left:40px;
-  }
-  &__right{
-    margin-right: 5px;
   }
 }
 
