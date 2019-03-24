@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root 'top#index'
   resources :items, only: [:index, :new]
-  resources :users, only: [:index]
-
-  get '/users/profile', to: 'users#profile'
-  get '/users/logout', to: 'users#logout'
+  resources :users do
+    collection do
+      get :profile
+      get :logout
+    end
+  end
 
   resources :signup, only: [:index]
   resources :signin, only: [:index]
