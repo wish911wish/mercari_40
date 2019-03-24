@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190323063455) do
+ActiveRecord::Schema.define(version: 20190321100232) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20190323063455) do
     t.integer  "parent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
+    t.index ["name"], name: "index_categories_on_name", using: :btree
   end
 
   create_table "category_sizes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,9 +58,13 @@ ActiveRecord::Schema.define(version: 20190323063455) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "seller_id",                          null: false
     t.integer  "buyer_id"
     t.string   "name",                               null: false
     t.text     "description",          limit: 65535
+    t.integer  "big_category_id"
+    t.integer  "middle_category_id"
+    t.integer  "small_category_id"
     t.integer  "brand_id"
     t.integer  "size_id"
     t.integer  "condition_id",                       null: false
@@ -72,10 +76,6 @@ ActiveRecord::Schema.define(version: 20190323063455) do
     t.integer  "price",                              null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.integer  "big_category_id"
-    t.integer  "middle_category_id"
-    t.integer  "small_category_id"
-    t.integer  "seller_id"
     t.index ["big_category_id"], name: "index_items_on_big_category_id", using: :btree
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
@@ -155,5 +155,6 @@ ActiveRecord::Schema.define(version: 20190323063455) do
   add_foreign_key "items", "shipping_methods"
   add_foreign_key "items", "sizes"
   add_foreign_key "items", "statuses"
+  add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
 end
