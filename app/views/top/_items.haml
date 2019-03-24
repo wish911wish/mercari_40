@@ -3,9 +3,9 @@
     %figure.items-box-photo
       =image_tag("item-1.jpg", size: "213x213")
     .items-box-body
-      %h3.items-box-name 男性用大島袖濃紺アンサンブル１２３４５６７８９０１２３４
+      %h3.items-box-name= item.name
       .items-box-num
-        .items-box-price.font-5 ¥12,800
+        .items-box-price.font-5= "¥#{item.price}"
         .items-box-likes.font-2
           = fa_icon 'heart'
           %span 2
