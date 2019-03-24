@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+@mixin tab{
+  text-align: center;
+  display: block;
+  font-size: 16px;
+  line-height: 72px;
+  width: 50%;
+}
+
 .l-container{
   @include container;
   height: 1292px;
@@ -33,20 +41,6 @@ img{
   vertical-align: middle;
 }
 
-
-.not-active{
-  border-top: 2px solid gray;
-  position: relative;
-  display: block;
-  font-size: 16px;
-  line-height: 72px;
-  background-color: white;
-}
-
-.lazyloaded{
-  width: 48px;
-  height: 48px;
-}
 
 //サイド-------------------------------------
 .l-side{
@@ -88,12 +82,8 @@ img{
     background-color: white;
   & li{
     &.active{
+      @include tab;
       position: relative;
-      text-align: center;
-      display: block;
-      font-size: 16px;
-      line-height: 72px;
-      width: 50%;
       border-top: 2px solid red;
       & a{
       }
@@ -112,11 +102,7 @@ img{
       }
     }
     &.notactive{
-      text-align: center;
-      display: block;
-      font-size: 16px;
-      line-height: 72px;
-      width: 50%;
+      @include tab;
       background-color: #EEEEEE;
       & a{
         }
