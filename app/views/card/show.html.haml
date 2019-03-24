@@ -1,0 +1,37 @@
+= render "./common/header"
+%nav.bread-crumbs
+  %ul
+    %li
+      %span.mercari
+        = link_to "メルカリ", "#", class: "underline-opacity"
+      = fa_icon "angle-right"
+    %li
+      %span.mercari
+        = link_to "マイページ", "#", class: "underline-opacity"
+      = fa_icon "angle-right"
+    %li
+      %span 支払い方法
+%main.card-main-container
+  = render "./users/sidebar"
+  .card-main-content
+    %h2.card-chapter-head 支払い方法
+    .card-single-content
+      .card-single-inner-320px
+        .card-form-group
+          %label クレジットカード一覧
+          .card-flexbox
+            .add-card-settings-left
+              =image_tag "card-icon-visa.svg", alt: "visa", size: "34x20"
+              .card-settings-payment-num ************1010
+              .card-settings-payment-num 05 / 23
+            .card-settings-add-right
+              = link_to "削除する", "#", class: "card-settings-payment-remove"
+        .card-settings-line
+        .card-form-group
+          .text-right
+            = link_to "#", class: "underline-opacity" do
+              %span 支払い方法について
+              = fa_icon "angle-right"
+= render "./common/app-banner"
+= render "./common/footer"
+= render "./common/sell-btn"
