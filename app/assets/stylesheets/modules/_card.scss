@@ -1,0 +1,209 @@
+.card{
+  &-main{
+      &-container{
+      margin: 40px auto 0;
+      padding: 0 0 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      & > div{
+        margin: 0 20px;
+      }
+    }
+    &-content{
+      width: 700px;
+      height: 100%;
+      background-color: $white;
+    }
+  }
+  &-chapter{
+      &-container{
+      width: 700px;
+      margin: 0 auto;
+    }
+    &-head{
+      font-size: 24px;
+      padding: 8px 24px;
+      text-align: center;
+      line-height: 1.4;
+      font-weight: bold;
+      border-bottom: 1px solid #f5f5f5;
+    }
+  }
+  &-settings{
+    &-label{
+    text-align: left;
+    width: 320px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: bold;
+    }
+      &-button{
+      text-align: center;
+      padding: 24px 0;
+      width: 320px;
+      margin: 0 auto;
+      .fa-credit-card{
+        margin-right: 16px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+      &-form{
+      text-align: left;
+      width: 320px;
+      margin: 0 auto;
+    }
+      &-line{
+      height: 1px;
+      width: 100%;
+      border-bottom: 1px solid #eee;
+    }
+      &-link{
+      text-align: right;
+      padding-top: 24px;
+      width: 320px;
+      margin: 0 auto;
+    }
+     &-content{
+      margin: 0 auto;
+    }
+    &-add-left{
+      width: 49%;
+      text-align: left;
+      padding: 24px 0;
+    }
+
+    &-add-right{
+      width: 49%;
+      text-align: right;
+      padding: 24px 0;
+    }
+
+    &-payment-num{
+      margin: 8px 0 0;
+      font-size: 16px;
+    }
+
+    &-payment-remove{
+      padding: 4px 6px;
+      background: #fff;
+      border-radius: 3px;
+      border: 1px solid #ea352d;
+      color: #ea352d;
+    }
+  }
+  &-single-inner{
+    padding: 64px;
+    &-320px{
+      width: 320px;
+      margin: 0 auto;
+      padding: 64px;
+    }
+  }
+  &-input{
+    -webkit-appearance: none;
+    margin: 8px 0 0;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+      &:focus{
+      border: 1px solid #0099e8;
+      outline: 0;
+    }
+  }
+  &-form-group{
+    margin: 40px 0 0;
+    &:first-child{
+      margin: 0;
+    }
+    & .input-default{
+      width: 100%;
+      margin: 8px 0 0;
+    }
+    & label{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    & .textarea-default{
+      margin: 8px 0 0;
+    }
+    & select{
+      width: 100%;
+    }
+    & .select-wrap{
+      margin: 8px 0 0;
+    }
+    & .fa-angle-down{
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      z-index: 2;
+      color: #888;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
+    &> .text-center{
+    text-align: center;
+    line-height: 1.5;
+    }
+    &> .text-right{
+      width: 100%;
+      text-align: right;
+      line-height: 1.5;
+    }
+    &>.select-birthday{
+      width: 140px;
+    }
+    &>.inline-block{
+      display: inline-block;
+    }
+    &>.has-error{
+      &>input{
+        border: 1px solid red;
+        outline: 0;
+      }
+      &>.has-error-text{
+        color: red;
+        line-height: 1.5;
+      }
+    }
+    .card-image-list{
+      margin-top: 8px;
+      img{
+        padding-left: 3px;
+        height: 20px;
+        &.visa{
+          width: 49px;
+        }
+        &.master-card{
+          width: 34px;
+        }
+        &.saison-card{
+          width: 30px;
+        }
+        &.jcb{
+          width: 21px;
+        }
+        &.dinersclub{
+          width: 32px;
+        }
+        &.discover{
+          width: 32px;
+        }
+      }
+    }
+  }
+  &-select-wrap{
+    position: relative;
+  }
+  &-flexbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
