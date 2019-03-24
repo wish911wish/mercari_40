@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new]
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show]
+  resources :purchase, only: [:index]
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
