@@ -1,0 +1,153 @@
+.purchase{
+
+&-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+&-header{
+min-height: 128px;
+display: flex;
+flex-direction: row;
+justify-content:center;
+  h1{
+    padding: 40px 0 0;
+  }
+  &-logo:hover{
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+&-main{
+  margin: 0 auto;
+  width: 700px;
+  background: white;
+}
+
+&-chapter {
+  padding: 32px 16px;
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+&-border{
+  margin-top: 40px;
+  content: "";
+  height: 1px;
+  border-top: 1px solid #f5f5f5;
+}
+
+&-item{
+  margin: 0 auto;
+  border-top: none;
+  width: 320px;
+  padding: 24px 0;
+  .single-text{
+    margin: 8px 0 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  &-image{
+    margin: 0 auto;
+    width: 320px;
+    height: 148px;
+    display: flex;
+    justify-content: center;
+  img{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+&-name{
+  width: 320px;
+  margin: 8px auto 0;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+&-form{
+  margin: 8px 0 0;
+  line-height: 1.5;
+  p{
+    margin: 8px 0 0;
+    text-align: center;
+    line-height: 1.5;
+    font-size: 28px;
+  }
+  span{
+    margin: 0 0 0 8px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  >.btn-red {
+    margin: 16px 0 0;
+  }
+    &-flex-center{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+    }
+    &-flex-spacebetween{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      &-price-left{
+        padding: 16px 0;
+        width: 48%;
+        text-align: left;
+        font-size: 28px;
+        font-weight: 600;
+      }
+      &-price-right{
+        padding: 16px 0;
+        width: 48%;
+        text-align: right;
+        font-size: 28px;
+        font-weight: 600;
+      }
+    }
+    &-accordion-toggle{
+      display: block;
+      margin: 16px 0 0;
+      padding: 16px;
+      background: #ccc;
+      border: 1px solid #ccc;
+      text-align: center;
+      color: #333;
+    }
+  }
+}
+
+&-user{
+  margin: 0 auto;
+  padding-top: 24px;
+  width: 320px;
+  &-info{
+    h3{
+      margin: 40px 0 0;
+      font-size: 14px;
+    }
+  }
+    &-info-text {
+      display: block;
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    &-info-text-right{
+      width: 100%;
+      text-align: right;
+      line-height: 1.5;
+    }
+  }
+}
