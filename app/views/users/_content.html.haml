@@ -73,8 +73,6 @@
               1分前
           =fa_icon "chevron-right"
 
-
-
       %li.userpage-go-list
         =link_to root_path do
           一覧を見る
@@ -84,12 +82,10 @@
     %ul.userpage-tabs
       %li.active
         %h3
-          =link_to root_path class: "tab-left" do
-            取引中
+          =link_to "取引中", root_path, class: 'tab-left'
       %li.notactive
         %h3
-          =link_to root_path class: "tab-right" do
-            過去の取引
+          =link_to "過去の取引", root_path, class: 'tab-right'
     .tab-content
       %ul#userpage-tab-transaction-now.userpage-item-list.tab-pane.active
         %li.userpage-item-not-found.bold
