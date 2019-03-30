@@ -31,19 +31,25 @@
             .signup-form-group
               = f.label :nickname
               %span.form-require 必須
-              = f.text_field :nickname, autofocus: true, autocomplete: true, placeholder: "例）メルカリ太郎", class: "signup-input"
+              = f.text_field :nickname, autofocus: true, autocomplete: true, placeholder: "例）メルカリ太郎", class: "signup-input", value: session[:nickname]
             .signup-form-group
               = f.label :email
               %span.form-require 必須
-              = f.email_field :email, autofocus: true, placeholder: "PC・携帯どちらでも可", class: "signup-input"
-            .signup-form-group
-              = f.label :password
-              %span.form-require 必須
-              = f.password_field :password,  placeholder: "6文字以上", class: "signup-input"
-            .signup-form-group
-              = f.label :password_confirmation
-              %span.form-require 必須
-              = f.password_field :password_confirmation, placeholder: "6文字以上", class: "signup-input"
+              = f.email_field :email, autofocus: true, placeholder: "PC・携帯どちらでも可", class: "signup-input", value: session[:email]
+            - if session[:password].present?
+              .signup-form-group
+                = f.hidden_field :password, value: session[:password]
+                = f.hidden_field :password_confirmation, value: session[:password]
+                = f.hidden_field :image, value: session[:image]
+            - else
+              .signup-form-group
+                = f.label :password
+                %span.form-require 必須
+                = f.password_field :password,  placeholder: "6文字以上", class: "signup-input"
+              .signup-form-group
+                = f.label :password_confirmation
+                %span.form-require 必須
+                = f.password_field :password_confirmation, placeholder: "6文字以上", class: "signup-input", value: session[:password]
             .signup-form-group
               %label 本人確認
               %p.single-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
