@@ -9,14 +9,17 @@
           %span.form-require 必須
         %p 最大10枚までアップロード出来ます
         .sell-dropbox-container
-          .sell-upload-items-container
-            .sell-upload-items
-              %ul.sell-upload-items-list
-              = f.label :image , class: "sell-upload-drop-box width-for-item-0"do
-                %pre
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
-          = file_field :item, :image, multiple: "",class: "sell-upload-input js-upload-image-input"
+          = f.fields_for :item_images do |b|
+            .sell-upload-items-container
+              .sell-upload-items
+                %ul.sell-upload-items-list
+                = b.label :image , class: "sell-upload-drop-box width-for-item-0"do
+                  %pre
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+              -# = b.file_field :image, multiple: true, name: "item[item_images_attributes][0][image]" ,class: "sell-upload-input js-upload-image-input"
+              = b.file_field :image, multiple: true, class: "sell-upload-input js-upload-image-input"
+            -# = f.file_field :item_images, :image, multiple: "",class: "sell-upload-input js-upload-image-input"
       .sell-content
         .form-group
           = f.label :name do
