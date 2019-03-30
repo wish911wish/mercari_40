@@ -1,0 +1,92 @@
+.l-content
+  %section.userpage-user-icon
+    =link_to root_path, class: "user-stats" do
+      %figure
+        =image_tag("member_photo_noimage_thumb.png", class: "user-pic")
+      %h2.bold ryota0308
+      .userpage-number
+        評価
+        %span.bold 0
+        出品数
+        %span.bold 0
+  %section.userpage-tab-container-notification-todo
+    %ul.userpage-tabs
+      %li.active
+        %h3
+          =link_to root_path do
+            お知らせ
+          %span.userpage-nav-number.hidden-large
+            99+
+
+      %li.notactive
+        %h3
+          =link_to root_path do
+            やることリスト
+
+    %ul#userpage-tab-notification.userpage-item-list.tab-pane.active
+      %li
+        =link_to root_path, class: "userpage-item-link" do
+          %figure
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
+              テストテストテストテストテスト
+            %time
+              =fa_icon "clock-o"
+              1分前
+          =fa_icon "chevron-right"
+
+      %li
+        =link_to root_path, class: "userpage-item-link" do
+          %figure
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
+              テストテストテストテストテスト
+            %time
+              =fa_icon "clock-o"
+              1分前
+          =fa_icon "chevron-right"
+
+
+      %li
+        =link_to root_path, class: "userpage-item-link" do
+          %figure
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
+              テストテストテストテストテスト
+            %time
+              =fa_icon "clock-o"
+              1分前
+          =fa_icon "chevron-right"
+
+      %li
+        =link_to root_path, class: "userpage-item-link" do
+          %figure
+            =image_tag("mercari_profile.png", class: "mercari_profile")
+          .userpage-item-body
+            .userpage-item-text
+              テストテストテストテストテスト
+            %time
+              =fa_icon "clock-o"
+              1分前
+          =fa_icon "chevron-right"
+
+      %li.userpage-go-list
+        =link_to root_path do
+          一覧を見る
+
+  %section.userpage-tab-container
+    %h2.userpage-tab-head 購入した商品
+    %ul.userpage-tabs
+      %li.active
+        %h3
+          =link_to "取引中", root_path, class: 'tab-left'
+      %li.notactive
+        %h3
+          =link_to "過去の取引", root_path, class: 'tab-right'
+    .tab-content
+      %ul#userpage-tab-transaction-now.userpage-item-list.tab-pane.active
+        %li.userpage-item-not-found.bold
+          取引中の商品がありません
