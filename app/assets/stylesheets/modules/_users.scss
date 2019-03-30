@@ -29,6 +29,11 @@
   width: 60px;
 }
 
+.mercari_profile{
+  height: 48px;
+  width: 48px;
+}
+
 img{
   vertical-align: middle;
 }
@@ -302,7 +307,7 @@ img{
         color: $black-for-font;
     }
     &-not-found{
-      background-image: url(/images/logo-gray-icon.svg);
+      background-image: url(logo-gray-icon.svg);
       background-size: 78px 85px;
       background-position: center;
       background-repeat: no-repeat;
