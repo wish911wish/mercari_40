@@ -13,11 +13,11 @@
               .fa-pull-left
                 = fa_icon "envelope-o", class: "btn-mail-icon"
               %p.text-mail メールアドレスで登録
-            = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
+            = link_to user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
               .fa-pull-left
                 = fa_icon "facebook-official"
               %p.text-facebook Facebookで登録
-            = link_to "#", class: "btn-default btn-sns btn-sns-google", id:"google-login" do
+            = link_to user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", id:"google-login" do
               = image_tag "google.svg", class: "fa-pull-left"
               %p.text-google Googleで登録
   = render "./common/footer-singlefooter"

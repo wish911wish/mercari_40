@@ -14,5 +14,7 @@ class AddColumnUsers < ActiveRecord::Migration[5.0]
     add_column :users, :phone_number, :string
     add_column :users, :introduction, :string
     add_column :users, :image, :string
+    add_column :users, :uid, :string
+    add_column :users, :provider, :string
   end
 end
