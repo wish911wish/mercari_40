@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
   def create
     binding.pry
     @item = Item.new(item_params.merge(status_id: 1))
-    binding.pry
     @item.save
     # if @item.save
     #   redirect_to root_path
