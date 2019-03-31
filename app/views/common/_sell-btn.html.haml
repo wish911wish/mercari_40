@@ -1,3 +1,7 @@
-=link_to root_path, class: "footer-sell-btn" do
+=link_to new_item_path, class: "footer-sell-btn" do
   %div 出品
+  = fa_icon 'camera'
+
+=link_to destroy_user_session_path, method: :delete, class: "footer-logout-btn-for-develop" do
+  %div ログアウト
   = fa_icon 'camera'

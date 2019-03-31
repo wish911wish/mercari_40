@@ -1,0 +1,31 @@
+.signup-single-container
+  %header.signup-single-header
+    %h1
+      = link_to image_tag("logo.svg",  width: "185", alt: "logo", class: "single-header-logo"), "#"
+    %nav.progress-bar
+      %ol.progress-bar-flexbox
+        %li
+          会員情報
+          .progress-status__redline.progress-bar-circleRed
+        %li
+          電話番号認証
+          .progress-status__redline.progress-bar-circleRed
+        %li
+          お届け先住所入力
+          .progress-status__redline.progress-bar-circleRed
+        %li
+          支払い方法
+          .progress-status__redline.progress-bar-circleRed
+        %li.progress-bar-textRedBold
+          完了
+          .progress-status__last.progress-bar-circleRed
+  %main.single-main
+    %section.single-container
+    .signup-content
+      .l-single-main-box
+        %h2.signup-single-head 完了画面
+        .signup-single-content
+          .single-inner-top
+            .signup-form-group
+              = link_to "トップページへ", root_path, class: "btn-default btn-red"
+    = render "./common/footer-singlefooter"

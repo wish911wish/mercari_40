@@ -1,0 +1,25 @@
+%script{ type: 'text/javascript', src: 'https://www.google.com/recaptcha/api.js'}
+= render "./common/header-singleheader"
+%main
+  %section.l-single-container-signin
+    .l-single-main-box
+      .login-panel
+        .login-no-account
+          %p アカウントをお持ちでない方はこちら
+          = link_to "新規会員登録", new_user_registration_path
+        .login-form-inner
+          = link_to "#", class: "btn-default btn-sns btn-sns-facebook", id:"facebook-login" do
+            .fa-pull-left
+              = fa_icon "facebook-official"
+            %p.text-facebook Facebookでログイン
+          = link_to "#", class: "btn-default btn-sns btn-sns-google", id:"google-login" do
+            = image_tag "google.svg", class: "fa-pull-left"
+            %p.text-google Googleでログイン
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .login-form-inner
+            = f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-group-signin input-default-signin"
+            = f.password_field :password, class: "form-group-signin input-default-signin", placeholder: "パスワード"
+            .g-recaptcha{data:{sitekey:"6LcGypcUAAAAABBeMQbu1CCxJb_pb_Au9P4aLGAy"}}
+            = f.submit "ログイン", class: "login-submit btn-default btn-red"
+            = link_to "パスワードをお忘れの方", new_user_password_path, class: "password-forget underline-opacity"
+  = render "./common/footer-singlefooter"

@@ -6,7 +6,8 @@
     %figure
       %div
         = image_tag("member_photo_noimage_thumb.png", size: "60x60")
-      %figcaption カワカミ
+      %figcaption
+        = current_user.nickname
     %ul.mypage-review-listing
       %li
         =link_to "評価:1", root_path
