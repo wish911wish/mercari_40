@@ -70,7 +70,7 @@ img{
     position: relative;
     height: 200px;
     text-align: center;
-    background: url(user-bg.jpg) no-repeat;
+    background: url(/images/user-bg.jpg) no-repeat;
     & .user-stats{
       position: absolute;
       top: 20%;
@@ -302,7 +302,7 @@ img{
       color: $black-for-font;
     }
     &-not-found{
-      background-image: url(logo-gray-icon.svg);
+      background-image: url(/images/logo-gray-icon.svg);
       background-size: 78px 85px;
       background-position: center;
       background-repeat: no-repeat;
@@ -373,7 +373,7 @@ h2{
     padding: 72px 16px 24px;
     position: relative;
     text-align: center;
-    background: url(user-bg.jpg) no-repeat;
+    background: url(/images/user-bg.jpg) no-repeat;
     & figure{
       display: inline-block;
       width: 60px;
