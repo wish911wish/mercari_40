@@ -1,17 +1,20 @@
-// test
-.l-container{
+@mixin container{
   width: 1020px;
-  height: 1292px;
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
 
+.l-container{
+  @include container;
+  height: 1292px;
+}
+
+
 //メイン-------------------------------------
 .l-content{
   width: 700px;
   height: 1211px;
-  background-color: $gray-for-caption;
   margin-left: 30px;
   margin-top: 20px;
   display: block;
@@ -22,12 +25,19 @@
 
 .user-pic{
   border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+.mercari_profile{
+  height: 48px;
+  width: 48px;
+
 }
 
 img{
   vertical-align: middle;
 }
-
 
 .not-active{
   border-top: 2px solid gray;
@@ -57,121 +67,116 @@ img{
 
 .userpage{
   &-user-icon{
-  position: relative;
-  height: 200px;
-  text-align: center;
-  background: url(user-bg.jpg) no-repeat;
-  & .user-stats{
-    position: absolute;
-    top: 20%;
+    position: relative;
+    height: 200px;
     text-align: center;
-    color: $black-for-font;
+    background: url(user-bg.jpg) no-repeat;
+    & .user-stats{
+      position: absolute;
+      top: 20%;
+      text-align: center;
+      color: $black-for-font;
     }
   }
   &-tab-container-notification-todo{
-  width: 700px;
-  height: 612.75px;
-  margin: 0px;
+    width: 700px;
+    margin: 0px;
   }
   &-tabs{
-  position: relative;
-  display: flex;
-  font-size: 16px;
-  line-height: 72px;
-  width: 100%;
-  height: 74px;
-  background-color: white;
-  & li{
-    &.active{
-      position: relative;
-      text-align: center;
-      display: block;
-      font-size: 16px;
-      line-height: 72px;
-      width: 50%;
-      border-top: 2px solid red;
-      & a{
-      }
-      & .userpage-nav-number{
-        display: block;
-        position: absolute;
-        top: 4px;
-        right: 4px;
-        height: 24px;
-        width: 24px;
-        border-radius: 50%;
-        background: #ea352d;
+    position: relative;
+    display: flex;
+    font-size: 16px;
+    line-height: 72px;
+    width: 100%;
+    height: 74px;
+    background-color: white;
+    & li{
+      &.active{
+        position: relative;
         text-align: center;
-        color: #fff;
-        line-height:24px;
-      }
-    }
-    &.notactive{
-      text-align: center;
-      display: block;
-      font-size: 16px;
-      line-height: 72px;
-      width: 50%;
-      background-color: #EEEEEE;
-      & a{
+        display: block;
+        font-size: 16px;
+        line-height: 72px;
+        width: 50%;
+        border-top: 2px solid red;
+        & .userpage-nav-number{
+          display: block;
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          height: 24px;
+          width: 24px;
+          border-radius: 50%;
+          background: #ea352d;
+          text-align: center;
+          color: #fff;
+          line-height:24px;
         }
+      }
+      &.notactive{
+        text-align: center;
+        display: block;
+        font-size: 16px;
+        line-height: 72px;
+        width: 50%;
+        background-color: #EEEEEE;
       }
     }
   }
   &-tab-container{
-  margin: 20px 0 0;
-  background-color: white;
+    margin: 40px 0 0;
+    background-color: white;
+  }
   & h2{
     display: block;
-    }
   }
   &-tab-head{
-  padding: 0 16px;
-  font-size: 16px;
-  line-height: 72px;
-  border-style: solid;
-  border-width: 0;
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+    border-style: solid;
+    border-width: 0;
   }
   &-item-link{
-  display: block;
-  width: 700px;
-  height: 91.44px;
-  min-height: 80px;
-  border-top: 0.5px solid gray;
-  background-color: white;
+    display: block;
+    width: 700px;
+    height: 91.44px;
+    min-height: 80px;
+    border-top: 0.5px solid gray;
+    background-color: white;
   }
   &-item-body{
-  position: relative;
-  margin-top: 20px;
-  float: left;
-  width: 560px;
-  height: 59.44px;
+    position: relative;
+    margin-top: 20px;
+    float: left;
+    width: 560px;
+    height: 59.44px;
   }
   &-go-list{
-  padding: 16px;
-  background-color: white;
-  border-top: 1px solid $gray-for-button;
-  & a{
-    display: block;
-    height: 56px;
-    margin: 0 auto;
-    line-height: 56px;
-    text-align: center;
-    background-color: $gray-for-button;
+    padding: 16px;
+    background-color: white;
+    border-top: 1px solid $gray-for-button;
+    & a{
+      display: block;
+      height: 56px;
+      margin: 0 auto;
+      line-height: 56px;
+      text-align: center;
+      background-color: $gray-for-button;
     }
   }
   &-state{
     & figure{
-    padding: 28px 0 0;
-    background-image: url(/images/user-bg.jpg);
-    background-size: 320px 80px;
-    background-repeat: no-repeat;
-    &>div{
-      width: 60px;
-      height: 60px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 50%;
+      padding: 28px 0 0;
+      background-image: url(/images/user-bg.jpg);
+      background-size: 320px 80px;
+      background-repeat: no-repeat;
+      &>div{
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 50%;
       }
     }
     & figcaption{
@@ -285,19 +290,19 @@ img{
       margin: 0 20px 0 20px;
     }
     &-text{
-        overflow: hidden;
-        width: 560px;
-        display: block;
-        display: -webkit-box;
-        max-height: 4.4em;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-        line-height: 1.5;
-        color: $black-for-font;
+      overflow: hidden;
+      width: 560px;
+      display: block;
+      display: -webkit-box;
+      max-height: 4.4em;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+      color: $black-for-font;
     }
     &-not-found{
-      background-image: url(/images/logo-gray-icon.svg);
+      background-image: url(logo-gray-icon.svg);
       background-size: 78px 85px;
       background-position: center;
       background-repeat: no-repeat;
@@ -309,26 +314,109 @@ img{
   }
 }
 
-.salse-point{
-  padding: 0 8px;
-  justify-content: space-between;
-  line-height: 40px;
-  &__left{
-    margin-left:40px;
-  }
-  &__right{
-    margin-right: 5px;
-  }
-}
-
-.icon-arrow-right{
-  margin-right: 20px;
-}
-
 .fa-chevron-right{
   opacity: .7;
   color: #ccc;
   right: 20px;
 }
 
+//ログアウト-------------------------------------
+.l-logout-container{
+  width: 700px;
+  height: 179px;
+  background-color: white;
+  margin-left: 30px;
+  margin-top: 20px;
+  display: block;
+}
 
+.l-single-inner{
+  background-color: white;
+}
+
+.l-single-content{
+  margin: 0 auto;
+}
+
+.btn-default-btn-red{
+  width: 100%;
+  display: block;
+  line-height: 48px;
+  font-size: 14px;
+  background-color: #ea352d;
+  text-align: center;
+  color: white;
+}
+
+//プロフィール-------------------------------------
+.l-profile-container{
+  width: 700px;
+  height: 568px;
+  background-color: white;
+  margin-left: 30px;
+  margin-top: 20px;
+  display: block;
+}
+
+h2{
+  line-height: 2;
+  &.l-chapter-head{
+    font-size: 24px;
+    padding: 8px, 24px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.setting-profile{
+  &-icon{
+    padding: 72px 16px 24px;
+    position: relative;
+    text-align: center;
+    background: url(user-bg.jpg) no-repeat;
+    & figure{
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+    & input{
+      &.input-default{
+        width: 220px;
+        margin: 0 0 0 8px;
+        vertical-align: middle;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+      }
+    }
+  }
+  &-content{
+    padding: 40px 16px;
+    background-color: white;
+    & form{
+      & .textarea-default{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        min-height: 216px;
+        line-height: 1.5;
+      }
+    }
+    & .btn-default-btn-red{
+      margin: 16px 0 0;
+      width: 100%;
+      display: block;
+      line-height: 48px;
+      font-size: 14px;
+      background-color: #ea352d;
+      text-align: center;
+      color: white;
+    }
+  }
+}

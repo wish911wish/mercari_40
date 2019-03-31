@@ -3,6 +3,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'top#index'
+  resources :users do
+    collection do
+      get :profile
+      get :logout
+    end
+  end
+  resources :signin, only: [:index]
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show]
   resources :items, only: [:index, :new, :create]

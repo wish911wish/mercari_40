@@ -1,0 +1,12 @@
+.l-profile-container
+  %h2.l-chapter-head
+    プロフィール
+  %div.setting-profile-icon
+    %figure
+      =image_tag("member_photo_noimage_thumb.png", class: "user-pic")
+    =text_field :item, '', class: "input-default", placeholder: "ユーザー"
+  %div.setting-profile-content
+    =form_tag (root_path) do
+      =text_area :item, '', class: "textarea-default", rows: 5, placeholder: "こんにちわ"
+      =link_to root_path, class: "btn-default-btn-red" do
+        変更する
