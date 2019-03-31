@@ -17,9 +17,8 @@
                   %pre
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
-              -# = b.file_field :image, multiple: true, name: "item[item_images_attributes][0][image]" ,class: "sell-upload-input js-upload-image-input"
-              = b.file_field :image, multiple: true, class: "sell-upload-input js-upload-image-input"
-            -# = f.file_field :item_images, :image, multiple: "",class: "sell-upload-input js-upload-image-input"
+              - for i in 1..10
+                = b.file_field :image, name: "item[item_images_attributes][#{i - 1}][image]", class: "sell-upload-input js-upload-image-input", id: "item_item_images_attributes_#{i - 1}_image"
       .sell-content
         .form-group
           = f.label :name do
