@@ -3,6 +3,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
   before_save :convert_to_full_width_characters
+  has_many :items
 
   with_options presence: true do
     validates :email

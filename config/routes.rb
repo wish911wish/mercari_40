@@ -2,11 +2,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'top#index'
-  resources :items, only: [:index, :new]
+  resources :users do
+    collection do
+      get :profile
+      get :logout
+    end
+  end
+  resources :signin, only: [:index]
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show]
   resources :purchase, only: [:index]
-  resources :signin, only: [:index]
+  resources :items, only: [:index, :new, :create]
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
