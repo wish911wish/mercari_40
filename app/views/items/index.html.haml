@@ -1,13 +1,9 @@
 = render "./common/header"
-
-%nav.bread-crumbs
+%nav.breadcrumbs
   %ul
+    - breadcrumb :item_name
     %li
-      %span.mercari
-        = link_to "メルカリ  ", "#", class: "underline-opacity"
-      = fa_icon "angle-right"
-    %li
-      %span HHKB Professional 2 英語配列 墨 静電容量無接点
+      = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %section.item-box-container.l-single-container
   %h1.item-name HHKB Professional 2 英語配列 墨 静電容量無接点
   %p.item-wording
