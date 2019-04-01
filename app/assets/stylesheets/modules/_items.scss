@@ -1,4 +1,4 @@
-.bread-crumbs {
+nav.breadcrumbs {
   border-top: 1px solid #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   background: #fff;
@@ -7,14 +7,17 @@
     margin: auto;
     padding: 16px 0;
     li{
-        list-style: none;
-        display: inline-block;
-        font-weight: bold;
-        span.mercari{
-          font-weight: normal;
+      list-style: none;
+      display: inline-block;
+      font-weight: bold;
         a{
           color: black;
+          font-weight: normal;
+          cursor: pointer;
         }
+        a:hover{
+        opacity: 0.6;
+        text-decoration: underline;
       }
     }
   }
