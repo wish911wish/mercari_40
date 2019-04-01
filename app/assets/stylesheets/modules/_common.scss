@@ -54,3 +54,9 @@
     font-size: 20px;
   }
 }
+
+.link-off {
+ pointer-events: none;
+ cursor: default;
+ text-decoration: none;
+}
