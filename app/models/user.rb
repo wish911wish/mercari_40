@@ -1,6 +1,7 @@
 class User < ApplicationRecord
+  has_many :sns_credentials, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
   before_save :convert_to_full_width_characters
   has_many :items
 
@@ -42,4 +43,22 @@ class User < ApplicationRecord
     self.family_name_kana = NKF.nkf('-w', self.family_name_kana)
     self.first_name_kana = NKF.nkf('-w', self.first_name_kana)
   end
+
+  def self.find_for_oauth(auth)
+    user = User.find_by(uid: auth.uid, provider: auth.provider)
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        nickname: auth.info.name,
+        email:    auth.info.email,
+        image:    auth.info.image,
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+
+    user
+  end
+
 end

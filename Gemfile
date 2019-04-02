@@ -84,3 +84,10 @@ gem 'mini_magick'
 
 gem 'fog-aws'
 
+gem 'omniauth'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'
+
+gem "dotenv-rails"
