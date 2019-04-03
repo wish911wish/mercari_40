@@ -2,7 +2,7 @@
   %nav.userpage-nav
     %ul.userpage-nav-list
       %li
-        =link_to root_path, class: "userpage-nav-list-item" do
+        =link_to users_path, class: "userpage-nav-list-item" do
           マイページ
           =fa_icon 'chevron-right'
 
@@ -77,7 +77,7 @@
   %nav.userpage-nav
     %ul.userpage-nav-list
       %li
-        =link_to root_path, class: "userpage-nav-list-item" do
+        =link_to profile_users_path(current_user), class: "userpage-nav-list-item" do
           プロフィール
           =fa_icon 'chevron-right'
 
@@ -107,6 +107,6 @@
           =fa_icon 'chevron-right'
 
       %li
-        =link_to root_path, class: "userpage-nav-list-item" do
+        =link_to logout_users_path, class: "userpage-nav-list-item" do
           ログアウト
           =fa_icon 'chevron-right'
