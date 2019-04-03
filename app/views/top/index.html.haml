@@ -22,7 +22,8 @@
       .owl-dot
   %section.pickup-container
     %h2.pickup-head ピックアップカテゴリー
-    = render "pickup-items", items: @items, section_name: @items[0].name
+    - if @items
+      = render "pickup-items", items: @items, section_name: @items[0].name
   -#   = render "pickup-items", name: "メンズ"
   -#   = render "pickup-items", name: "ベビー・キッズ"
   -#   = render "pickup-items", name: "コスメ・香水・美容"
