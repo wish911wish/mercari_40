@@ -328,6 +328,16 @@ img{
   margin-left: 30px;
   margin-top: 20px;
   display: block;
+  & .btn-default-btn-red{
+    width: 320px;
+    margin: 64px auto;
+    display: block;
+    line-height: 48px;
+    font-size: 14px;
+    background-color: #ea352d;
+    text-align: center;
+    color: white;
+  }
 }
 
 .l-single-inner{
@@ -336,16 +346,6 @@ img{
 
 .l-single-content{
   margin: 0 auto;
-}
-
-.btn-default-btn-red{
-  width: 100%;
-  display: block;
-  line-height: 48px;
-  font-size: 14px;
-  background-color: #ea352d;
-  text-align: center;
-  color: white;
 }
 
 //プロフィール-------------------------------------
