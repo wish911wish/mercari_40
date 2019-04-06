@@ -26,4 +26,5 @@ class Item < ApplicationRecord
 
   validates :description, length: { maximum: 40 }
   validates :price ,numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+  validates :item_images, length: { minimum: 1, maximum: 40 }
 end
