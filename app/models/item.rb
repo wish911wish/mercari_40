@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   has_one :shipping_method
   has_one :days_for_shipment
   has_one :status
-  has_many :item_images
+  has_many :item_images, dependent: :destroy
   accepts_nested_attributes_for :item_images
 
   with_options presence: true do
