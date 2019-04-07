@@ -11,7 +11,7 @@ $(document).on("turbolinks:load", function() {
     .done(function(categories, status){
       selectedObject.parent().nextAll().remove()
       if ( categories.length !== 0 ){
-        selectedObject.parent().after(buildSelection(categories))
+        selectedObject.parent().after(buildCategorySelectionHTML(categories))
       }
       addCategorySection()
     })
@@ -20,7 +20,7 @@ $(document).on("turbolinks:load", function() {
     })
   }
 
-  function buildSelection(options){
+  function buildCategorySelectionHTML(options){
     var selectionItem = '<option value>---</option>' 
     options.forEach(function(option){
       selectionItem += `<option value="${option.id}">${option.name}</option>`
@@ -57,7 +57,7 @@ $(document).on("turbolinks:load", function() {
     })
     .done(function(sizes, status){
       if ( sizes.length !== 0 ){
-        selectedObject.closest('.form-group').after(buildSizesSelection(sizes))
+        selectedObject.closest('.form-group').after(buildSizesSelectionHTML(sizes))
         addSizeAttr()
       }
     })
@@ -73,13 +73,13 @@ $(document).on("turbolinks:load", function() {
     })
   }
 
-  function buildSizesSelection(sizes){
+  function buildSizesSelectionHTML(sizes){
     var selectWrap = `
     <div class="form-group sell-size-option">
       <label for="item_size_id">サイズ
         <span class="form-require">必須</span>
       </label>
-      ${buildSelection(sizes)}
+      ${buildCategorySelectionHTML(sizes)}
     </div>
     `
     return selectWrap
