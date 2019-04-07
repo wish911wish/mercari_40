@@ -41,13 +41,6 @@
               = f.select :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
               = fa_icon 'angle-down 2x'
           .form-group
-            = f.label :size_id do
-              サイズ
-              %span.form-require 必須
-            .select-wrap
-              = f.select :size_id, options_from_collection_for_select(Size.all, :id, :name), { include_blank: "---" }, class: "select-default"
-              = fa_icon 'angle-down 2x'
-          .form-group
             = f.label :brand_id do
               ブランド
               %span.form-arbitrary 任意
