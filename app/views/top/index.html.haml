@@ -23,6 +23,7 @@
   %section.pickup-container
     %h2.pickup-head ピックアップカテゴリー
     - if @items.present?
+      = render "pickup-items", items: @items, section_name: @items[0].name
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"
