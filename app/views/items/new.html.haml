@@ -33,18 +33,12 @@
       .sell-content.flex-space-between
         %h3.sell-sub-head 商品の詳細
         .sell-form-box
-          .form-group
+          .form-group.sell-category-option
             = f.label :category do
               カテゴリー
               %span.form-require 必須
             .select-wrap
-              = f.select :big_category_id, options_from_collection_for_select(Category.all, :id, :name), { include_blank: "---" }, class: "select-default"
-              = fa_icon 'angle-down 2x'
-            .select-wrap
-              = f.select :middle_category_id, options_from_collection_for_select(Category.all, :id, :name), { include_blank: "---" }, class: "select-default"
-              = fa_icon 'angle-down 2x'
-            .select-wrap
-              = f.select :small_category_id, options_from_collection_for_select(Category.all, :id, :name), { include_blank: "---" }, class: "select-default"
+              = f.select :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
               = fa_icon 'angle-down 2x'
           .form-group
             = f.label :size_id do
