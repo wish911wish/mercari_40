@@ -42,4 +42,11 @@ module ApplicationHelper
     Status.find(item.status_id).name if item.status_id.present?
   end
 
+  def add_favorite_class(item)
+    if @item.favorites.find_by(user_id: current_user.id).present?
+      return "active"
+    else
+      return ""
+    end
+  end
 end

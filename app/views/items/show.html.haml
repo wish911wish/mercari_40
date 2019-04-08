@@ -7,7 +7,7 @@
 %section.item-box-container.l-single-container
   %h1.item-name= @item.name
   %p.item-wording
-  .item-main-content
+  .item-main-content{ item_id: @item.id }
     .item-photo
       - @item.item_images.each_with_index do |item_image, index|
         - if index === 0
@@ -86,9 +86,9 @@
       %p= @item.description
   .item-button-container
     .item-button-left
-      = link_to "javascript:void(0)", class: "item-button item-button-like" do
+      = link_to "javascript:void(0)", class: "item-button item-button-like #{add_favorite_class(@item)}" do
         %span いいね!
-        %span.item-button-like-count 0
+        %span.item-button-like-count= @item.favorites.count
       = link_to "#", class: "item-button item-button-report" do
         =fa_icon "flag-o"
         %span 不適切な商品の報告
