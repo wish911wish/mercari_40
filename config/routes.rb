@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show]
   resources :purchase, only: [:index]
-  resources :items, only: [:index, :new, :create]
+  resources :items do
+    get 'purchase', to: 'items#purchase'
+    post 'pause_listing', to: 'items#pause_listing'
+  end
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
