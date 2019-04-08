@@ -4,6 +4,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
   before_save :convert_to_full_width_characters
   has_many :items
+  has_many :favorites
 
   with_options presence: true do
     validates :email
