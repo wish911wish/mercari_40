@@ -8,5 +8,5 @@
         .items-box-price.font-5= "¥#{item.price}"
         .items-box-likes.font-2
           = fa_icon 'heart'
-          %span 2
+          %span= item.favorites.count
         %p.items-box-tax (税込)
