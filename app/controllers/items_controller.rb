@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_loginpage
+  before_action :set_item, only: :pause_listing
 
   def index
   end
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def pause_listing
-    redirect_to root_path, notice: "いいねボタン実装時に修正します"
+    redirect_to item_path(@item), notice: "いいねボタン実装時に修正します"
   end
 
   private
@@ -45,5 +46,9 @@ class ItemsController < ApplicationController
 
   def move_to_loginpage
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
