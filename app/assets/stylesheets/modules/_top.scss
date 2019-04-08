@@ -11,6 +11,10 @@ li{
   list-style: none;
 }
 
+.text-center{
+  text-align: center;
+}
+
 .header-form .input-default{
   width: 100%;
   height: 34px;
@@ -552,7 +556,7 @@ li{
 }
 
 .items-box{
-  margin: 0 0 0 20px;
+  margin: 0 20px 20px 0;
   width: 213px;
   &-container{
     margin: 0 auto;
@@ -569,7 +573,10 @@ li{
     background-color: $white;
   }
   &-content{
+    margin: 0 -20px 0 0;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
   &-body{
     height: 110px;

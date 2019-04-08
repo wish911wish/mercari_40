@@ -23,6 +23,24 @@ nav.breadcrumbs {
   }
 }
 
+.fa-smile-o{
+  color: #ef5185;
+  font-size: 22px;
+  margin-right: 3px;
+}
+
+.fa-meh-o{
+  color: #fba933;
+  font-size: 22px;
+  margin-right: 3px;
+}
+
+.fa-frown-o{
+  color: #6ab5d8;
+  font-size: 22px;
+  margin-right: 3px;
+}
+
 .fa-angle-right{
   margin: 0 8px;
   font-size: 18px;
@@ -142,17 +160,20 @@ nav.breadcrumbs {
   font-size: 16px;
 }
 
-.item-buy-btn {
-  display: block;
-  height: 56px;
-  margin: 16px 0 0;
-  background: #ea352d;
-  color: #fff;
-  font-size: 24px;
-  line-height: 56px;
-  text-align: center;
-  font-weight: 600;
-  transition: all ease-out .3s;
+.item-buy-btn{
+@include item_details_button($red);
+}
+
+.item-edit-btn{
+@include item_details_button($red);
+}
+
+.item-pause-btn{
+@include item_details_button(#aaa);
+}
+
+.item-delete-btn{
+@include item_details_button(#aaa);
 }
 
 .item-button-container{
