@@ -1,5 +1,5 @@
 %section.items-box
-  =link_to root_path do
+  =link_to item_path(item) do
     %figure.items-box-photo
       =image_tag item.item_images.first.image, size: "213x213"
     .items-box-body

@@ -1,0 +1,47 @@
+.purchase-container
+  %header.purchase-header
+    %h1
+      = link_to image_tag("logo.svg",  width: "185", alt: "logo", class: "purchase-header-logo"), "#"
+  %main.purchase-main
+    %h2.purchase-chapter 購入を確定しますか？
+    %section.purchase-item
+      .purchase-item-image
+        =image_tag "item-2.jpg"
+      .purchase-item-name.bold Apple MacBook Pro 13インチ
+      .purchase-item-form
+        .purchase-item-form-flex-center
+          %p.bold ¥16,700円
+          %span 送料込み
+        = link_to "ポイントはありません", "#", class: "purchase-item-form-accordion-toggle link-off"
+        .purchase-item-form-flex-spacebetween
+          .purchase-item-form-flex-spacebetween-price-left 支払い金額
+          .purchase-item-form-flex-spacebetween-price-right ¥135,000
+        = link_to "購入する", item_purchase(@item), class: "btn-default btn-red bold"
+    %section.purchase-border
+    %section.purchase-user
+      %h3.purchase-user-info 配送先
+      %adress.purchase-user-info-text
+        〒000-0000
+        %br
+        東京都昭島市玉川町3−33−333
+        %br
+        アルビレンチ札幌301号室
+        %br
+        さとう たける
+      .purchase-user-info-text-right
+        = link_to "#", class: "underline-opacity" do
+          %span 変更する
+          = fa_icon "angle-right"
+    %section.purchase-border
+    %section.purchase-user
+      %h3.purchase-user-info 支払い方法
+      %p.purchase-user-info-text
+        ************1010
+        %br
+        05 / 23
+      .purchase-user-info-text-right
+        = link_to "#", class: "underline-opacity" do
+          %span 変更する
+          = fa_icon "angle-right"
+    %section.purchase-border
+  = render "./common/footer-singlefooter"
