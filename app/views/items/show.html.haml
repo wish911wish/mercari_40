@@ -1,7 +1,7 @@
 = render "./common/header"
 %nav.breadcrumbs
   %ul
-    - breadcrumb :item_name
+    - breadcrumb :item_name, @item
     %li
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %section.item-box-container.l-single-container
