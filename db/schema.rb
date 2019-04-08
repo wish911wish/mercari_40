@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190408072536) do
+ActiveRecord::Schema.define(version: 20190408114622) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -125,6 +125,16 @@ ActiveRecord::Schema.define(version: 20190408072536) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "evaluator_id", null: false
+    t.integer  "evaluatee_id", null: false
+    t.integer  "avaluation",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["evaluatee_id"], name: "index_user_evaluations_on_evaluatee_id", using: :btree
+    t.index ["evaluator_id"], name: "index_user_evaluations_on_evaluator_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -170,4 +180,6 @@ ActiveRecord::Schema.define(version: 20190408072536) do
   add_foreign_key "items", "statuses"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "user_evaluations", "users", column: "evaluatee_id"
+  add_foreign_key "user_evaluations", "users", column: "evaluator_id"
 end
