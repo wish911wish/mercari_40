@@ -49,4 +49,20 @@ module ApplicationHelper
       return ""
     end
   end
+
+  def item_statuse?(item)
+
+    return content_tag(:div, content_tag(:div, Statuse.find(4).name), class: "item-stop-tag") if item.exhibit_flag === false
+
+    case item.status_id
+    when 1
+      ""
+    when 2
+      content_tag(:div, content_tag(:div, Statuse.find(2).name), class: "item-trading-tag")
+    when 3
+      content_tag(:div, content_tag(:div, Statuse.find(3).name), class: "item-sold-tag")
+    else
+
+    end
+  end
 end

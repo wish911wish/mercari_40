@@ -5,6 +5,10 @@
     %li
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %section.item-box-container.l-single-container
+  - if flash[:notice]
+    .notification
+      = flash[:notice]
+      = fa_icon "close"
   %h1.item-name= @item.name
   %p.item-wording
   .item-main-content{ item_id: @item.id }
@@ -13,6 +17,7 @@
         - if index === 0
           .item-photo-main#mainImage
             = image_tag item_image.image, width: "300", height: "250"
+            = item_statuse?(@item)
           .item-photo-sub#imageList
             = image_tag item_image.image, class: "opacity1", width: "70", height: "70"
         - else
@@ -76,7 +81,11 @@
     .item-edit-box
       = link_to "商品の編集", edit_item_path(@item), class: "item-edit-btn"
       %p.text-center or
-      = link_to "出品を一旦停止する", item_pause_listing_path(@item), method: :POST, class: "item-pause-btn"
+      - if @item.exhibit_flag == true
+        = link_to "出品を一旦停止する", item_pause_listing_path(@item, exhibit: false), method: :POST, class: "item-pause-btn"
+      - else
+        = link_to "出品を再開する", item_pause_listing_path(@item, exhibit: true), method: :POST, class: "item-exhibit-btn"
+
       = link_to "この商品を削除する", item_path(@item), method: :DELETE, class: "item-delete-btn"
   - else
     = link_to "購入画面に進む", item_purchase_path(@item), class: "item-buy-btn f18-24"

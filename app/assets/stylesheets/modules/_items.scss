@@ -61,7 +61,20 @@ nav.breadcrumbs {
   margin: 40px auto 0;
 }
 
+.item-trading-tag{
+  @include item_sutatuse_tag($red, 30px, 15px)
+}
+
+.item-sold-tag{
+  @include item_sutatuse_tag($red, 30px, 10px)
+}
+
+.item-stop-tag{
+  @include item_sutatuse_tag(#888, 30px, 0px)
+}
+
 .item-photo{
+  position: relative;
   width: 300px;
   height: 420px;
   display: flex;
@@ -170,6 +183,10 @@ nav.breadcrumbs {
 
 .item-pause-btn{
 @include item_details_button(#aaa);
+}
+
+.item-exhibit-btn{
+@include item_details_button($red);
 }
 
 .item-delete-btn{

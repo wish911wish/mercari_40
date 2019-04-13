@@ -36,7 +36,13 @@ class ItemsController < ApplicationController
   end
 
   def pause_listing
-    redirect_to item_path(@item), notice: "いいねボタン実装時に修正します"
+    if params[:exhibit] === "true"
+      @item.update(exhibit_flag: true)
+      redirect_to item_path(@item), notice: "出品の再開をしました"
+    else
+      @item.update(exhibit_flag: false)
+      redirect_to item_path(@item), notice: "出品の一旦停止をしました"
+    end
   end
 
   private

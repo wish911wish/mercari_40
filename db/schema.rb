@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190408114622) do
+ActiveRecord::Schema.define(version: 20190411132144) do
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        null: false
@@ -67,24 +67,25 @@ ActiveRecord::Schema.define(version: 20190408114622) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "seller_id",                          null: false
+    t.integer  "seller_id",                                         null: false
     t.integer  "buyer_id"
-    t.string   "name",                               null: false
+    t.string   "name",                                              null: false
     t.text     "description",          limit: 65535
     t.integer  "big_category_id"
     t.integer  "middle_category_id"
     t.integer  "small_category_id"
     t.integer  "brand_id"
     t.integer  "size_id"
-    t.integer  "condition_id",                       null: false
-    t.integer  "shipping_cost_id",                   null: false
-    t.integer  "shipping_method_id",                 null: false
-    t.string   "sender_prefecture",                  null: false
-    t.integer  "days_for_shipment_id",               null: false
-    t.integer  "status_id",                          null: false
-    t.integer  "price",                              null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "condition_id",                                      null: false
+    t.integer  "shipping_cost_id",                                  null: false
+    t.integer  "shipping_method_id",                                null: false
+    t.string   "sender_prefecture",                                 null: false
+    t.integer  "days_for_shipment_id",                              null: false
+    t.integer  "status_id",                                         null: false
+    t.integer  "price",                                             null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.boolean  "exhibit_flag",                       default: true
     t.index ["big_category_id"], name: "index_items_on_big_category_id", using: :btree
     t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
     t.index ["buyer_id"], name: "index_items_on_buyer_id", using: :btree
