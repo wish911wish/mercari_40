@@ -42,4 +42,31 @@ module ApplicationHelper
     Status.find(item.status_id).name if item.status_id.present?
   end
 
+  def add_favorite_class(item)
+    if @item.favorites.find_by(user_id: current_user.id).present?
+      return "active"
+    else
+      return ""
+    end
+  end
+
+  def item_statuse?(item)
+
+    return content_tag(:div, content_tag(:div, "公開停止中"), class: "item-stop-tag") if item.exhibit_flag === false
+
+    case item.status_id
+    when 1
+      ""
+    when 2
+      content_tag(:div, content_tag(:div, Statuse.find(2).name), class: "item-trading-tag")
+    when 3
+      content_tag(:div, content_tag(:div, Statuse.find(3).name), class: "item-sold-tag")
+    else
+
+    end
+  end
+
+  def get_evaluations(user, evaluation)
+    user.user_evaluations.where(evaluation: evaluation).count
+  end
 end

@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show]
   resources :purchase, only: [:index]
+  resources :favorites, only: [:create, :destroy]
   resources :items do
     get 'purchase', to: 'items#purchase'
     post 'pause_listing', to: 'items#pause_listing'
+    post 'favorites', to: 'favorites#create'
+    delete 'favorites', to: 'favorites#destroy'
   end
 
   get '/signup', to: 'signup#index', as: 'user_signup'

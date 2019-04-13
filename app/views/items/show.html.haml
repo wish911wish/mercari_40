@@ -5,14 +5,19 @@
     %li
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %section.item-box-container.l-single-container
+  - if flash[:notice]
+    .notification
+      = flash[:notice]
+      = fa_icon "close"
   %h1.item-name= @item.name
   %p.item-wording
-  .item-main-content
+  .item-main-content{ item_id: @item.id }
     .item-photo
       - @item.item_images.each_with_index do |item_image, index|
         - if index === 0
           .item-photo-main#mainImage
             = image_tag item_image.image, width: "300", height: "250"
+            = item_statuse?(@item)
           .item-photo-sub#imageList
             = image_tag item_image.image, class: "opacity1", width: "70", height: "70"
         - else
@@ -29,11 +34,11 @@
                 = link_to "#{@item.user.nickname}", "#", class: "underline-opacity"
                 .item-user-ratings
                   =fa_icon 'smile-o 2x'
-                  %span 99
+                  %span= get_evaluations(@item.user, 1)
                   =fa_icon 'meh-o 2x'
-                  %span 4
+                  %span= get_evaluations(@item.user, 2)
                   =fa_icon 'frown-o 2x'
-                  %span 2
+                  %span= get_evaluations(@item.user, 3)
             %tr
               %th カテゴリー
               %td
@@ -76,7 +81,11 @@
     .item-edit-box
       = link_to "商品の編集", edit_item_path(@item), class: "item-edit-btn"
       %p.text-center or
-      = link_to "出品を一旦停止する", item_pause_listing_path(@item), method: :POST, class: "item-pause-btn"
+      - if @item.exhibit_flag == true
+        = link_to "出品を一旦停止する", item_pause_listing_path(@item, exhibit: false), method: :POST, class: "item-pause-btn"
+      - else
+        = link_to "出品を再開する", item_pause_listing_path(@item, exhibit: true), method: :POST, class: "item-exhibit-btn"
+
       = link_to "この商品を削除する", item_path(@item), method: :DELETE, class: "item-delete-btn"
   - else
     = link_to "購入画面に進む", item_purchase_path(@item), class: "item-buy-btn f18-24"
@@ -86,9 +95,9 @@
       %p= @item.description
   .item-button-container
     .item-button-left
-      = link_to "javascript:void(0)", class: "item-button item-button-like" do
+      = link_to "javascript:void(0)", class: "item-button item-button-like #{add_favorite_class(@item)}" do
         %span いいね!
-        %span.item-button-like-count 0
+        %span.item-button-like-count= @item.favorites.count
       = link_to "#", class: "item-button item-button-report" do
         =fa_icon "flag-o"
         %span 不適切な商品の報告

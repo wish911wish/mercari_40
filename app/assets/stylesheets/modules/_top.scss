@@ -427,6 +427,38 @@ li{
   color: #ccc;
 }
 
+@keyframes flashMessage {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.notification{
+  text-align: center;
+  background: #dff0d8;
+  color: #468847;
+  padding: 24px 56px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 85px;
+  visibility: hidden;
+  animation-duration: 5s;
+  animation-name: flashMessage;
+  & .fa{
+    float: right;
+  }
+}
+
 .top{
   &-banner{
     display: block;
