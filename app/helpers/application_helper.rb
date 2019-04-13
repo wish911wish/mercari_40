@@ -52,7 +52,7 @@ module ApplicationHelper
 
   def item_statuse?(item)
 
-    return content_tag(:div, content_tag(:div, Statuse.find(4).name), class: "item-stop-tag") if item.exhibit_flag === false
+    return content_tag(:div, content_tag(:div, "公開停止中"), class: "item-stop-tag") if item.exhibit_flag === false
 
     case item.status_id
     when 1
