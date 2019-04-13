@@ -5,9 +5,7 @@ class User < ApplicationRecord
   before_save :convert_to_full_width_characters
   has_many :items
   has_many :favorites, dependent: :destroy
-  has_many :user_evaluations, foreign_key: :evaluatee_id
-  has_many :evaluators, class_name: "UserEvaluation", foreign_key: :evaluator_id
-  has_many :evaluatees, class_name: "UserEvaluation", foreign_key: :evaluatee_id
+  has_many :user_evaluations, foreign_key: :evaluatee_id, dependent: :destroy, inverse_of: :user
 
   with_options presence: true do
     validates :email
