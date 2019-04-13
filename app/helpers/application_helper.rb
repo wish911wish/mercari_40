@@ -65,4 +65,8 @@ module ApplicationHelper
 
     end
   end
+
+  def get_evaluations(user, evaluation)
+    user.user_evaluations.where(evaluation: evaluation).count
+  end
 end

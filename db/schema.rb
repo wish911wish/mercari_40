@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20190411132144) do
   create_table "user_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "evaluator_id", null: false
     t.integer  "evaluatee_id", null: false
-    t.integer  "avaluation",   null: false
+    t.integer  "evaluation",   null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["evaluatee_id"], name: "index_user_evaluations_on_evaluatee_id", using: :btree

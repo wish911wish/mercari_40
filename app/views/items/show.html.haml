@@ -34,11 +34,11 @@
                 = link_to "#{@item.user.nickname}", "#", class: "underline-opacity"
                 .item-user-ratings
                   =fa_icon 'smile-o 2x'
-                  %span 99
+                  %span= get_evaluations(@item.user, 1)
                   =fa_icon 'meh-o 2x'
-                  %span 4
+                  %span= get_evaluations(@item.user, 2)
                   =fa_icon 'frown-o 2x'
-                  %span 2
+                  %span= get_evaluations(@item.user, 3)
             %tr
               %th カテゴリー
               %td
