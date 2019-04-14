@@ -22,16 +22,8 @@
       .owl-dot
   %section.pickup-container
     %h2.pickup-head ピックアップカテゴリー
-    = render "pickup-items", name: "レディース"
-    = render "pickup-items", name: "メンズ"
-    = render "pickup-items", name: "ベビー・キッズ"
-    = render "pickup-items", name: "コスメ・香水・美容"
-  %section.pickup-container
-    %h2.pickup-head ピックアップブランド
-    = render "pickup-items", name: "シャネル"
-    = render "pickup-items", name: "ルイヴィトン"
-    = render "pickup-items", name: "シュプリーム"
-    = render "pickup-items", name: "ナイキ"
+    - if @items.present?
+      = render "pickup-items", items: @items, section_name: @items[0].name
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"

@@ -1,8 +1,6 @@
 %section.items-box-container
-  %h3.text-center=link_to "#{name}新着アイテム", root_path
+  %h3.text-center=link_to "#{section_name}新着アイテム", root_path
   .items-box-content
-    = render "items"
-    = render "items"
-    = render "items"
-    = render "items"
+    - items.each do |item|
+      = render "./common/items", item: item
   .view-all=link_to "すべての商品を見る", root_path
