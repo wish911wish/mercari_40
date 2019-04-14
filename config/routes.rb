@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'top#index'
   resources :items, only: [:index, :new]
   resources :identification, only: [:index]
-  resources :card, only: [:index, :new, :show]
+  resources :card, only: [:index, :new, :show, :create]
   resources :purchase, only: [:index]
   resources :signin, only: [:index]
 
@@ -16,5 +16,11 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
+  post 'purchase/pay' => 'purchase#pay'
+
+  post 'card/show' => 'card#show'
+  post 'card/pay' => 'card#pay'
+  post 'card/delete' => 'card#delete'
+  get 'purchase/done' => 'purchase#done'
 
 end

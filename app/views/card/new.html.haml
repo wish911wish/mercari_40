@@ -20,40 +20,67 @@
   .card-main-content
     %h2.card-chapter-head クレジットカード情報入力
     .card-single-content
-      .card-single-inner-320px
-        .card-form-group
-          %label カード
-          %span.form-require 必須
-          = text_field_tag "card-id", "", class: "input-default", placeholder: "半角数字のみ"
-          .card-image-list
-            = image_tag "card-icon-visa.svg", alt: "visa", class: "visa"
-            = image_tag "card-icon-master-card.svg", alt: "master-card", class: "master-card"
-            = image_tag "card-icon-saison-card.svg", alt: "saison-card", class: "saison-card"
-            = image_tag "card-icon-jcb.svg", alt: "jcb", class: "jcb"
-            = image_tag "card-icon-american_express.svg", alt: "american_express", class: "american_express"
-            = image_tag "card-icon-dinersclub.svg", alt: "dinersclub", class: "dinersclub"
-            = image_tag "card-icon-discover.svg", alt: "discover", class: "discover"
-        .card-form-group
-          %label 有効期限
-          %span.form-require 必須
-          .card-select-wrap.select-birthday
-            = select "month", "", ["--","1",  "2",  "3",  "4",  "5",  "6",  "7",  "8",  "9",  "10", "11", "12"], {} ,{class: "card-input"}
-            = fa_icon "angle-down 2x"
-            %span 月
-          .card-select-wrap.select-birthday
-            = select "year", "", ["--","2019",  "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029"], {} ,{class: "card-input"}
-            = fa_icon "angle-down 2x"
-            %span 年
-        .card-form-group
-          %label セキュリティコード
-          %span.form-require 必須
-          = text_field_tag "card-id", "", class: "input-default", placeholder: "カード背面4桁もしくは3桁の番号"
-          .text-right
-            = link_to "#", class: "underline-opacity" do
-              = fa_icon "question-circle"
-              %span カード裏面の番号とは？
-        .card-form-group
-          = link_to "追加する", "../card/show", class: "btn-default btn-red"
+      = form_tag(card_pay_path, method: :post, id: 'charge-form',  name: "inputForm") do
+        .card-single-inner-320px
+          .card-form-group
+            %label カード番号
+            %span.form-require 必須
+            = text_field_tag "number", "", class: "input-default number", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+            .card-image-list
+              = image_tag "card-icon-visa.svg", alt: "visa", class: "visa"
+              = image_tag "card-icon-master-card.svg", alt: "master-card", class: "master-card"
+              = image_tag "card-icon-saison-card.svg", alt: "saison-card", class: "saison-card"
+              = image_tag "card-icon-jcb.svg", alt: "jcb", class: "jcb"
+              = image_tag "card-icon-american_express.svg", alt: "american_express", class: "american_express"
+              = image_tag "card-icon-dinersclub.svg", alt: "dinersclub", class: "dinersclub"
+              = image_tag "card-icon-discover.svg", alt: "discover", class: "discover"
+          .card-form-group
+            %label 有効期限
+            %span.form-require 必須
+            .card-select-wrap.select-birthday
+              %select.card-input#exp_month{name: "exp_month", type: "text"}
+                %option{value: ""} --
+                %option{value: "1"}01
+                %option{value: "2"}02
+                %option{value: "3"}03
+                %option{value: "4"}04
+                %option{value: "5"}05
+                %option{value: "6"}06
+                %option{value: "7"}07
+                %option{value: "8"}08
+                %option{value: "9"}09
+                %option{value: "10"}10
+                %option{value: "11"}11
+                %option{value: "12"}12
+              = fa_icon "angle-down 2x"
+              %span 月
+            .card-select-wrap.select-birthday
+              %select.card-input#exp_year{name: "exp_year", type: "text"}
+                %option{value: ""} --
+                %option{value: "2019"}19
+                %option{value: "2020"}20
+                %option{value: "2021"}21
+                %option{value: "2022"}22
+                %option{value: "2023"}23
+                %option{value: "2024"}24
+                %option{value: "2025"}25
+                %option{value: "2026"}26
+                %option{value: "2027"}27
+                %option{value: "2028"}28
+                %option{value: "2029"}29
+              = fa_icon "angle-down 2x"
+              %span 年
+          .card-form-group
+            %label セキュリティコード
+            %span.form-require 必須
+            = text_field_tag "cvc", "", class: "input-default cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+            .text-right
+              = link_to "#", class: "underline-opacity" do
+                = fa_icon "question-circle"
+                %span カード裏面の番号とは？
+          .card-form-group
+            #card_token
+            = submit_tag "追加する", class: "btn-default btn-red", id: "token_submit"
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"

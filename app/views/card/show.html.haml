@@ -23,10 +23,16 @@
             .add-card-settings-left
               .card-image-list
                 =image_tag "card-icon-visa.svg", alt: "visa", class: "visa"
-              .card-settings-payment-num ************1010
-              .card-settings-payment-num 05 / 23
+              .card-settings-payment-num
+                = "**** **** **** " + @default_card_infomation.last4
+              .card-settings-payment-num
+                - exp_month = @default_card_infomation.exp_month.to_s
+                - exp_year = @default_card_infomation.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
             .card-settings-add-right
-              = link_to "削除する", "#", class: "card-settings-payment-remove"
+            = form_tag(card_delete_path, method: :post, id: 'charge-form',  name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+              %button.card-settings-payment-remove 削除する
         .card-settings-line
         .card-form-group
           .text-right
