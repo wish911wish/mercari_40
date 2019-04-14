@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :signin, only: [:index]
   resources :identification, only: [:index]
-  resources :card, only: [:index, :new, :show]
+  resources :card, only: [:index, :new, :show, :create]
   resources :purchase, only: [:index]
   resources :favorites, only: [:create, :destroy]
   resources :items do
@@ -28,7 +28,11 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
-  get '/categories/:id', to: 'categories#index'
-  get '/category_sizes/:id', to: 'categories#get_sizes'
+
+  post 'purchase/pay', to: 'purchase#pay'
+  post 'card/show', to: 'card#show'
+  post 'card/pay', to: 'card#pay'
+  post 'card/delete', to: 'card#delete'
+  get 'purchase/done', to: 'purchase#done'
 
 end
