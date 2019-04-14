@@ -16,7 +16,7 @@ class PurchaseController < ApplicationController
   def pay
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    charge = Payjp::Charge.create(
+    Payjp::Charge.create(
     :amount => 13500, # amount should replace valiables of item fee
     :customer => card.customer_id,
     :currency => 'jpy',

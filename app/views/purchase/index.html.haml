@@ -37,14 +37,14 @@
     %section.purchase-user
       %h3.purchase-user-info 支払い方法
       %p.purchase-user-info-text
-      - if @default_card_infomation.blank?
+      - if @default_card_information.blank?
         %br /
       - else
         .card-settings-payment-num
-          = "**** **** **** " + @default_card_infomation.last4
+          = "**** **** **** " + @default_card_information.last4
         .card-settings-payment-num
-          - exp_month = @default_card_infomation.exp_month.to_s
-          - exp_year = @default_card_infomation.exp_year.to_s.slice(2,3)
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
           = exp_month + " / " + exp_year
       .purchase-user-info-text-right
         = link_to new_card_path, class: "underline-opacity" do

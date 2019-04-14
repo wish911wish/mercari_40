@@ -1,10 +1,10 @@
 document.addEventListener(
   "DOMContentLoaded", e => {
     Payjp.setPublicKey("pk_test_79ae2d2743199a76f3eb36dd");
-    const btn = document.getElementById("token_submit");
+    let btn = document.getElementById("token_submit");
     btn.addEventListener("click", e => {
       e.preventDefault();
-      const card = {
+      let card = {
         number: document.getElementById("card_number").value,
         cvc: document.getElementById("cvc").value,
         exp_month: document.getElementById("exp_month").value,
@@ -23,7 +23,6 @@ document.addEventListener(
           alert("登録が完了しました");
         } else {
           alert("カード情報が正しくありません。");
-          location.reload();
         }
       });
     });
