@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :card, only: [:index, :new, :show]
   resources :purchase, only: [:index]
   resources :signin, only: [:index]
+  resources :credit, only: [:index, :new, :show, :create]
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
@@ -16,5 +17,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
+  post 'credit/pay' => 'credit#pay'
+  get 'purchase/done' => 'purchase#done'
 
 end
