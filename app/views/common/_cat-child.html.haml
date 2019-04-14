@@ -1,6 +1,5 @@
 %li.js-header-nav-parent.header-nav-parent
-  %h3=link_to name, root_path
+  %h3=link_to parent_category.name, root_path
   %ul.js-header-nav-child-wrap.header-nav-child-wrap
-    =render "./common/cat-ground-child", name: "トップス01"
-    =render "./common/cat-ground-child", name: "トップス02"
-    =render "./common/cat-ground-child", name: "トップス03"
+    - Category.where(parent: parent_category.id).each do |child_category|
+      =render "./common/cat-ground-child", child_category: child_category

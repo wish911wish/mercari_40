@@ -1,21 +1,29 @@
 = render "./common/header"
 %nav.breadcrumbs
   %ul
-    - breadcrumb :item_name
+    - breadcrumb :item_name, @item
     %li
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %section.item-box-container.l-single-container
-  %h1.item-name HHKB Professional 2 英語配列 墨 静電容量無接点
+  - if flash[:notice]
+    .notification
+      = flash[:notice]
+      = fa_icon "close"
+  %h1.item-name= @item.name
   %p.item-wording
-  .item-main-content
+  .item-main-content{ item_id: @item.id }
     .item-photo
-      .item-photo-main#mainImage
-        = image_tag "item-1.jpg", width: "300", height: "250"
-      .item-photo-sub#imageList
-        = image_tag "item-1.jpg",class: "opacity1", width: "70", height: "70"
-        = image_tag "item-2.jpg", class: "opacity06", width: "70", height: "70"
-        = image_tag "flag_us.png", class: "opacity06", width: "70", height: "70"
-        = image_tag "flag_jp.png", class: "opacity06", width: "70", height: "70"
+      - @item.item_images.each_with_index do |item_image, index|
+        - if index === 0
+          .item-photo-main#mainImage
+            = image_tag item_image.image, width: "300", height: "250"
+            = item_statuse?(@item)
+          .item-photo-sub#imageList
+            = image_tag item_image.image, class: "opacity1", width: "70", height: "70"
+        - else
+          .item-photo-sub#imageList
+            = image_tag item_image.image, class: "opacity06", width: "70", height: "70"
+
     .table
       %item.item-detail-table
         %table.item-detail-table
@@ -23,64 +31,73 @@
             %tr
               %th 出品者
               %td
-                = link_to "Kenji Rusudo", "#", class: "underline-opacity"
+                = link_to "#{@item.user.nickname}", "#", class: "underline-opacity"
                 .item-user-ratings
-                  =image_tag "good-icon.svg", width:"20", height: "20"
-                  %span 99
-                  =image_tag "normal-icon.svg", width:"20", height: "20"
-                  %span 4
-                  =image_tag "bad-icon.svg", width:"20", height: "20"
-                  %span 2
+                  =fa_icon 'smile-o 2x'
+                  %span= get_evaluations(@item.user, 1)
+                  =fa_icon 'meh-o 2x'
+                  %span= get_evaluations(@item.user, 2)
+                  =fa_icon 'frown-o 2x'
+                  %span= get_evaluations(@item.user, 3)
             %tr
               %th カテゴリー
               %td
                 .item-detail-table-category.underline-opacity
-                  = link_to "家電・スマホ・カメラ", "#"
+                  = link_to "#{big_category_name(@item)}", "#"
                 .item-detail-table-sub-category.underline-opacity
                   = link_to "#" do
                     %i.fa.fa-angle-right
-                    %span PC/タブレット
+                    %span= middle_category_name(@item)
                 .item-detail-table-sub-sub-category.underline-opacity
                   = link_to "#" do
                     %i.fa.fa-angle-right
-                    %span PC周辺機器
+                    %span= small_category_name(@item)
             %tr
               %th ブランド
               %td.underline-opacity
-                = link_to "富士通", "#"
+                = link_to "#{brand_name(@item)}", "#"
             %tr
               %th 商品の状態
-              %td 目立った傷や汚れなし
+              %td= condition_name(@item)
 
             %tr
               %th 配送料の負担
-              %td 送料込み(出品者負担)
+              %td= shipping_cost_name(@item)
             %tr
               %th 配送の方法
-              %td 未定
+              %td= shipping_method_name(@item)
             %tr
               %th 配送元地域
               %td.underline-opacity
-                = link_to "東京都", href: "#"
+                = link_to "#{prefecture(@item)}", href: "#"
             %tr
               %th 発送日の目安
-              %td 1~2日で発送
+              %td= days_for_shipment_name(@item)
   .item-price-box.text-center
-    %span.item-price.bold ¥ 2,300
+    %span.item-price.bold= "¥ #{@item.price.to_s(:delimited)}"
     %span.item-tax  (税込)
     %span.item-shipping-fee 送料込み
-  = link_to "購入画面に進む", "#", class: "item-buy-btn f18-24"
+  - if @item.seller_id === current_user.id
+    .item-edit-box
+      = link_to "商品の編集", edit_item_path(@item), class: "item-edit-btn"
+      %p.text-center or
+      - if @item.exhibit_flag == true
+        = link_to "出品を一旦停止する", item_pause_listing_path(@item, exhibit: false), method: :POST, class: "item-pause-btn"
+      - else
+        = link_to "出品を再開する", item_pause_listing_path(@item, exhibit: true), method: :POST, class: "item-exhibit-btn"
+
+      = link_to "この商品を削除する", item_path(@item), method: :DELETE, class: "item-delete-btn"
+  - else
+    = link_to "購入画面に進む", item_purchase_path(@item), class: "item-buy-btn f18-24"
+
   .item-description.f14
     %div.item-description-inner
-      %p Happy Hacking KeyBoard
-      %p macbook pro 2018
-      %p osmo pocket
-      %p 洗濯機
+      %p= @item.description
   .item-button-container
     .item-button-left
-      = link_to "javascript:void(0)", class: "item-button item-button-like" do
+      = link_to "javascript:void(0)", class: "item-button item-button-like #{add_favorite_class(@item)}" do
         %span いいね!
-        %span.item-button-like-count 0
+        %span.item-button-like-count= @item.favorites.count
       = link_to "#", class: "item-button item-button-report" do
         =fa_icon "flag-o"
         %span 不適切な商品の報告
@@ -125,12 +142,14 @@
       %textarea.textarea-default
       = link_to "コメントする", "#", class: "message-submit"
   .nav-item-link-prev-next
-    = link_to "#", class: "nav-item-link-prev" do
-      = fa_icon "angle-left"
-      %span コンビミニ カーディガン 95
-    = link_to "#", class: "nav-item-link-next" do
-      %span わたしはマララ: タリバンに撃たれた少女
-      = fa_icon "angle-right"
+    - if @item.previous.present?
+      = link_to item_path(@item.previous), class: "nav-item-link-prev" do
+        = fa_icon "angle-left"
+        %span=@item.previous.name
+    - if @item.next.present?
+      = link_to item_path(@item.next), class: "nav-item-link-next" do
+        %span=@item.next.name
+        = fa_icon "angle-right"
   .item-detail-message
     .message-container
   .item-social-media-box
@@ -147,7 +166,7 @@
       %li
         = link_to "#", class: "share-btn opacity-hover" do
           = fa_icon "pinterest"
-  = render "pickup-items", name: "kenji Rusudohさん"
-  = render "pickup-items", name: "キーボード"
+  = render "pickup-seller-items"
+  = render "pickup-category-items"
 = render "./common/app-banner"
 = render "./common/footer"
