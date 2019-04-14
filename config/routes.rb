@@ -29,13 +29,10 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
 
-  post 'purchase/pay' => 'purchase#pay'
-
-  post 'card/show' => 'card#show'
-  post 'card/pay' => 'card#pay'
-  post 'card/delete' => 'card#delete'
-  get 'purchase/done' => 'purchase#done'
-  get '/categories/:id', to: 'categories#index'
-  get '/category_sizes/:id', to: 'categories#get_sizes'
+  post 'purchase/pay', to: 'purchase#pay'
+  post 'card/show', to: 'card#show'
+  post 'card/pay', to: 'card#pay'
+  post 'card/delete', to: 'card#delete'
+  get 'purchase/done', to: 'purchase#done'
 
 end

@@ -24,10 +24,10 @@
               .card-image-list
                 =image_tag "card-icon-visa.svg", alt: "visa", class: "visa"
               .card-settings-payment-num
-                = "**** **** **** " + @default_card_infomation.last4
+                = "**** **** **** " + @default_card_information.last4
               .card-settings-payment-num
-                - exp_month = @default_card_infomation.exp_month.to_s
-                - exp_year = @default_card_infomation.exp_year.to_s.slice(2,3)
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
             .card-settings-add-right
             = form_tag(card_delete_path, method: :post, id: 'charge-form',  name: "inputForm") do
