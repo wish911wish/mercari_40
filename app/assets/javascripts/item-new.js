@@ -93,8 +93,9 @@ $(document).on("turbolinks:load", function() {
       adjustWidthOfUploadBox();
       decisionItemsListNumber();
       decisionAspectRatio(uploadImage);
-      renameHaveItemClass()
     }
+    var imageNum = $('.sell-upload-item').length
+    $('.sell-upload-drop-box').attr('for', `item_item_images_attributes_${imageNum}_image`)
   });
 
   $(".sell-upload-drop-box").on("dragenter", function (e){

@@ -7,8 +7,8 @@ crumb :items do
   parent :root
 end
 
-crumb :item_name do
-  link "HHKB Professional 2 英語配列 墨 静電容量無接点", items_path
+crumb :item_name do |item|
+  link item.name
   parent :items
 end
 

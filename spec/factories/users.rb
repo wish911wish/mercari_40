@@ -1,7 +1,7 @@
 Faker::Config.locale = :ja
 
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases: [:seller, :buyer] do
     password = Faker::Internet.password(8)
     user_name = Gimei.name
     address = Gimei.address

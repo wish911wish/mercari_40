@@ -2,11 +2,23 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'top#index'
-  resources :items, only: [:index, :new]
+  resources :users do
+    collection do
+      get :profile
+      get :logout
+    end
+  end
+  resources :signin, only: [:index]
   resources :identification, only: [:index]
   resources :card, only: [:index, :new, :show, :create]
   resources :purchase, only: [:index]
-  resources :signin, only: [:index]
+  resources :favorites, only: [:create, :destroy]
+  resources :items do
+    get 'purchase', to: 'items#purchase'
+    post 'pause_listing', to: 'items#pause_listing'
+    post 'favorites', to: 'favorites#create'
+    delete 'favorites', to: 'favorites#destroy'
+  end
 
   get '/signup', to: 'signup#index', as: 'user_signup'
   get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
@@ -16,8 +28,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
   get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
-  post 'purchase/pay', to: 'purchase#pay'
 
+  post 'purchase/pay', to: 'purchase#pay'
   post 'card/show', to: 'card#show'
   post 'card/pay', to: 'card#pay'
   post 'card/delete', to: 'card#delete'

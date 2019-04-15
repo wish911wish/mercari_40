@@ -131,26 +131,33 @@
 
 .form-group {
   margin: 40px 0 0;
+
   &:first-child {
     margin: 0;
   }
+
   & .input-default {
     width: 100%;
     margin: 8px 0 0;
   }
+
   & label {
     font-size: 16px;
     font-weight: 600;
   }
+
   & .textarea-default {
     margin: 8px 0 0;
   }
+
   & select {
     width: 100%;
   }
+
   & .select-wrap {
     margin: 8px 0 0;
   }
+
   & .fa-angle-down {
     position: absolute;
     right: 16px;
@@ -166,6 +173,7 @@
   &-form {
     border-top: 1px solid #eee;
   }
+
   &-upload {
     &-figure {
       position: relative;
@@ -174,6 +182,7 @@
       height: 116px;
       padding: 0;
       background: $gray-for-background;
+
       &.portrait img {
         position: absolute;
         transform: translate(-50%, 0);
@@ -181,6 +190,7 @@
         top: 0;
         left: 50%;
       }
+
       &.landscape img {
         position: absolute;
         transform: translate(0, -50%);
@@ -188,40 +198,51 @@
         top: 50%;
         left: 0;
       }
+
       &.square img {
         width: 100%;
       }
     }
+
     &-items {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
+
       &-container {
         width: 100%;
       }
-      & > .width-for-item-0 {
+
+      &>.width-for-item-0 {
         width: 620px;
         margin-left: 0;
       }
-      & > .width-for-item-1 {
+
+      &>.width-for-item-1 {
         width: 491px;
       }
-      & > .width-for-item-2 {
+
+      &>.width-for-item-2 {
         width: 363px;
       }
-      & > .width-for-item-3 {
+
+      &>.width-for-item-3 {
         width: 234px;
       }
-      & > .width-for-item-4 {
+
+      &>.width-for-item-4 {
         width: 106px;
       }
     }
+
     &-button {
       font-size: 14px;
       display: flex;
+
       & .sell-upload-delete {
         border-left: 1px solid $gray-for-button;
       }
+
       & div {
         display: inline-block;
         width: 50%;
@@ -232,27 +253,34 @@
         cursor: pointer;
       }
     }
+
     &-items-list {
       display: flex;
     }
+
     &-item {
       width: 116px;
       margin: 0 0 10px 10px;
+
       &:first-child {
         margin: 0 0 10px 0;
       }
     }
+
     &-box {
       white: 620px;
       padding: 40px;
     }
+
     &-head {
       font-size: 16px;
-      & + p {
+
+      &+p {
         margin: 8px 0 0;
         line-height: 1.5;
       }
     }
+
     &-drop-box {
       display: block;
       padding: 40px;
@@ -266,6 +294,7 @@
       transition: box-shadow ease-out 0.3s, -webkit-box-shadow ease-out 0.3s;
       cursor: pointer;
       margin-left: 2%;
+
       & pre {
         position: absolute;
         top: 50%;
@@ -281,51 +310,64 @@
         word-wrap: break-word;
       }
     }
+
     &-label {
       width: 100%;
     }
+
     &-input {
       display: none;
     }
   }
+
   &-dropbox-container {
     display: flex;
     flex-wrap: wrap;
     width: 620px;
     margin: 16px auto 0;
   }
+
   &-content {
     padding: 40px;
     border-top: 1px solid #eee;
   }
-  &-price > li {
+
+  &-price>li {
     padding: 24px 0;
     border-top: 1px solid #ccc;
+
     &:first-child {
       padding: 0 0 24px 0;
       border: 0;
     }
   }
+
   &-form-box {
     width: 400px;
     margin: 0;
+
     & .bold {
       font-weight: 600;
+
       & .l-left {
         font-size: 16px;
       }
+
       & .l-right {
         font-size: 34px;
       }
     }
   }
+
   &-btn-box {
     & p {
       line-height: 1.5;
     }
+
     & .btn-red {
       margin: 40px 0 0;
     }
+
     & .btn-gray {
       width: 45%;
       margin: 24px auto 0;
@@ -338,16 +380,20 @@
     height: 48px;
     line-height: 48px;
   }
+
   &-input {
     display: flex;
     justify-content: flex-end;
     height: 48px;
+
     & span {
       line-height: 48px;
     }
+
     &-box {
       width: 80%;
       margin: 0 0 0 5%;
+
       & .input-default {
         margin: 0;
         text-align: right;

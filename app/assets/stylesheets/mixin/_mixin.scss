@@ -1,0 +1,32 @@
+@mixin item_details_button($background: #aaa) {
+  display: block;
+  height: 56px;
+  margin: 16px 0 0;
+  background: $background;
+  color: #fff;
+  font-size: 14px;
+  line-height: 56px;
+  text-align: center;
+  font-weight: 600;
+  transition: all ease-out .3s;
+}
+
+@mixin item_sutatuse_tag($background: #888, $top: 30px, $left: 0px) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  &>div{
+    top: $top;
+    left: $left;
+    color: white;
+    transform: rotate(-45deg);
+    position: absolute;
+  }
+  &:after{
+    display: block;
+    content: "";
+    border-width: 120px 120px 0 0;
+    border-color: $background transparent;
+    border-style: solid;
+  }
+}
