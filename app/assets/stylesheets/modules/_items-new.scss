@@ -1,46 +1,50 @@
-.flex-space-between{
+.flex-space-between {
   display: flex;
   justify-content: space-between;
 }
 
-.l-single-container{
+.l-single-container {
   width: 700px;
   margin: 0 auto;
   background-color: $white;
 }
 
-.btn-default{
+.l-single-container.buy-item-container {
+  margin-bottom: -160px;
+}
+
+.btn-default {
   display: block;
   width: 100%;
   line-height: 48px;
   font-size: 14px;
   border: 1px solid transparent;
-  -webkit-transition: all ease-out .3s;
-  transition: all ease-out .3s;
+  -webkit-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
   cursor: pointer;
   text-align: center;
 }
 
-.btn-red{
+.btn-red {
   background: $red;
   border: 1px solid $red;
   color: $white;
 }
 
-.btn-gray{
+.btn-gray {
   background: #aaa;
   border: 1px solid #aaa;
   color: $white;
 }
 
-.l-single-head{
+.l-single-head {
   padding: 32px 16px;
   font-size: 22px;
   line-height: 1.5;
   text-align: center;
 }
 
-.input-default{
+.input-default {
   padding: 10px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -50,7 +54,7 @@
   box-sizing: border-box;
 }
 
-.textarea-default{
+.textarea-default {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -63,7 +67,7 @@
   box-sizing: border-box;
 }
 
-.select-default{
+.select-default {
   position: relative;
   z-index: 2;
   height: 48px;
@@ -79,17 +83,17 @@
   appearance: none;
 }
 
-.select-wrap{
+.select-wrap {
   position: relative;
   background: $white;
 }
 
-.sell-sub-head{
+.sell-sub-head {
   color: #888;
   font-size: 14px;
 }
 
-.form-require{
+.form-require {
   background-color: $red;
   margin: 0 0 0 8px;
   padding: 2px 4px;
@@ -99,7 +103,7 @@
   vertical-align: top;
 }
 
-.form-arbitrary{
+.form-arbitrary {
   margin: 0 0 0 8px;
   padding: 2px 4px;
   border-radius: 2px;
@@ -109,7 +113,7 @@
   vertical-align: top;
 }
 
-.form-question{
+.form-question {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -121,33 +125,40 @@
   text-align: center;
 }
 
-.width-50{
+.width-50 {
   width: 50px;
 }
 
-.form-group{
+.form-group {
   margin: 40px 0 0;
-  &:first-child{
+
+  &:first-child {
     margin: 0;
   }
-  & .input-default{
+
+  & .input-default {
     width: 100%;
     margin: 8px 0 0;
   }
-  & label{
+
+  & label {
     font-size: 16px;
     font-weight: 600;
   }
-  & .textarea-default{
+
+  & .textarea-default {
     margin: 8px 0 0;
   }
-  & select{
+
+  & select {
     width: 100%;
   }
-  & .select-wrap{
+
+  & .select-wrap {
     margin: 8px 0 0;
   }
-  & .fa-angle-down{
+
+  & .fa-angle-down {
     position: absolute;
     right: 16px;
     top: 50%;
@@ -158,66 +169,80 @@
   }
 }
 
-.sell{
-  &-form{
+.sell {
+  &-form {
     border-top: 1px solid #eee;
   }
-  &-upload{
-    &-figure{
+
+  &-upload {
+    &-figure {
       position: relative;
       overflow: hidden;
       width: 100%;
       height: 116px;
       padding: 0;
       background: $gray-for-background;
-      &.portrait img{
+
+      &.portrait img {
         position: absolute;
         transform: translate(-50%, 0);
         height: 100%;
         top: 0;
         left: 50%;
       }
-      &.landscape img{
+
+      &.landscape img {
         position: absolute;
         transform: translate(0, -50%);
         width: 100%;
         top: 50%;
         left: 0;
       }
-      &.square img{
+
+      &.square img {
         width: 100%;
       }
     }
-    &-items{
+
+    &-items {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      &-container{
+
+      &-container {
         width: 100%;
       }
-      &>.width-for-item-0{
+
+      &>.width-for-item-0 {
         width: 620px;
         margin-left: 0;
       }
-      &>.width-for-item-1{
+
+      &>.width-for-item-1 {
         width: 491px;
       }
-      &>.width-for-item-2{
+
+      &>.width-for-item-2 {
         width: 363px;
       }
-      &>.width-for-item-3{
+
+      &>.width-for-item-3 {
         width: 234px;
       }
-      &>.width-for-item-4{
+
+      &>.width-for-item-4 {
         width: 106px;
       }
     }
-    &-button{
+
+    &-button {
       font-size: 14px;
       display: flex;
-      & .sell-upload-delete{
+
+      & .sell-upload-delete {
         border-left: 1px solid $gray-for-button;
       }
+
       & div {
         display: inline-block;
         width: 50%;
@@ -228,28 +253,35 @@
         cursor: pointer;
       }
     }
-    &-items-list{
+
+    &-items-list {
       display: flex;
     }
-    &-item{
+
+    &-item {
       width: 116px;
       margin: 0 0 10px 10px;
-      &:first-child{
-        margin:  0 0 10px 0;
+
+      &:first-child {
+        margin: 0 0 10px 0;
       }
     }
-    &-box{
+
+    &-box {
       white: 620px;
       padding: 40px;
     }
-    &-head{
+
+    &-head {
       font-size: 16px;
-      &+p{
+
+      &+p {
         margin: 8px 0 0;
         line-height: 1.5;
       }
     }
-    &-drop-box{
+
+    &-drop-box {
       display: block;
       padding: 40px;
       width: 620px;
@@ -259,10 +291,11 @@
       background-color: $gray-for-background;
       border: 1px dashed #ccc;
       text-align: center;
-      transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+      transition: box-shadow ease-out 0.3s, -webkit-box-shadow ease-out 0.3s;
       cursor: pointer;
       margin-left: 2%;
-      & pre{
+
+      & pre {
         position: absolute;
         top: 50%;
         left: 16px;
@@ -277,78 +310,94 @@
         word-wrap: break-word;
       }
     }
-    &-label{
+
+    &-label {
       width: 100%;
     }
-    &-input{
-     display: none;
+
+    &-input {
+      display: none;
     }
   }
-  &-dropbox-container{
+
+  &-dropbox-container {
     display: flex;
     flex-wrap: wrap;
     width: 620px;
     margin: 16px auto 0;
   }
-  &-content{
+
+  &-content {
     padding: 40px;
     border-top: 1px solid #eee;
   }
-  &-price>li{
+
+  &-price>li {
     padding: 24px 0;
     border-top: 1px solid #ccc;
-    &:first-child{
+
+    &:first-child {
       padding: 0 0 24px 0;
       border: 0;
     }
   }
-  &-form-box{
+
+  &-form-box {
     width: 400px;
     margin: 0;
-    & .bold{
+
+    & .bold {
       font-weight: 600;
-      & .l-left{
+
+      & .l-left {
         font-size: 16px;
       }
-      & .l-right{
+
+      & .l-right {
         font-size: 34px;
       }
     }
   }
-  &-btn-box{
+
+  &-btn-box {
     & p {
       line-height: 1.5;
     }
-    & .btn-red{
+
+    & .btn-red {
       margin: 40px 0 0;
     }
-    & .btn-gray{
+
+    & .btn-gray {
       width: 45%;
       margin: 24px auto 0;
     }
   }
 }
 
-.sell-price{
-  &-label{
+.sell-price {
+  &-label {
     height: 48px;
     line-height: 48px;
   }
-  &-input{
+
+  &-input {
     display: flex;
     justify-content: flex-end;
     height: 48px;
-    & span{
+
+    & span {
       line-height: 48px;
     }
-    &-box{
+
+    &-box {
       width: 80%;
       margin: 0 0 0 5%;
-      & .input-default{
+
+      & .input-default {
         margin: 0;
         text-align: right;
       }
     }
   }
 }
-
