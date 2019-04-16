@@ -1,11 +1,11 @@
 = link_to users_path, class: "header-nav-root header-user-icon" do
-  = image_tag("member_photo_noimage_thumb.png", size: "32x32")
+  = image_tag(@user_image, size: "32x32")
   %div マイページ
 .header-nav-user-box
   .mypage-state
     %figure
       %div
-        = image_tag("member_photo_noimage_thumb.png", size: "60x60")
+        = image_tag(@user_image, size: "60x60")
       %figcaption
         = current_user.nickname
     %ul.mypage-review-listing

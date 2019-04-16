@@ -3,7 +3,7 @@
     プロフィール
   %div.setting-profile-icon
     %figure
-      =image_tag("member_photo_noimage_thumb.png", class: "user-pic")
+      =image_tag(@user_image, class: "user-pic")
     =text_field :item, '', class: "input-default", placeholder: "ユーザー"
   %div.setting-profile-content
     =form_tag (root_path) do
