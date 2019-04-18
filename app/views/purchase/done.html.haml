@@ -1,0 +1,15 @@
+.purchase-container
+  %header.purchase-header
+    %h1
+      = link_to image_tag("logo.svg",  width: "185", alt: "logo", class: "purchase-header-logo"), "#"
+  %main.purchase-main
+    %h2.purchase-chapter 購入が完了しました！
+    %section.purchase-item
+      .purchase-item-image
+        =image_tag "item-2.jpg"
+      .purchase-item-name.bold Apple MacBook Pro 13インチ
+      .purchase-item-form
+        .purchase-item-form-flex-center
+          %p.bold ¥135,000
+          %span 送料込み
+  = render "./common/footer-singlefooter"
