@@ -69,4 +69,8 @@ module ApplicationHelper
   def get_evaluations(user, evaluation)
     user.user_evaluations.where(evaluation: evaluation).count
   end
+
+  def get_size_group(item)
+    Size.find(item.size_id).size_group if item.size_id.present?
+  end
 end
