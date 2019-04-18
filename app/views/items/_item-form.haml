@@ -9,25 +9,25 @@
       .sell-dropbox-container
         .sell-upload-items-container
           .sell-upload-items
-          ↓画像の個数によって処理を分岐する（１〜５の場合、６〜１０の場合）
-            %ul.sell-upload-items-list{ class: "have-item-#{item.item_images.length}" }
-              - item.item_images.each_with_index do |item_image, index|
+            %ul.sell-upload-items-list{ class: "have-item-#{item.item_images.length % 5}" }
+              - item.item_images[0..4].each do |item_image|
                 %li.sell-upload-item
                   %figure.sell-upload-figure.square
                     = image_tag item_image.image
                   .sell-upload-button
                     .sell-upload-edit 編集
                     .sell-upload-delete 削除
-            %ul.sell-upload-items-list{ class: "have-item-#{item.item_images.length}" }
-              - item.item_images.each_with_index do |item_image, index|
-                %li.sell-upload-item
-                  %figure.sell-upload-figure.square
-                    = image_tag item_image.image
-                  .sell-upload-button
-                    .sell-upload-edit 編集
-                    .sell-upload-delete 削除
+            - if item.item_images.length >= 6
+              %ul.sell-upload-items-list{ class: "have-item-#{item.item_images.length % 5}" }
+                - item.item_images[5..-1].each_with_index do |item_image, index|
+                  %li.sell-upload-item
+                    %figure.sell-upload-figure.square
+                      = image_tag item_image.image
+                    .sell-upload-button
+                      .sell-upload-edit 編集
+                      .sell-upload-delete 削除
 
-            = label "", :image ,for: "item_item_images_attributes_#{item.item_images.length}_image" ,class: "sell-upload-drop-box width-for-item-#{item.item_images.length}" do
+            = label "", :image ,for: "item_item_images_attributes_#{item.item_images.length}_image" ,class: "sell-upload-drop-box width-for-item-#{item.item_images.length % 5}" do
               %pre
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
