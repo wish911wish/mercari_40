@@ -1,0 +1,34 @@
+- if request.path_info == new_item_path
+  %li.form-group.flex-space-between
+    = f.label :price, class: "sell-price-label" do
+      価格
+      %span.form-require 必須
+    .sell-price-input
+      %span ¥
+      .sell-price-input-box
+        = f.text_field :price, class: "input-default js-price" ,placeholder: "例）300"
+  %li.flex-space-between
+    .l-left 販売手数料（10%）
+    .l-right.js-price-fee -
+  %li.flex-space-between.bold
+    .l-left 販売利益
+    .l-right.js-price-margin -
+
+
+- elsif request.path_info == edit_item_path
+  %li.form-group.flex-space-between
+    = f.label :price, class: "sell-price-label" do
+      価格
+      %span.form-require 必須
+    .sell-price-input
+      %span ¥
+      .sell-price-input-box
+        = f.text_field :price, class: "input-default js-price"
+  %li.flex-space-between
+    .l-left 販売手数料（10%）
+    .l-right.js-price-fee
+      = (@item.price*0.1).floor
+  %li.flex-space-between.bold
+    .l-left 販売利益
+    .l-right.js-price-margin
+      = @item.price - (@item.price*0.1).floor

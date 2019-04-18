@@ -1,0 +1,4 @@
+- if request.path_info == new_item_path
+  = text_field  "", :brand_name, class: "input-default" ,placeholder: "例）シャネル"
+- elsif request.path_info == edit_item_path
+  = text_field "", :brand_name, class: "input-default", value: brand_name(@item)

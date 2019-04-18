@@ -1,0 +1,4 @@
+- if request.path_info == new_item_path
+  = f.select :shipping_method_id, options_from_collection_for_select(ShippingMethod.all, :id, :name), { include_blank: "---" }, class: "select-default"
+- elsif request.path_info == edit_item_path
+  = f.select :shipping_method_id, options_from_collection_for_select(ShippingMethod.all, :id, :name, selected: "#{@item.shipping_method_id}"), { include_blank: "---" }, class: "select-default"
