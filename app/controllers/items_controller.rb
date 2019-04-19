@@ -31,9 +31,15 @@ class ItemsController < ApplicationController
   end
 
   def update
+    redirect_to root_path unless @item.seller_id === current_user.id
     item_brand = Brand.find_or_create_by(name: params[:brand_name], category_id: params[:item][:big_category_id])
     @item.update!(item_params.merge({status_id: 1, brand_id: item_brand.id})) if @item.seller_id === current_user.id
     render :show
+    if @item.update(item_params.merge({status_id: 1, brand_id: item_brand.id}))
+      render :show
+    else
+      redirect_to edit_item_path(@item)
+    end
   end
 
   def purchase
