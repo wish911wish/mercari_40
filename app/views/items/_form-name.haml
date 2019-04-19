@@ -1,0 +1,5 @@
+- if request.path_info == new_item_path
+  = f.text_field :name, class: "input-default" ,placeholder: "商品名（必須 40文字まで)"
+
+- elsif request.path_info == edit_item_path
+  = f.text_field :name, class: "input-default"

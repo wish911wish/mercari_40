@@ -1,0 +1,17 @@
+- if request.path_info == new_item_path
+  .select-wrap
+    = f.select :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
+    = fa_icon 'angle-down 2x'
+
+- elsif request.path_info == edit_item_path
+  .select-wrap
+    = f.select :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name, selected: "#{@item.big_category_id}"), { include_blank: "---" }, class: "select-default"
+    = fa_icon 'angle-down 2x'
+
+  .select-wrap
+    = f.select :middle_category_id, options_from_collection_for_select(Category.where("parent = '#{@item.big_category_id}'"), :id, :name, selected: "#{@item.middle_category_id}"), { include_blank: "---" }, class: "select-default"
+    = fa_icon 'angle-down 2x'
+
+  .select-wrap
+    = f.select :small_category_id, options_from_collection_for_select(Category.where("parent = '#{@item.middle_category_id}'"), :id, :name, selected: "#{@item.small_category_id}"), { include_blank: "---" }, class: "select-default"
+    = fa_icon 'angle-down 2x'

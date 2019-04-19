@@ -1,0 +1,10 @@
+- if request.path_info == new_item_path
+
+- elsif request.path_info == edit_item_path
+  .form-group.sell-size-option
+    = f.label :size do
+      サイズ
+      %span.form-require 必須
+    .select-wrap
+      = f.select :size_id, options_from_collection_for_select(Size.where(size_group: get_size_group(@item)), :id, :name, selected: "#{@item.size_id}"), { include_blank: "---" }, class: "select-default"
+      = fa_icon 'angle-down 2x'
