@@ -83,7 +83,7 @@
             %span 販売状況
           .checkbox-container
             .checkbox-default
-              = check_box_tag "statuse_all", true, false
+              = check_box_tag "status_all", true, false
               = fa_icon 'check'
               = label_tag :status_all, "すべて"
             - Statuse.where(id: [1, 3]).each do |status|

@@ -1,5 +1,17 @@
 $(document).on("turbolinks:load", function() {
 
+  $(document).on("change", "#condition_all", function(e) {
+    $("input[name ^= 'condition_id']").prop('checked', $(this).prop("checked"))
+  });
+
+  $(document).on("change", "#shippingcost_all", function(e) {
+    $("input[name ^= 'shipping_cost_id']").prop('checked', $(this).prop("checked"))
+  });
+
+  $(document).on("change", "#status_all", function(e) {
+    $("input[name ^= 'status_id']").prop('checked', $(this).prop("checked"))
+  });
+
   $(document).on("change", ".js-big-category-option .select-default", function(e) {
     e.stopPropagation();
     var selectedObject = $(this)
