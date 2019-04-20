@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   post 'card/pay', to: 'card#pay'
   post 'card/delete', to: 'card#delete'
   get 'purchase/done', to: 'purchase#done'
+  get '/search', to: 'items#search'
 
 end
