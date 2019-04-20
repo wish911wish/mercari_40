@@ -54,6 +54,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @item = Item.all
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :description ,:big_category_id , :middle_category_id, :small_category_id, :size_id, :condition_id, :shipping_cost_id, :shipping_method_id, :sender_prefecture, :days_for_shipment_id, :status_id, :price, item_images_attributes: [:image, :id]).merge(seller_id: current_user.id)

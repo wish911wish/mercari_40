@@ -1,0 +1,158 @@
+.search{
+  &-container{
+    width: 1020px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+    display: flex;
+    .items-box{
+      width: 160px;
+      margin: 0 0 20px 20px;
+    }
+  }
+  &-side{
+    width: 700px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+  }
+  &-result-head{
+    margin: 0 0 8px 20px;
+    font-weight: 400;
+    font-size: 22px;
+  }
+  &-dropdown-content{
+    margin: 40px 0 0;
+    padding: 16px;
+    background: $white;
+    h3{
+      font-size: 16px;
+    }
+    i+span{
+      font-size: 16px;
+    }
+  }
+  &-price{
+    font-size: 0;
+    .input-default{
+      width: 45%;
+      margin: 8px 0 0;
+      box-sizing: border-box;
+    }
+    &>span{
+      width: 10%;
+      display: inline-block;
+      font-size: 14px;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+  &-extend-btn{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0 0;
+    .btn-default{
+      width: 45%;
+    }
+  }
+}
+
+.pager{
+  position: relative;
+  margin: 0 0 0 20px;
+  font-size: 0;
+  &-cell{
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    a{
+      color: $black-for-font;
+      display: block;
+      display: block;
+      text-align: center;
+      line-height: 44px;
+    }
+    i{
+      line-height: 42px;
+    }
+  }
+  &-prev{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &-num{
+    width: 220px;
+    margin: 0 auto;
+    .active *{
+      color: $white;
+      border-radius: 4px;
+      background-color: $red;
+    }
+  }
+  &-next{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.checkbox{
+  &-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 -2%;
+  }
+  &-default{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 48%;
+    height: 28px;
+    margin: 12px 0 0 2%;
+    input{
+      display: none;
+    }
+    .fa-check{
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 1;
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+      background: #fff;
+      border: 1px solid #ccc;
+      font-size: 10px;
+      line-height: 17px;
+      text-align: center;
+      color: #fff;
+      vertical-align: middle;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
+    input[type='checkbox']:checked+.fa-check{
+      border-color: transparent;
+      background: $light-blue;
+      opacity: 1;
+    }
+    label {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      padding: 0 0 0 28px;
+      font-size: 14px;
+      font-weight: 400;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
+}

@@ -27,7 +27,7 @@ li{
 
 .header{
   &-inner{
-    width: 700px;
+    width: 1020px;
     margin: 0 auto;
     padding: 8px 0 0;
   }
@@ -637,6 +637,9 @@ li{
   &-tax{
     font-size: 10px;
     clear: both;
+  }
+  &-photo{
+    position: relative;
   }
 }
 
