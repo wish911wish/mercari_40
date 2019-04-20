@@ -30,9 +30,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to users_path, notice: "商品を削除しました"
+    if Item.find(params[:id]).present?
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to users_path, notice: "商品を削除しました"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
