@@ -21,10 +21,22 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    if current_user.present?
+      user = User.find(current_user.id)
+      @user_image = user.image
+    else
+      @user_image = "member_photo_noimage_thumb.png"
+    end
   end
 
   def destroy
-    redirect_to root_path, notice: "削除機能実装時に修正します"
+    if Item.find(params[:id]).present?
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to users_path, notice: "商品を削除しました"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
