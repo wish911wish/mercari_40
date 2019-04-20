@@ -3,7 +3,7 @@ nav.breadcrumbs {
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   background: #fff;
   ul{
-    width: 700px;
+    width: 1020px;
     margin: auto;
     padding: 16px 0;
     li{
@@ -23,35 +23,37 @@ nav.breadcrumbs {
   }
 }
 
-.fa-smile-o{
-  color: #ef5185;
-  font-size: 22px;
-  margin-right: 3px;
+.item-detail-table{
+  .fa-smile-o{
+    color: #ef5185;
+    font-size: 22px;
+    margin-right: 3px;
+  }
+  .fa-meh-o{
+    color: #fba933;
+    font-size: 22px;
+    margin-right: 3px;
+  }
+
+  .fa-frown-o{
+    color: #6ab5d8;
+    font-size: 22px;
+    margin-right: 3px;
+  }
+
+  .fa-angle-right{
+    margin: 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .fa-angle-left{
+    margin: 0 8px;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }
 
-.fa-meh-o{
-  color: #fba933;
-  font-size: 22px;
-  margin-right: 3px;
-}
-
-.fa-frown-o{
-  color: #6ab5d8;
-  font-size: 22px;
-  margin-right: 3px;
-}
-
-.fa-angle-right{
-  margin: 0 8px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.fa-angle-left{
-  margin: 0 8px;
-  font-size: 18px;
-  font-weight: bold;
-}
 
 .item-box-container.l-single-container{
   width: 620px;
