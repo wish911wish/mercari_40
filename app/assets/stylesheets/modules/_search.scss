@@ -4,7 +4,7 @@
     margin: 0 auto;
     padding: 0 0 40px;
     display: flex;
-    & .items-box{
+    .items-box{
       width: 160px;
       margin: 0 0 20px 20px;
     }
@@ -24,16 +24,16 @@
     margin: 40px 0 0;
     padding: 16px;
     background: $white;
-    & h3{
+    h3{
       font-size: 16px;
     }
-    & i+span{
+    i+span{
       font-size: 16px;
     }
   }
   &-price{
     font-size: 0;
-    & .input-default{
+    .input-default{
       width: 45%;
       margin: 8px 0 0;
       box-sizing: border-box;
@@ -50,7 +50,7 @@
     display: flex;
     justify-content: space-between;
     padding: 40px 0 0;
-    & .btn-default{
+    .btn-default{
       width: 45%;
     }
   }
@@ -69,14 +69,14 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
     font-size: 14px;
-    & a{
+    a{
       color: $black-for-font;
       display: block;
       display: block;
       text-align: center;
       line-height: 44px;
     }
-    & i{
+    i{
       line-height: 42px;
     }
   }
@@ -89,7 +89,7 @@
   &-num{
     width: 220px;
     margin: 0 auto;
-    & .active *{
+    .active *{
       color: $white;
       border-radius: 4px;
       background-color: $red;
@@ -116,10 +116,10 @@
     width: 48%;
     height: 28px;
     margin: 12px 0 0 2%;
-    & input{
+    input{
       display: none;
     }
-    & .fa-check{
+    .fa-check{
       position: absolute;
       top: 50%;
       left: 0;
@@ -139,12 +139,12 @@
       -webkit-transform: translate(0, -50%);
       transform: translate(0, -50%);
     }
-    & input[type='checkbox']:checked+.fa-check{
+    input[type='checkbox']:checked+.fa-check{
       border-color: transparent;
       background: $light-blue;
       opacity: 1;
     }
-    & label {
+    label {
       display: inline-block;
       position: relative;
       z-index: 2;
