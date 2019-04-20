@@ -93,4 +93,12 @@ $(document).on("turbolinks:load", function() {
     getSizes(category_id, selectedObject)
   });
 
+  $(document).on("change", ".js-category-option .select-default", function(e) {
+    e.stopPropagation();
+    var selectedObject = $(this)
+    var category_id = $('option:selected',this).val()
+    getCategories(category_id, selectedObject)
+  });
+
+
 })
