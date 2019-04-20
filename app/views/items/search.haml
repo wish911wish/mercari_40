@@ -23,7 +23,7 @@
           %label
             = fa_icon 'list'
             %span カテゴリーを選択する
-          .select-wrap
+          .select-wrap.js-big-category-option
             = select "", :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
             = fa_icon 'angle-down 2x'
         .form-group
@@ -35,8 +35,8 @@
           %label
             = fa_icon 'arrows-alt'
             %span サイズを選択する
-          .select-wrap
-            = select "", :size_group, options_from_collection_for_select(Size.where(size_group: get_size_group(@item[0])), :id, :name), { include_blank: "---" }, class: "select-default"
+          .select-wrap.js-size-option
+            = select "", :size_group, options_from_collection_for_select(SizeGroup.all, :id, :name), { include_blank: "---" }, class: "select-default"
             = fa_icon 'angle-down 2x'
 
         .form-group.search-price
