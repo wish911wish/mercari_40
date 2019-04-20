@@ -62,32 +62,32 @@ class ItemsController < ApplicationController
     search_condition = {}
 
     if params[:small_category_id].present?
-      search_condition.merge!({small_category_id: params[:small_category_id].keys})
+      search_condition[:small_category_id] = params[:small_category_id].keys
     end
 
     if params[:brand_name].present?
       brand = Brand.find_by(name: params[:brand_name])
-      search_condition.merge!({brand_id: brand.id}) if brand.present?
+      search_condition[:brand_id] = brand.id if brand.present?
     end
 
     if params[:size_id].present?
-      search_condition.merge!({size_id: params[:size_id].keys})
+      search_condition[:size_id] = params[:size_id].keys
     end
 
     if params[:condition_id].present?
-      search_condition.merge!({condition_id: params[:condition_id].keys})
+      search_condition[:condition_id] = params[:condition_id].keys
     end
 
     if params[:shipping_cost_id].present?
-      search_condition.merge!({shipping_cost_id: params[:shipping_cost_id].keys})
+      search_condition[:shipping_cost_id] = params[:shipping_cost_id].keys
     end
 
     if params[:status_id].present?
-      search_condition.merge!({status_id: params[:status_id].keys})
+      search_condition[:status_id] = params[:status_id].keys
     end
 
     if params[:price_min].present? && params[:price_max].present? && params[:price_min] <= params[:price_max]
-      search_condition.merge!({price: params[:price_min]..params[:price_max]})
+      search_condition[:price] = params[:price_min]..params[:price_max]
       @item = Item.where(search_condition)
     elsif params[:price].present?
       @item = Item.where(search_condition).where(get_price_range)
@@ -130,8 +130,8 @@ class ItemsController < ApplicationController
   end
 
   def search_with_keyword
-    keyword = params[:keyword].split(/[[:blank:]]+/)
-    keyword.each do |keyword|
+    keywords = params[:keyword].split(/[[:blank:]]+/)
+    keywords.each do |keyword|
       @item = @item.where("name LIKE ?", "%#{keyword}%").or(Item.where("description LIKE ?", "%#{keyword}%"))
     end
   end
