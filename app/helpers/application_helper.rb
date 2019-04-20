@@ -51,22 +51,34 @@ module ApplicationHelper
   end
 
   def item_statuse?(item)
-
     return content_tag(:div, content_tag(:div, "公開停止中"), class: "item-stop-tag") if item.exhibit_flag === false
-
     case item.status_id
     when 1
       ""
     when 2
       content_tag(:div, content_tag(:div, Statuse.find(2).name), class: "item-trading-tag")
     when 3
-      content_tag(:div, content_tag(:div, Statuse.find(3).name), class: "item-sold-tag")
+      content_tag(:div, content_tag(:div, "SOLD"), class: "item-sold-tag")
     else
-
     end
   end
 
   def get_evaluations(user, evaluation)
     user.user_evaluations.where(evaluation: evaluation).count
+  end
+
+  def get_size_group(item)
+    Size.find(item.size_id).size_group if item.size_id.present?
+  end
+
+  def get_aspect_ratio(image)
+    aspect_ratio = image.image_width/image.image_height.to_f
+    if aspect_ratio === 1
+      "square"
+    elsif aspect_ratio > 1
+      "landscape"
+    elsif aspect_ratio < 1
+      "portrait"
+    end
   end
 end
