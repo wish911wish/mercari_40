@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
   def index
-    user = User.find(current_user.id)
-    if user.image.nil?
-      @user_image = "member_photo_noimage_thumb.png"
-    else
+    if current_user.present?
+      user = User.find(current_user.id)
       @user_image = user.image
+    else
+      @user_image = "member_photo_noimage_thumb.png"
     end
   end
 
@@ -13,6 +13,12 @@ class UsersController < ApplicationController
   end
 
   def logout
+    if current_user.present?
+      user = User.find(current_user.id)
+      @user_image = user.image
+    else
+      @user_image = "member_photo_noimage_thumb.png"
+    end
   end
 
 end
