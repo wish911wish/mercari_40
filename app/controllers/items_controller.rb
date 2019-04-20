@@ -47,6 +47,11 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: "購入画面実装時に修正します"
   end
 
+  def search
+    Item
+    @item = Item.all
+  end
+
   def pause_listing
     if params[:exhibit] === "true"
       @item.update(exhibit_flag: true)
