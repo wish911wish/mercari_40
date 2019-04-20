@@ -94,7 +94,7 @@
         = link_to "出品を一旦停止する", item_pause_listing_path(@item, exhibit: false), method: :POST, class: "item-pause-btn"
       - else
         = link_to "出品を再開する", item_pause_listing_path(@item, exhibit: true), method: :POST, class: "item-exhibit-btn"
-      %a#modal-open-btn.modal-open-btn この商品を削除する
+      = button_tag "この商品を削除する", id: "modal-open-btn", class: "modal-open-btn"
       = link_to "", item_path(@item), method: :DELETE, id: 'item-delete-btn'
   - else
     = link_to "購入画面に進む", item_purchase_path(@item), class: "item-buy-btn f18-24"

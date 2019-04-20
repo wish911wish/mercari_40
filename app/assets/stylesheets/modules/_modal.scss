@@ -50,6 +50,11 @@
   outline: none;
 }
 
-.modal-open-btn:hover {
-  cursor: pointer;
+.modal-open-btn {
+  width: 100%;
+  outline: none;
+
+  :hover {
+    cursor: pointer;
+  }
 }
