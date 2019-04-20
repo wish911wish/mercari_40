@@ -2,58 +2,67 @@ require 'rails_helper'
 require 'pry'
 
 describe ItemsController do
-  let(:user) {create(:user)}
-  let(:big_category) {create(:big_category)}
-  let(:middle_category) {create(:middle_category)}
-  let(:small_category) {create(:small_category)}
-  let(:brand) {create(:brand)}
-  let(:condition) {create(:condition)}
-  let(:shipping_cost) {create(:shipping_cost)}
-  let(:shipping_method) {create(:shipping_method)}
-  let(:days_for_shipment) {create(:days_for_shipment)}
-  let(:status) {create(:status)}
+  # small_category = Category.find(Random.rand(159..952))
+  # middle_category = Category.find(small_category.parent)
+  # big_category = Category.find(middle_category.parent)
+  # let(:user) {create(:user)}
+  # let(:big_category) {create(:big_category)}
+  # let(:middle_category) {create(:middle_category)}
+  # let(:small_category) {create(:small_category)}
+  # let(:brand) {create(:brand)}
+  # let(:condition) {create(:condition)}
+  # let(:shipping_cost) {create(:shipping_cost)}
+  # let(:shipping_method) {create(:shipping_method)}
+  # let(:days_for_shipment) {create(:days_for_shipment)}
+  # let(:status) {create(:status)}
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/image.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path)}
-  let(:item) {create(:item,
-      seller_id: user.id,
-      big_category_id: big_category.id,
-      middle_category_id: middle_category.id,
-      small_category_id: small_category.id,
-      brand_id: brand.id,
-      condition_id: condition.id,
-      shipping_cost_id: shipping_cost.id,
-      shipping_method_id: shipping_method.id,
-      days_for_shipment_id: days_for_shipment.id,
-      status_id: status.id,
-      item_images_attributes: [{image: image}, {image: image}]
-      )}
-  let(:item_params) {{
-      brand_name: brand.name,
-      id: item.id,
-      item: {
-        id: item.id,
-        seller_id: user.id,
-        big_category_id: big_category.id,
-        middle_category_id: middle_category.id,
-        small_category_id: small_category.id,
-        brand_name: brand.name,
-        condition_id: condition.id,
-        shipping_cost_id: shipping_cost.id,
-        shipping_method_id: shipping_method.id,
-        days_for_shipment_id: days_for_shipment.id,
-        status_id: status.id,
-        price: 1000,
-        item_images_attributes: [{image: image}]
-      }
-    }}
+  let(:item_images_attributes) { {item_images_attributes: [{image: image}, {image: image}]} }
+  # let(:item) {create(:item,
+  #     seller_id: user.id,
+  #     big_category_id: big_category.id,
+  #     middle_category_id: middle_category.id,
+  #     small_category_id: small_category.id,
+  #     brand_id: brand.id,
+  #     condition_id: condition.id,
+  #     shipping_cost_id: shipping_cost.id,
+  #     shipping_method_id: shipping_method.id,
+  #     days_for_shipment_id: days_for_shipment.id,
+  #     status_id: status.id,
+  #     item_images_attributes: [{image: image}, {image: image}]
+  #     )}
+  # let(:item_params) {{
+  #     brand_name: brand.name,
+  #     id: item.id,
+  #     item: {
+  #       id: item.id,
+  #       seller_id: user.id,
+  #       big_category_id: big_category.id,
+  #       middle_category_id: middle_category.id,
+  #       small_category_id: small_category.id,
+  #       brand_name: brand.name,
+  #       condition_id: condition.id,
+  #       shipping_cost_id: shipping_cost.id,
+  #       shipping_method_id: shipping_method.id,
+  #       days_for_shipment_id: days_for_shipment.id,
+  #       status_id: status.id,
+  #       price: 1000,
+  #       item_images_attributes: [{image: image}]
+  #     }
+  #   }}
+
 
   describe 'GET #show' do
+
     before do
+      user = create(:user)
+      binding.pry
+      @item = create(:item, seller_id: user.id ,item_images_attributes: [{image: image}, {image: image}] )
       login_user user
     end
     it "assigns the requested item to @item" do
-      get :show, params: { id: item.id }
-      expect(assigns(:item)).to eq item
+      get :show, params: { id: @item.id }
+      expect(assigns(:item)).to eq @item
     end
 
     it "renders the :show templete" do
@@ -97,4 +106,49 @@ describe ItemsController do
       expect(response).to redirect_to edit_item_path(item)
     end
   end
+
+  describe 'GET #search' do
+    before do
+
+      create_list(:user, 5)
+      # create_list(:item, 3, item_images_attributes: [{image: image}, {image: image}])
+
+      # Item.all
+      # item
+      # create_list(:item, 3, item_params_serch)
+
+    end
+    it "assigns the requested item to @item" do
+
+      get :search
+      expect(assigns(:items)).to match(item.sort{ |a, b| b.created_at <=> a.created_at })
+    end
+
+    it "renders the :update templete" do
+      get :search
+      expect(response).to render_template :search
+    end
+
+    # it "redirect to item_edit_path due to update failure" do
+    #   item_params[:item][:price] = "test for redirect"
+    #   put :update, params: item_params
+    #   expect(response).to redirect_to edit_item_path(item)
+    # end
+  end
+
+  describe 'POST #detail_search' do
+    before do
+    end
+    it "assigns the requested item to @item" do
+
+    end
+
+    it "renders the :search templete" do
+      post :detail_search
+      expect(response).to render_template :search
+    end
+
+  end
+
+
 end
