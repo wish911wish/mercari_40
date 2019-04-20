@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/category_sizes/:id', to: 'categories#get_sizes'
   get '/size_group/:id', to: 'categories#get_size_group'
 
+
   post 'purchase/pay', to: 'purchase#pay'
   post 'card/show', to: 'card#show'
   post 'card/pay', to: 'card#pay'
