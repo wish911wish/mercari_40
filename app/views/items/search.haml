@@ -1,0 +1,140 @@
+= render "./common/header"
+%nav.breadcrumbs
+  %ul
+    - breadcrumb :item_name, @item
+    %li
+      = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
+%main.search-container
+  .l-side
+    =form_tag(root_path ,class: "search-extend-container") do
+      .search-sort
+        .form-group
+          .select-wrap
+            = select "", :sort_order, options_for_select({価格の高い順: "1", 価格の安い順: "2", 出品の古い順: "3", 出品の新しい順: "4", "いいね！の多い順": "5" }), { include_blank: "並び替え" },class: "select-default"
+            = fa_icon 'angle-down 2x'
+      .search-dropdown-content
+        %h3 詳細検索
+        .form-group
+          %label
+            = fa_icon 'plus'
+            %span キーワードを追加する
+          = text_field  "", :keyword, class: "input-default" ,placeholder: "例）値下げ"
+        .form-group
+          %label
+            = fa_icon 'list'
+            %span カテゴリーを選択する
+          .select-wrap
+            = select "", :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
+            = fa_icon 'angle-down 2x'
+        .form-group
+          %label
+            = fa_icon 'tag'
+            %span ブランド名から探す
+          = text_field  "", :brand_name, class: "input-default" ,placeholder: "例）シャネル"
+        .form-group
+          %label
+            = fa_icon 'arrows-alt'
+            %span サイズを選択する
+          .select-wrap
+            = select "", :size_group, options_from_collection_for_select(Size.where(size_group: get_size_group(@item[0])), :id, :name), { include_blank: "---" }, class: "select-default"
+            = fa_icon 'angle-down 2x'
+
+        .form-group.search-price
+          %label
+            = fa_icon 'money'
+            %span 価格
+          .select-wrap
+            = select "", :big_category_id, options_for_select({"300 ~ 1000": "aaa", "1000 ~ 5000": "bbb", "5000 ~ 10000": "aaa", "10000 ~ 30000": "bbb", "30000 ~ 50000": "sss" }), { include_blank: "---" }, class: "select-default"
+            = fa_icon 'angle-down 2x'
+          = text_field  "", :keyword, class: "input-default" ,placeholder: "¥ Min"
+          %span ~
+          = text_field  "", :keyword, class: "input-default" ,placeholder: "¥ Max"
+        .form-group.search-checkbox
+          %label
+            = fa_icon 'star'
+            %span 商品の状態
+          .checkbox-container
+            .checkbox-default
+              = check_box_tag "condition_all", true, false
+              = fa_icon 'check'
+              = label_tag :condition_all, "すべて"
+            - Condition.all.each_with_index do |condition, index|
+              .checkbox-default
+                = check_box_tag "condition_id[#{index}]", true, false
+                = fa_icon 'check'
+                = label_tag "condition_id[#{index}]", condition.name
+        .form-group.search-checkbox
+          %label
+            = fa_icon 'truck'
+            %span 発送料の負担
+          .checkbox-container
+            .checkbox-default
+              = check_box_tag "shippingcost_all", true, false
+              = fa_icon 'check'
+              = label_tag :shippingcost_all, "すべて"
+            - ShippingCost.all.each_with_index do |shippingcost, index|
+              .checkbox-default
+                = check_box_tag "shippingcost_id[#{index}]", true, false
+                = fa_icon 'check'
+                = label_tag "shippingcost_id[#{index}]", shippingcost.name
+        .form-group.search-checkbox
+          %label
+            = fa_icon 'shopping-cart'
+            %span 販売状況
+          .checkbox-container
+            .checkbox-default
+              = check_box_tag "statuse_all", true, false
+              = fa_icon 'check'
+              = label_tag :statuse_all, "すべて"
+            - Statuse.where(id: [1, 3]).each_with_index do |statuse, index|
+              .checkbox-default
+                = check_box_tag "statuse_id[#{index}]", true, false
+                = fa_icon 'check'
+                = label_tag "statuse_id[#{index}]", statuse.name
+        .search-extend-btn
+          .btn-default.btn-gray クリア
+          = button_tag "完了", class: "btn-default btn-red"
+
+  .search-side
+    %section.items-box-container
+      %h2.search-result-head= "検索結果 #{1}-#{48} 件"
+      .items-box-content
+        - @item.each do |item|
+          = render "./common/items", item: item
+      %ul.pager
+        %li.pager-prev
+          %ul
+            %li.pager-cell
+              =link_to root_path do
+                =fa_icon 'angle-double-left 2x'
+            %li.pager-cell
+              =link_to root_path do
+                =fa_icon 'angle-left 2x'
+        %li.pager-num
+          %ul
+            %li.pager-cell
+              =link_to root_path do
+                1
+            %li.pager-cell
+              =link_to root_path do
+                2
+            %li.pager-cell.active
+              =link_to root_path do
+                3
+            %li.pager-cell
+              =link_to root_path do
+                4
+            %li.pager-cell
+              =link_to root_path do
+                5
+        %li.pager-next
+          %ul
+            %li.pager-cell
+              =link_to root_path do
+                =fa_icon 'angle-right 2x'
+            %li.pager-cell
+              =link_to root_path do
+                =fa_icon 'angle-double-right 2x'
+= render "./common/app-banner"
+= render "./common/footer"
+= render "./common/sell-btn"

@@ -1,7 +1,12 @@
 %section.items-box
   =link_to item_path(item) do
     %figure.items-box-photo
-      =image_tag item.item_images.first.image, size: "213x213"
+      - if request.path_info == search_path
+        =image_tag item.item_images.first.image, size: "160x160"
+        = item_statuse?(item)
+      - else
+        =image_tag item.item_images.first.image, size: "213x213"
+        = item_statuse?(item)
     .items-box-body
       %h3.items-box-name= item.name
       .items-box-num
