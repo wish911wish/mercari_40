@@ -21,10 +21,23 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    if current_user.present?
+      user = User.find(current_user.id)
+      @user_image = user.image
+    else
+      @user_image = "member_photo_noimage_thumb.png"
+    end
   end
 
   def destroy
-    redirect_to root_path, notice: "削除機能実装時に修正します"
+    if Item.find(params[:id]).present?
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to users_path, notice: "商品を削除しました"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -44,6 +57,11 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: "購入画面実装時に修正します"
   end
 
+  def search
+    Item
+    @item = Item.all
+  end
+
   def pause_listing
     if params[:exhibit] === "true"
       @item.update(exhibit_flag: true)
@@ -52,6 +70,10 @@ class ItemsController < ApplicationController
       @item.update(exhibit_flag: false)
       redirect_to item_path(@item), notice: "出品の一旦停止をしました"
     end
+  end
+
+  def search
+    @item = Item.all
   end
 
   private

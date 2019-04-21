@@ -26,5 +26,11 @@ class TopController < ApplicationController
     @items_nike = Item.where(brand_id: "50").limit(4)
     @section_name_nike = Brand.find(@items_nike[0].brand_id).name
 
+    user = User.find(current_user.id)
+    if user.image.nil?
+      @user_image = "member_photo_noimage_thumb.png"
+    else
+      @user_image = user.image
+    end
   end
 end

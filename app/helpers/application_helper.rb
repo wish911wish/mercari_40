@@ -58,7 +58,7 @@ module ApplicationHelper
     when 2
       content_tag(:div, content_tag(:div, Statuse.find(2).name), class: "item-trading-tag")
     when 3
-      content_tag(:div, content_tag(:div, Statuse.find(3).name), class: "item-sold-tag")
+      content_tag(:div, content_tag(:div, "SOLD"), class: "item-sold-tag")
     else
     end
   end
@@ -82,3 +82,4 @@ module ApplicationHelper
     end
   end
 end
+
