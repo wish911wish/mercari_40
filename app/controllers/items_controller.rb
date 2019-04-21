@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_loginpage
+  before_action :move_to_loginpage, except: [:detail_search, :search]
   before_action :set_item, only: [:pause_listing, :edit, :show, :update]
 
   def index
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @item = Item.all
+    @item = Item.all.order("created_at DESC")
   end
 
   def detail_search
