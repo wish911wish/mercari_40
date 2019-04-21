@@ -38,6 +38,8 @@ namespace :deploy do
       end
       upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
       upload!('.env', "#{shared_path}/.env")
+      upload!('db/users.csv', "#{shared_path}/db/users.csv")
+      upload!('db/items.csv', "#{shared_path}/db/items.csv")
     end
   end
 
