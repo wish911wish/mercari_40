@@ -22,5 +22,6 @@ FactoryBot.define do
     days_for_shipment_id  { Random.rand(1..3) }
     status_id             { Random.rand(1..4) }
     price                 { Random.rand(300..9999999) }
+    created_at            { Faker::Time.between(2.days.ago, Time.now, :all) }
   end
 end
