@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   get '/categories/:id', to: 'categories#index'
   get '/category_sizes/:id', to: 'categories#get_sizes'
-  get '/size_group/:id', to: 'categories#get_size_group'
+  get '/size_group/:id', to: 'size_group#show'
 
 
   post 'purchase/pay', to: 'purchase#pay'
