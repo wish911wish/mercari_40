@@ -47,10 +47,10 @@ end
 
 csv_data = CSV.read('db/users.csv', headers: true)
 csv_data.each do |data|
-  CategorySize.create!(data.to_hash)
+  User.create(data.to_hash)
 end
 
 csv_data = CSV.read('db/items.csv', headers: true)
 csv_data.each do |data|
-  CategorySize.create!(data.to_hash)
+  Item.create(data.to_hash)
 end
