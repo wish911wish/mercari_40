@@ -21,10 +21,17 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def destroy
-    redirect_to root_path, notice: "削除機能実装時に修正します"
+    if Item.find(params[:id]).present?
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to users_path, notice: "商品を削除しました"
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -42,6 +49,14 @@ class ItemsController < ApplicationController
 
   def purchase
     redirect_to root_path, notice: "購入画面実装時に修正します"
+  end
+
+  def search
+    if Item.where(['name LIKE ?', "%magic%"]).present?
+      @item = Item.where(['name LIKE ?', "%magic%"])
+    else
+      @item = Item.all
+    end
   end
 
   def pause_listing

@@ -3,7 +3,8 @@
     =link_to root_path, class: "user-stats" do
       %figure
         =image_tag("member_photo_noimage_thumb.png", class: "user-pic")
-      %h2.bold ryota0308
+      %h2.bold
+        = current_user.nickname
       .userpage-number
         評価
         %span.bold 0
