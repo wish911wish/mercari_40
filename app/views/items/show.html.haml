@@ -3,7 +3,7 @@
   %ul
     - breadcrumb :item_name, @item
     %li
-      = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 %section.item-box-container.l-single-container
   - if flash[:notice]
     .notification
@@ -155,10 +155,14 @@
       = link_to item_path(@item.previous), class: "nav-item-link-prev" do
         = fa_icon "angle-left"
         %span=@item.previous.name
+    - else
+      .nav-item-link-prev
     - if @item.next.present?
       = link_to item_path(@item.next), class: "nav-item-link-next" do
         %span=@item.next.name
         = fa_icon "angle-right"
+    - else
+      .nav-item-link-next
   .item-detail-message
     .message-container
   .item-social-media-box

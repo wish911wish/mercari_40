@@ -1,16 +1,8 @@
 = render "./common/header"
-%nav.bread-crumbs
+%nav.breadcrumbs
   %ul
-    %li
-      %span.mercari
-        = link_to "メルカリ", root_path, class: "underline-opacity"
-      = fa_icon "angle-right"
-    %li
-      %span.mercari
-        = link_to "マイページ", "#", class: "underline-opacity"
-      = fa_icon "angle-right"
-    %li
-      %span 支払い方法
+    - breadcrumb :card
+    = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 %main.card-main-container
   = render "./users/sidebar"
   .card-main-content

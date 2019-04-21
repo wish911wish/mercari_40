@@ -78,6 +78,9 @@
       width: 49%;
       text-align: right;
       padding: 24px 0;
+      display: flex;
+      justify-content: center;
+
     }
 
     &-payment-num{
@@ -205,5 +208,6 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 15px 0;
   }
 }

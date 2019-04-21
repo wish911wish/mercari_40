@@ -1,16 +1,13 @@
 = render "./common/header"
-%nav.bread-crumbs
+%nav.breadcrumbs
   %ul
+    - breadcrumb :card
     %li
-      %span.mercari
-        = link_to "メルカリ", root_path, class: "underline-opacity"
-      = fa_icon "angle-right"
-    %li
-      %span.mercari
-        = link_to "マイページ", "#", class: "underline-opacity"
-      = fa_icon "angle-right"
-    %li
-      %span 支払い方法
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+- if flash[:notice]
+  .notification
+    = flash[:notice]
+    = fa_icon "close"
 %main.card-main-container
   = render "./users/sidebar"
   .card-main-content
@@ -30,9 +27,9 @@
                 - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
                 = exp_month + " / " + exp_year
             .card-settings-add-right
-            = form_tag(card_delete_path, method: :post, id: 'charge-form',  name: "inputForm") do
-              %input{ type: "hidden", name: "card_id", value: "" }
-              %button.card-settings-payment-remove 削除する
+              = form_tag(card_delete_path, method: :post, id: 'charge-form',  name: "inputForm") do
+                %input{ type: "hidden", name: "card_id", value: "" }
+                %button.card-settings-payment-remove 削除する
         .card-settings-line
         .card-form-group
           .text-right
