@@ -40,5 +40,5 @@ Rails.application.routes.draw do
   post 'card/delete', to: 'card#delete'
   get 'purchase/done', to: 'purchase#done'
   get '/search', to: 'items#search'
-  post '/detail_search', to: 'items#detail_search'
+  get '/detail_search', to: 'items#detail_search'
 end
