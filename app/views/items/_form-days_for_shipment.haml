@@ -1,0 +1,4 @@
+- if request.path_info == new_item_path
+  = f.select :days_for_shipment_id, options_from_collection_for_select(DaysForShipment.all, :id, :name), { include_blank: "---" }, class: "select-default"
+- elsif request.path_info == edit_item_path
+  = f.select :days_for_shipment_id, options_from_collection_for_select(DaysForShipment.all, :id, :name, selected: "#{@item.days_for_shipment_id}"), { include_blank: "---" }, class: "select-default"

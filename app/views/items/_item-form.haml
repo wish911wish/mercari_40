@@ -1,0 +1,104 @@
+%main
+  %section.l-single-container.buy-item-container
+    %h2.l-single-head 商品の情報を入力
+    = form_for(@item, class: "sell-form") do |f|
+      .sell-upload-box
+        %h3.sell-upload-head
+          出品画像
+          %span.form-require 必須
+        %p 最大10枚までアップロード出来ます
+        .sell-dropbox-container
+          = render "form-image", f: f
+      .sell-content
+        .form-group
+          = f.label :name do
+            商品名
+            %span.form-require 必須
+          = render "form-name", f: f
+        .form-group
+          = f.label :description do
+            商品の説明
+            %span.form-require 必須
+          = render "form-description", f: f
+      .sell-content.flex-space-between
+        %h3.sell-sub-head 商品の詳細
+        .sell-form-box
+          .form-group.sell-category-option
+            = f.label :category do
+              カテゴリー
+              %span.form-require 必須
+            = render "form-category", f: f
+          = render "form-size", f: f
+          .form-group
+            = label "", :brand_name do
+              ブランド
+              %span.form-arbitrary 任意
+            .select-wrap
+              = render "form-brand", f: f
+          .form-group
+            = f.label :condition_id do
+              商品の状態
+              %span.form-require 必須
+            .select-wrap
+              = render "form-condition", f: f
+              = fa_icon 'angle-down 2x'
+      .sell-content.flex-space-between
+        %h3.sell-sub-head
+          発送について
+          = link_to "?", root_path, class: "form-question"
+        .sell-form-box
+          .form-group
+            = f.label :shipping_cost_id do
+              発送料の負担
+              %span.form-require 必須
+            .select-wrap
+              = render "form-shipping_cost", f: f
+              = fa_icon 'angle-down 2x'
+          .form-group
+            = f.label :shipping_method_id do
+              発送の方法
+              %span.form-require 必須
+            .select-wrap
+              = render "form-shipping_method", f: f
+              = fa_icon 'angle-down 2x'
+          .form-group
+            = f.label :sender_prefecture do
+              発送元の地域
+              %span.form-require 必須
+            .select-wrap
+              = render "form-sender_prefecture", f: f
+              = fa_icon 'angle-down 2x'
+          .form-group
+            = f.label :days_for_shipment_id do
+              発送までの日数
+              %span.form-require 必須
+            .select-wrap
+              = render "form-days_for_shipment", f: f
+              = fa_icon 'angle-down 2x'
+      .sell-content.flex-space-between
+        %h3.sell-sub-head
+          販売価格(300〜9,999,999)
+          = link_to "?", root_path, class: "form-question"
+        .sell-form-box
+          %ul.sell-price
+            = render "form-price", f: f
+      .sell-content.sell-btn-box
+        .discription
+          %p
+            =link_to "禁止されている出品", root_path
+            、
+            =link_to "行為", root_path
+            を必ずご確認ください。
+          %p
+            またブランド品でシリアルナンバー等がある場合はご記載ください。
+            =link_to "偽ブランドの販売", root_path
+            は犯罪であり処罰される可能性があります。
+          %p
+            また、出品をもちまして
+            =link_to "加盟店規約", root_path
+            に同意したことになります。
+        - if request.path_info == new_item_path
+          = f.submit "出品する", class: "btn-default btn-red"
+        - elsif request.path_info == edit_item_path
+          = f.submit "変更する", class: "btn-default btn-red"
+        = link_to "戻る", root_path, class: "btn-default btn-gray"
