@@ -6,7 +6,7 @@
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %main.search-container
   .l-side
-    =form_tag( detail_search_path ,class: "search-extend-container") do
+    =form_tag( detail_search_path ,class: "search-extend-container", method: :GET ) do
       .search-sort
         .form-group
           .select-wrap
