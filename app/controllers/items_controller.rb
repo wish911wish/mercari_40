@@ -22,12 +22,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    if current_user.present?
-      user = User.find(current_user.id)
-      @user_image = user.image
-    else
-      @user_image = "member_photo_noimage_thumb.png"
-    end
   end
 
   def destroy
@@ -58,8 +52,11 @@ class ItemsController < ApplicationController
   end
 
   def search
-    Item
-    @item = Item.all
+    if Item.where(['name LIKE ?', "%magic%"]).present?
+      @item = Item.where(['name LIKE ?', "%magic%"])
+    else
+      @item = Item.all
+    end
   end
 
   def pause_listing
@@ -70,10 +67,6 @@ class ItemsController < ApplicationController
       @item.update(exhibit_flag: false)
       redirect_to item_path(@item), notice: "出品の一旦停止をしました"
     end
-  end
-
-  def search
-    @item = Item.all
   end
 
   private
