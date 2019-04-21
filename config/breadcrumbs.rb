@@ -22,6 +22,11 @@ crumb :profile do
   parent :mypage
 end
 
+crumb :logout do
+  link "ログアウト", logout_users_path
+  parent :mypage
+end
+
 crumb :card do
   link "支払い方法", card_index_path
   parent :mypage
