@@ -23,7 +23,18 @@
   %section.pickup-container
     %h2.pickup-head ピックアップカテゴリー
     - if @items.present?
-      = render "pickup-items", items: @items, section_name: @items[0].name
+      = render "pickup-items", items: @items_ladies, section_name: @section_name_ladies
+      = render "pickup-items", items: @items_mens, section_name: @section_name_mens
+      = render "pickup-items", items: @items_kids, section_name: @section_name_kids
+      = render "pickup-items", items: @items_cosmetics, section_name: @section_name_cosmetics
+
+    %h2.pickup-head ピックアップブランド
+    - if @items.present?
+      = render "pickup-items", items: @items_chanel, section_name: @section_name_chanel
+      = render "pickup-items", items: @items_vuitton, section_name: @section_name_vuitton
+      = render "pickup-items", items: @items_supreme, section_name: @section_name_supreme
+      = render "pickup-items", items: @items_nike, section_name: @section_name_nike
+
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"

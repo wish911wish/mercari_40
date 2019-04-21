@@ -1,0 +1,60 @@
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 1
+}
+
+#modalWindow {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  background-color: #FFF;
+  display: none;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.modal-message-box {
+  width: 100%;
+  height: calc(100% - 60px);
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#modal-close-btn {
+  width: calc(50% - 3px);
+  height: 60px;
+  border: none;
+  border-right: 1px solid #ccc;
+  outline: none;
+}
+
+#delete-comformation-btn {
+  width: 50%;
+  height: 60px;
+  border: none;
+  outline: none;
+}
+
+.modal-open-btn {
+  width: 100%;
+  outline: none;
+
+  :hover {
+    cursor: pointer;
+  }
+}
