@@ -20,3 +20,7 @@ config/secrets.yml
 public/uploads/*
 
 .env
+
+db/users.csv
+
+db/items.csv
