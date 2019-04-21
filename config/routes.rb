@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :card, only: [:index, :new, :show, :create]
   resources :purchase, only: [:index]
   resources :favorites, only: [:create, :destroy]
+  resources :size_group, only: [:show]
   resources :items do
     get 'purchase', to: 'items#purchase'
     post 'pause_listing', to: 'items#pause_listing'
@@ -31,7 +32,6 @@ Rails.application.routes.draw do
 
   get '/categories/:id', to: 'categories#index'
   get '/category_sizes/:id', to: 'categories#get_sizes'
-  get '/size_group/:id', to: 'size_group#show'
 
 
   post 'purchase/pay', to: 'purchase#pay'
