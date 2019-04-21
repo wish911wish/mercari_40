@@ -6,11 +6,11 @@
       = breadcrumbs separator: "#{content_tag(:i, '', class: 'fa fa-angle-right')}"
 %main.search-container
   .l-side
-    =form_tag(root_path ,class: "search-extend-container") do
+    =form_tag( detail_search_path ,class: "search-extend-container", method: :GET ) do
       .search-sort
         .form-group
           .select-wrap
-            = select "", :sort_order, options_for_select({価格の高い順: "1", 価格の安い順: "2", 出品の古い順: "3", 出品の新しい順: "4", "いいね！の多い順": "5" }), { include_blank: "並び替え" },class: "select-default"
+            = select "", :sort_order, options_for_select({価格の高い順: "price DESC", 価格の安い順: "price ASC", 出品の古い順: "created_at DESC", 出品の新しい順: "created_at ASC", "いいね！の多い順": "favorites" }), { include_blank: "並び替え" },class: "select-default"
             = fa_icon 'angle-down 2x'
       .search-dropdown-content
         %h3 詳細検索
@@ -23,7 +23,7 @@
           %label
             = fa_icon 'list'
             %span カテゴリーを選択する
-          .select-wrap
+          .select-wrap.js-big-category-option
             = select "", :big_category_id, options_from_collection_for_select(Category.where("parent = '0'"), :id, :name), { include_blank: "---" }, class: "select-default"
             = fa_icon 'angle-down 2x'
         .form-group
@@ -35,8 +35,8 @@
           %label
             = fa_icon 'arrows-alt'
             %span サイズを選択する
-          .select-wrap
-            = select "", :size_group, options_from_collection_for_select(Size.where(size_group: get_size_group(@item[0])), :id, :name), { include_blank: "---" }, class: "select-default"
+          .select-wrap.js-size-option
+            = select "", :size_group, options_from_collection_for_select(SizeGroup.all, :id, :name), { include_blank: "---" }, class: "select-default"
             = fa_icon 'angle-down 2x'
 
         .form-group.search-price
@@ -44,11 +44,11 @@
             = fa_icon 'money'
             %span 価格
           .select-wrap
-            = select "", :big_category_id, options_for_select({"300 ~ 1000": "aaa", "1000 ~ 5000": "bbb", "5000 ~ 10000": "aaa", "10000 ~ 30000": "bbb", "30000 ~ 50000": "sss" }), { include_blank: "---" }, class: "select-default"
+            = select "", :price, options_for_select({"300 ~ 1000": "300-1000", "1000 ~ 5000": "1000-5000", "5000 ~ 10000": "5000-10000", "10000 ~ 30000": "10000-30000", "30000 ~ 50000": "30000-50000" , "50000 ~": "50000"}), { include_blank: "---" }, class: "select-default"
             = fa_icon 'angle-down 2x'
-          = text_field  "", :keyword, class: "input-default" ,placeholder: "¥ Min"
+          = text_field  "", :price_min, class: "input-default" ,placeholder: "¥ Min"
           %span ~
-          = text_field  "", :keyword, class: "input-default" ,placeholder: "¥ Max"
+          = text_field  "", :price_max, class: "input-default" ,placeholder: "¥ Max"
         .form-group.search-checkbox
           %label
             = fa_icon 'star'
@@ -58,11 +58,11 @@
               = check_box_tag "condition_all", true, false
               = fa_icon 'check'
               = label_tag :condition_all, "すべて"
-            - Condition.all.each_with_index do |condition, index|
+            - Condition.all.each do |condition|
               .checkbox-default
-                = check_box_tag "condition_id[#{index}]", true, false
+                = check_box_tag "condition_id[#{condition.id}]", true, false
                 = fa_icon 'check'
-                = label_tag "condition_id[#{index}]", condition.name
+                = label_tag "condition_id[#{condition.id}]", condition.name
         .form-group.search-checkbox
           %label
             = fa_icon 'truck'
@@ -72,25 +72,25 @@
               = check_box_tag "shippingcost_all", true, false
               = fa_icon 'check'
               = label_tag :shippingcost_all, "すべて"
-            - ShippingCost.all.each_with_index do |shippingcost, index|
+            - ShippingCost.all.each do |shippingcost|
               .checkbox-default
-                = check_box_tag "shippingcost_id[#{index}]", true, false
+                = check_box_tag "shipping_cost_id[#{shippingcost.id}]", true, false
                 = fa_icon 'check'
-                = label_tag "shippingcost_id[#{index}]", shippingcost.name
+                = label_tag "shipping_cost_id[#{shippingcost.id}]", shippingcost.name
         .form-group.search-checkbox
           %label
             = fa_icon 'shopping-cart'
             %span 販売状況
           .checkbox-container
             .checkbox-default
-              = check_box_tag "statuse_all", true, false
+              = check_box_tag "status_all", true, false
               = fa_icon 'check'
-              = label_tag :statuse_all, "すべて"
-            - Statuse.where(id: [1, 3]).each_with_index do |statuse, index|
+              = label_tag :status_all, "すべて"
+            - Statuse.where(id: [1, 3]).each do |status|
               .checkbox-default
-                = check_box_tag "statuse_id[#{index}]", true, false
+                = check_box_tag "status_id[#{status.id}]", true, false
                 = fa_icon 'check'
-                = label_tag "statuse_id[#{index}]", statuse.name
+                = label_tag "status_id[#{status.id}]", status.name
         .search-extend-btn
           .btn-default.btn-gray クリア
           = button_tag "完了", class: "btn-default btn-red"

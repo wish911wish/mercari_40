@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   get '/categories/:id', to: 'categories#index'
   get '/category_sizes/:id', to: 'categories#get_sizes'
+  get '/size_group/:id', to: 'size_group#show'
+
 
   post 'purchase/pay', to: 'purchase#pay'
   post 'card/show', to: 'card#show'
@@ -38,5 +40,5 @@ Rails.application.routes.draw do
   post 'card/delete', to: 'card#delete'
   get 'purchase/done', to: 'purchase#done'
   get '/search', to: 'items#search'
-
+  get '/detail_search', to: 'items#detail_search'
 end
