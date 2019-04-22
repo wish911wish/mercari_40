@@ -2,17 +2,34 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root 'top#index'
+  resources :signin, only: [:index]
+  resources :identification, only: [:index]
+  resources :favorites, only: [:create, :destroy]
+  resources :size_group, only: [:show]
+  resources :categories, only: [:show]
+  resources :category_sizes, only: [:show]
+  resources :card, only: [:index, :new, :show, :create] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end
+
   resources :users do
     collection do
       get :profile
       get :logout
     end
   end
-  resources :signin, only: [:index]
-  resources :identification, only: [:index]
-  resources :card, only: [:index, :new, :show, :create]
-  resources :purchase, only: [:index]
-  resources :favorites, only: [:create, :destroy]
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'done', to: 'purchase#done'
+      post 'pay', to: 'purchase#pay'
+    end
+  end
+
   resources :items do
     get 'purchase', to: 'items#purchase'
     post 'pause_listing', to: 'items#pause_listing'
@@ -20,25 +37,25 @@ Rails.application.routes.draw do
     delete 'favorites', to: 'favorites#destroy'
   end
 
-  get '/signup', to: 'signup#index', as: 'user_signup'
-  get '/signup/sms_confirmation', to: 'signup#sms_confirmation', as: 'sms_confirmation'
-  patch '/signup/address_registration', to: 'signup#address_registration', as: 'address_registration'
-  patch '/signup/payment_registration', to: 'signup#payment_registration', as: 'payment_registration'
-  get '/signup/completion', to: 'signup#completion', as: 'completion'
+  resources :signup, only: [:index] do
+    collection do
+      get :sms_confirmation, to: 'signup#sms_confirmation', as: 'sms_confirmation'
+      patch :address_registration, to: 'signup#address_registration', as: 'address_registration'
+      patch :payment_registration, to: 'signup#payment_registration', as: 'payment_registration'
+      get :completion, to: 'signup#completion', as: 'completion'
+    end
+  end
 
-  get '/auth/:provider/callback',    to: 'users#create',       as: :auth_callback
-  get '/auth/failure',               to: 'users#auth_failure', as: :auth_failure
+  resources :auth, only: [] do
+    collection do
+      get '/:provider/callback', to: 'users#create', as: 'auth_callback'
+      get :failure, to: 'users#auth_failure', as: 'auth_failure'
+    end
+  end
 
-  get '/categories/:id', to: 'categories#index'
-  get '/category_sizes/:id', to: 'categories#get_sizes'
-  get '/size_group/:id', to: 'size_group#show'
-
-
-  post 'purchase/pay', to: 'purchase#pay'
-  post 'card/show', to: 'card#show'
-  post 'card/pay', to: 'card#pay'
-  post 'card/delete', to: 'card#delete'
-  get 'purchase/done', to: 'purchase#done'
-  get '/search', to: 'items#search'
-  get '/detail_search', to: 'items#detail_search'
+  resources :search, only: [:index] do
+    collection do
+      get :detail_search, to: 'search#detail_search'
+    end
+  end
 end
