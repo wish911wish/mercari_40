@@ -1,4 +1,13 @@
 = render "./common/header"
+%nav.breadcrumbs
+  %ul
+    - breadcrumb :mypage
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+- if flash[:notice]
+  .notification
+    = flash[:notice]
+    = fa_icon "close"
 %main.l-container
   = render "sidebar"
   = render "content"

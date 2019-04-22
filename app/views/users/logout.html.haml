@@ -1,4 +1,9 @@
 = render "./common/header"
+%nav.breadcrumbs
+  %ul
+    - breadcrumb :logout
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
 %main.l-container
   = render "sidebar"
   = render "logout"
