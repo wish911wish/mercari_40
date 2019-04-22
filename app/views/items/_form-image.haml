@@ -13,15 +13,16 @@
 - elsif request.path_info == edit_item_path
   .sell-upload-items-container
     .sell-upload-items
-      = render "edit-item-image-form", item_images: @item.item_images[0..4]
+      = render "edit-item-image-form", item_images: @item.item_images[0..4], row_number: 0
       - image_length = @item.item_images.length
       - if image_length >= 6
-        = render "edit-item-image-form", item_images: @item.item_images[5..-1]
+        = render "edit-item-image-form", item_images: @item.item_images[5..-1], row_number: 5
       = label "", :image ,for: "item_item_images_attributes_#{image_length}_image" ,class: "sell-upload-drop-box width-for-item-#{image_length % 5}" do
         %pre
           ドラッグアンドドロップ
           またはクリックしてファイルをアップロード
     = f.fields_for :item_images do |b|
       = b.file_field :image, class: "sell-upload-input js-upload-image-input"
+      = b.check_box :remove_image, class: "image-remove-checkbox"
     - for i in image_length..10
       = file_field "", :image, name: "item[item_images_attributes][#{i}][image]", class: "sell-upload-input js-upload-image-input", id: "item_item_images_attributes_#{i}_image"
