@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @item = Item.all.order("created_at DESC")
+    @item = Item.order("created_at DESC")
   end
 
   def detail_search
