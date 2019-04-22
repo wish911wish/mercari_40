@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_loginpage, except: [:detail_search, :search]
+  before_action :move_to_loginpage
   before_action :set_item, only: [:pause_listing, :edit, :show, :update]
 
   def index
