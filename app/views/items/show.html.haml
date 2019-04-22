@@ -59,7 +59,6 @@
             %tr
               %th 商品の状態
               %td= condition_name(@item)
-
             %tr
               %th 配送料の負担
               %td= shipping_cost_name(@item)
@@ -97,7 +96,7 @@
       = button_tag "この商品を削除する", id: "modal-open-btn", class: "modal-open-btn item-delete-btn"
       = link_to "", item_path(@item), method: :DELETE, id: 'item-delete-btn'
   - else
-    = link_to "購入画面に進む", item_purchase_path(@item), class: "item-buy-btn f18-24"
+    = link_to "購入画面に進む", purchase_index_path(@item), class: "item-buy-btn f18-24"
 
   .item-description.f14
     %div.item-description-inner
