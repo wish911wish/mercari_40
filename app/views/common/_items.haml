@@ -1,17 +1,18 @@
-%section.items-box
-  =link_to item_path(item) do
-    %figure.items-box-photo
-      - if request.path_info == search_index_path || request.path_info == detail_search_search_index_path
-        =image_tag item.item_images.first.image, size: "160x160"
-        = item_statuse?(item)
-      - else
-        =image_tag item.item_images.first.image, size: "213x213"
-        = item_statuse?(item)
-    .items-box-body
-      %h3.items-box-name= item.name
-      .items-box-num
-        .items-box-price.font-5= "¥#{item.price}"
-        .items-box-likes.font-2
-          = fa_icon 'heart'
-          %span= item.favorites.count
-        %p.items-box-tax (税込)
+- items.each do |item|
+  %section.items-box
+    =link_to item_path(item) do
+      %figure.items-box-photo
+        - if request.path_info == search_index_path || request.path_info == detail_search_search_index_path
+          =image_tag item.item_images.first.image, size: "160x160"
+          = item_statuse?(item)
+        - else
+          =image_tag item.item_images.first.image, size: "213x213"
+          = item_statuse?(item)
+      .items-box-body
+        %h3.items-box-name= item.name
+        .items-box-num
+          .items-box-price.font-5= "¥#{item.price}"
+          .items-box-likes.font-2
+            = fa_icon 'heart'
+            %span= item.favorites.count
+          %p.items-box-tax (税込)

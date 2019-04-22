@@ -5,9 +5,10 @@
         = link_to root_path do
           = image_tag("logo.svg", size: "134x34")
       .header-form
-        = form_tag(root_path, class: "serch", method: :get) do
-          = text_field :serch_item, "", class: "input-default", placeholder: "キーワードから探す"
-          = fa_icon 'search'
+        = form_tag(search_index_path, class: "serch", method: :get) do
+          = text_field "", :keyword, class: "input-default", placeholder: "キーワードから探す"
+          = button_tag do
+            = fa_icon 'search'
 
     .header-nav
       .list-left

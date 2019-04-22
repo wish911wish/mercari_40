@@ -86,7 +86,8 @@ $(document).on("turbolinks:load", function() {
   }
 
   $(document).on("change", ".sell-category-option .select-default", function(e) {
-    e.stopPropagation();
+    e.preventDefault()
+    e.stopPropagation()
     var selectedObject = $(this)
     var category_id = $('option:selected',this).val()
     getCategories(category_id, selectedObject)
@@ -94,7 +95,8 @@ $(document).on("turbolinks:load", function() {
   });
 
   $(document).on("change", ".js-category-option .select-default", function(e) {
-    e.stopPropagation();
+    e.preventDefault()
+    e.stopPropagation()
     var selectedObject = $(this)
     var category_id = $('option:selected',this).val()
     getCategories(category_id, selectedObject)

@@ -2,6 +2,4 @@
   %h3.items-box-head.underline-opacity
     =link_to "#{@item.user.nickname}のその他の出品", "#"
   .items-box-content
-    - Item.where(seller_id: @item.user.id).first(6).each do |item|
-      - if item.id != @item.id
-        = render "./common/items", item: item
+    = render "./common/items", items: Item.where.not(id: @item.id).where(seller_id: @item.user.id).first(6)
