@@ -99,8 +99,7 @@
     %section.items-box-container
       %h2.search-result-head= "検索結果 #{1}-#{48} 件"
       .items-box-content
-        - @item.each do |item|
-          = render "./common/items", item: item
+        = render "./common/items", items: @item
       %ul.pager
         %li.pager-prev
           %ul
