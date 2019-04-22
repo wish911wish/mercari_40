@@ -75,6 +75,11 @@ $(document).on("turbolinks:load", function() {
     return html;
   }
 
+  function checkRemoveCheckBox(clickedObject){
+    var imageIndex = clickedObject.attr('image_index')
+    $(`#item_item_images_attributes_${imageIndex}_remove_image`).prop('checked', true)
+  }
+
   $(".js-upload-image-input").change(function(e) {
     var files = this.files
     for (var i = 0; i < files.length; i++){
@@ -137,6 +142,7 @@ $(document).on("turbolinks:load", function() {
       $(".sell-upload-drop-box").css("display", "block");
     }
     removeItemsList();
+    checkRemoveCheckBox($(this));
     adjustWidthOfUploadBox();
     decisionItemsListNumber();
   })
