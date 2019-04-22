@@ -51,14 +51,6 @@ class ItemsController < ApplicationController
     redirect_to root_path, notice: "購入画面実装時に修正します"
   end
 
-  def search
-    if Item.where(['name LIKE ?', "%magic%"]).present?
-      @item = Item.where(['name LIKE ?', "%magic%"])
-    else
-      @item = Item.all
-    end
-  end
-
   def pause_listing
     if params[:exhibit] === "true"
       @item.update(exhibit_flag: true)

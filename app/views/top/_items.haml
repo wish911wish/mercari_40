@@ -1,0 +1,13 @@
+- items.each do |item|
+  %section.items-box
+    =link_to root_path do
+      %figure.items-box-photo
+        =image_tag item.item_images.first.image, size: "213x213"
+      .items-box-body
+        %h3.items-box-name= item.name
+        .items-box-num
+          .items-box-price.font-5= "¥#{item.price}"
+          .items-box-likes.font-2
+            = fa_icon 'heart'
+            %span 2
+          %p.items-box-tax (税込)

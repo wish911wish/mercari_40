@@ -3,51 +3,20 @@ require 'pry'
 
 describe ItemsController do
   let(:user) {create(:user)}
-  let(:big_category) {create(:big_category)}
-  let(:middle_category) {create(:middle_category)}
-  let(:small_category) {create(:small_category)}
-  let(:brand) {create(:brand)}
-  let(:condition) {create(:condition)}
-  let(:shipping_cost) {create(:shipping_cost)}
-  let(:shipping_method) {create(:shipping_method)}
-  let(:days_for_shipment) {create(:days_for_shipment)}
-  let(:status) {create(:status)}
+  let(:item) {create(:item, seller_id: user.id, item_images_attributes: [{image: image}] )}
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/image.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path)}
-  let(:item) {create(:item,
-      seller_id: user.id,
-      big_category_id: big_category.id,
-      middle_category_id: middle_category.id,
-      small_category_id: small_category.id,
-      brand_id: brand.id,
-      condition_id: condition.id,
-      shipping_cost_id: shipping_cost.id,
-      shipping_method_id: shipping_method.id,
-      days_for_shipment_id: days_for_shipment.id,
-      status_id: status.id,
-      item_images_attributes: [{image: image}, {image: image}]
-      )}
-  let(:item_params) {{
-      brand_name: brand.name,
+  let(:item_images_attributes) { {item_images_attributes: [{image: image}]} }
+  let(:update_params) {
+    {
+      brand_name: Brand.all.sample.name,
       id: item.id,
-      item: {
-        id: item.id,
-        seller_id: user.id,
-        big_category_id: big_category.id,
-        middle_category_id: middle_category.id,
-        small_category_id: small_category.id,
-        brand_name: brand.name,
-        condition_id: condition.id,
-        shipping_cost_id: shipping_cost.id,
-        shipping_method_id: shipping_method.id,
-        days_for_shipment_id: days_for_shipment.id,
-        status_id: status.id,
-        price: 1000,
-        item_images_attributes: [{image: image}]
-      }
-    }}
+      item: attributes_for(:item)
+    }
+  }
 
   describe 'GET #show' do
+
     before do
       login_user user
     end
@@ -82,19 +51,39 @@ describe ItemsController do
       login_user user
     end
     it "assigns the requested item to @item" do
-      put :update, params: item_params
+      put :update, params: update_params
       expect(assigns(:item)).to eq item
     end
 
     it "renders the :update templete" do
-      put :update, params: item_params
+      put :update, params: update_params
       expect(response).to render_template :show
     end
 
     it "redirect to item_edit_path due to update failure" do
-      item_params[:item][:price] = "test for redirect"
-      put :update, params: item_params
+      update_params[:item][:price] = "test for redirect"
+      put :update, params: update_params
       expect(response).to redirect_to edit_item_path(item)
+    end
+  end
+
+  describe 'GET #search' do
+    it "assigns the requested item to @item" do
+      items = create_list(:item, 3, seller_id: user.id, item_images_attributes: [{image: image}])
+      get :search
+      expect(assigns(:item)).to match(items.sort{ |a, b| b.created_at <=> a.created_at })
+    end
+
+    it "renders the :search templete" do
+      get :search
+      expect(response).to render_template :search
+    end
+  end
+
+  describe 'POST #detail_search' do
+    it "renders the :search templete" do
+      post :detail_search, params: {keyword: "test"}
+      expect(response).to render_template :search
     end
   end
 end

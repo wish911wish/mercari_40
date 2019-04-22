@@ -9,7 +9,7 @@
   .card-main-content
     %h2.card-chapter-head クレジットカード情報入力
     .card-single-content
-      = form_tag(card_pay_path, method: :post, id: 'charge-form',  name: "inputForm") do
+      = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
         .card-single-inner-320px
           .card-form-group
             %label カード番号
