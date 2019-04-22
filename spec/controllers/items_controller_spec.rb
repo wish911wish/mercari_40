@@ -82,7 +82,7 @@ describe ItemsController do
 
   describe 'POST #detail_search' do
     it "renders the :search templete" do
-      post :detail_search, params: attributes_for(:detail_search_params, keyword: "test")
+      post :detail_search, params: {keyword: "test"}
       expect(response).to render_template :search
     end
   end

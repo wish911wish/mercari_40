@@ -106,7 +106,3 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
-
-class DetailSearchParams < BasicObject
-end
-
