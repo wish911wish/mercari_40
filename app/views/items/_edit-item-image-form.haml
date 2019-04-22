@@ -1,8 +1,10 @@
 %ul.sell-upload-items-list{ class: "have-item-#{item_images.length % 5}" }
-  - item_images.each do |item_image|
+  - item_images.each_with_index do |item_image, index|
     %li.sell-upload-item
       %figure.sell-upload-figure.square{ class: get_aspect_ratio(item_image) }
         = image_tag item_image.image
       .sell-upload-button
-        .sell-upload-edit 編集
-        .sell-upload-delete 削除
+        .sell-upload-edit
+          編集
+        .sell-upload-delete{ image_index: index + row_number }
+          削除
