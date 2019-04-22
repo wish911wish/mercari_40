@@ -7,42 +7,11 @@ describe ItemsController do
   let(:image_path) { File.join(Rails.root, 'spec/fixtures/image.jpg') }
   let(:image) { Rack::Test::UploadedFile.new(image_path)}
   let(:item_images_attributes) { {item_images_attributes: [{image: image}]} }
-  let(:params_update) {
+  let(:update_params) {
     {
       brand_name: Brand.all.sample.name,
       id: item.id,
-      item: {
-        id: item.id,
-        seller_id: item.seller_id,
-        big_category_id: item.big_category_id,
-        middle_category_id: item.middle_category_id,
-        small_category_id: item.small_category_id,
-        brand_name: Brand.all.sample.name,
-        condition_id: item.condition_id,
-        shipping_cost_id: item.shipping_cost_id,
-        shipping_method_id: item.shipping_method_id,
-        days_for_shipment_id: item.days_for_shipment_id,
-        status_id: item.status_id,
-        price: Random.rand(300..9999999),
-        item_images_attributes: [{image: image}]
-      }
-    }
-  }
-  let(:params_detail_search) {
-    {
-      sort_order: "",
-      keyword: "test",
-      big_category_id: "",
-      small_category_id: {},
-      brand_name: "",
-      size_group: "",
-      size_id: {},
-      price: "",
-      price_min: "",
-      price_max: "",
-      condition_id: {},
-      shipping_cost_id: {},
-      status_id: {}
+      item: attributes_for(:item)
     }
   }
 
@@ -82,18 +51,18 @@ describe ItemsController do
       login_user user
     end
     it "assigns the requested item to @item" do
-      put :update, params: params_update
+      put :update, params: update_params
       expect(assigns(:item)).to eq item
     end
 
     it "renders the :update templete" do
-      put :update, params: params_update
+      put :update, params: update_params
       expect(response).to render_template :show
     end
 
     it "redirect to item_edit_path due to update failure" do
-      params_update[:item][:price] = "test for redirect"
-      put :update, params: params_update
+      update_params[:item][:price] = "test for redirect"
+      put :update, params: update_params
       expect(response).to redirect_to edit_item_path(item)
     end
   end
@@ -113,8 +82,7 @@ describe ItemsController do
 
   describe 'POST #detail_search' do
     it "renders the :search templete" do
-      create_list(:item, 3, seller_id: user.id, item_images_attributes: [{image: image}])
-      post :detail_search, params: params_detail_search
+      post :detail_search, params: attributes_for(:detail_search_params, keyword: "test")
       expect(response).to render_template :search
     end
   end
