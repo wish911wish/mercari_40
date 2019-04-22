@@ -13,14 +13,14 @@ FactoryBot.define do
     big_category_id       { big_category.id }
     middle_category_id    { middle_category.id }
     small_category_id     { small_category.id }
-    brand_id              { Random.rand(1..42) }
-    size_id               { Random.rand(1..42) }
-    condition_id          { Random.rand(1..6) }
-    shipping_cost_id      { Random.rand(1..2) }
-    shipping_method_id    { Random.rand(1..9) }
-    sender_prefecture     { Prefecture.find(Random.rand(1..47)).name }
-    days_for_shipment_id  { Random.rand(1..3) }
-    status_id             { Random.rand(1..4) }
+    brand_id              { Brand.all.sample.id }
+    size_id               { Size.all.sample.id }
+    condition_id          { Condition.all.sample.id }
+    shipping_cost_id      { ShippingCost.all.sample.id }
+    shipping_method_id    { ShippingMethod.all.sample.id }
+    sender_prefecture     { Prefecture.all.sample.id }
+    days_for_shipment_id  { DaysForShipment.all.sample.id }
+    status_id             { Statuse.all.sample.id }
     price                 { Random.rand(300..9999999) }
     created_at            { Faker::Time.between(2.days.ago, Time.now, :all) }
   end
