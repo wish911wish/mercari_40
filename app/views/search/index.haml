@@ -97,44 +97,9 @@
 
   .search-side
     %section.items-box-container
-      %h2.search-result-head= "検索結果 #{1}-#{48} 件"
+      %h2.search-result-head= "検索結果 #{1}-#{@item.length} 件"
       .items-box-content
-        - @item.each do |item|
-          = render "./common/items", item: item
-      %ul.pager
-        %li.pager-prev
-          %ul
-            %li.pager-cell
-              =link_to root_path do
-                =fa_icon 'angle-double-left 2x'
-            %li.pager-cell
-              =link_to root_path do
-                =fa_icon 'angle-left 2x'
-        %li.pager-num
-          %ul
-            %li.pager-cell
-              =link_to root_path do
-                1
-            %li.pager-cell
-              =link_to root_path do
-                2
-            %li.pager-cell.active
-              =link_to root_path do
-                3
-            %li.pager-cell
-              =link_to root_path do
-                4
-            %li.pager-cell
-              =link_to root_path do
-                5
-        %li.pager-next
-          %ul
-            %li.pager-cell
-              =link_to root_path do
-                =fa_icon 'angle-right 2x'
-            %li.pager-cell
-              =link_to root_path do
-                =fa_icon 'angle-double-right 2x'
+        = render "./common/items", items: @item
 = render "./common/app-banner"
 = render "./common/footer"
 = render "./common/sell-btn"

@@ -1,7 +1,10 @@
 class SearchController < ApplicationController
+  before_action :set_item_instance
 
   def index
-    @item = Item.order("created_at DESC")
+    search_with_keyword if params[:keyword].present?
+
+    @item = @item.order("created_at DESC")
   end
 
   def detail_search
@@ -50,10 +53,16 @@ class SearchController < ApplicationController
     else
       @item = @item.order(params[:sort_order])
     end
+
+    @item.order("created_at DESC")
     render :index
   end
 
   private
+
+  def set_item_instance
+    @item = Item.all
+  end
 
   def get_price_range
     prices = params[:price].split("-")

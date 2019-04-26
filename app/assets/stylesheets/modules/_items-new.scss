@@ -9,10 +9,6 @@
   background-color: $white;
 }
 
-.l-single-container.buy-item-container {
-  margin-bottom: -160px;
-}
-
 .btn-default {
   display: block;
   width: 100%;
@@ -373,6 +369,10 @@
       margin: 24px auto 0;
     }
   }
+}
+
+.image-remove-checkbox{
+  display: none;
 }
 
 .sell-price {
