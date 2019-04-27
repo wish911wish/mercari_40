@@ -7,16 +7,22 @@
     %section.purchase-item
       .purchase-item-image
         =image_tag "item-2.jpg"
-      .purchase-item-name.bold Apple MacBook Pro 13インチ
+      .purchase-item-name.bold 
+        = @item.name
       .purchase-item-form
         .purchase-item-form-flex-center
-          %p.bold ¥16,700円
+          %p.bold
+            ¥
+            = @item.price
           %span 送料込み
         = link_to "ポイントはありません", "#", class: "purchase-item-form-accordion-toggle link-off"
         .purchase-item-form-flex-spacebetween
           .purchase-item-form-flex-spacebetween-price-left 支払い金額
-          .purchase-item-form-flex-spacebetween-price-right ¥135,000
-        = link_to "購入する", item_purchase(@item), class: "btn-default btn-red bold"
+          .purchase-item-form-flex-spacebetween-price-right
+            ¥
+            = @item.price
+        = form_tag(action: :pay, method: :post) do
+          %button.btn-default.btn-red.bold 購入する
     %section.purchase-border
     %section.purchase-user
       %h3.purchase-user-info 配送先
@@ -36,11 +42,17 @@
     %section.purchase-user
       %h3.purchase-user-info 支払い方法
       %p.purchase-user-info-text
-        ************1010
-        %br
-        05 / 23
+      - if @default_card_information.blank?
+        %br /
+      - else
+        .card-settings-payment-num
+          = "**** **** **** " + @default_card_information.last4
+        .card-settings-payment-num
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
       .purchase-user-info-text-right
-        = link_to "#", class: "underline-opacity" do
+        = link_to new_card_path, class: "underline-opacity" do
           %span 変更する
           = fa_icon "angle-right"
     %section.purchase-border
