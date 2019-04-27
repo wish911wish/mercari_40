@@ -23,18 +23,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :purchase, only: [:index] do
-    collection do
-      get 'done', to: 'purchase#done'
-      post 'pay', to: 'purchase#pay'
-    end
-  end
-
   resources :items do
     get 'purchase', to: 'items#purchase'
     post 'pause_listing', to: 'items#pause_listing'
     post 'favorites', to: 'favorites#create'
     delete 'favorites', to: 'favorites#destroy'
+    post 'pay', to: 'items#pay'
+    get 'done', to: 'items#done'
   end
 
   resources :signup, only: [:index] do

@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :move_to_loginpage
   before_action :set_item, only: [:pause_listing, :edit, :show, :update]
 
+  require 'payjp'
+
   def index
   end
 
@@ -50,7 +52,33 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    redirect_to root_path, notice: "購入画面実装時に修正します"
+    @item = Item.find(params[:item_id])
+    # redirect_to root_path, notice: "購入画面実装時に修正します"
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to controller: "card", action: "new"
+    else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
+    end
+  end
+
+  def pay
+    item = Item.find(params[:item_id])
+    item_price = item.price
+    card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp::Charge.create(
+    :amount => item_price, # amount should replace valiables of item fee
+    :customer => card.customer_id,
+    :currency => 'jpy',
+  )
+  redirect_to action: 'done'
+  end
+
+  def done
+    @item = Item.find(params[:item_id])
   end
 
   def pause_listing
@@ -65,7 +93,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description ,:big_category_id , :middle_category_id, :small_category_id, :size_id, :condition_id, :shipping_cost_id, :shipping_method_id, :sender_prefecture, :days_for_shipment_id, :status_id, :price, item_images_attributes: [:image, :id, :remove_image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :description ,:big_category_id , :middle_category_id, :small_category_id, :size_id, :condition_id, :shipping_cost_id, :shipping_method_id, :sender_prefecture, :days_for_shipment_id, :status_id, :price, :item_id, item_images_attributes: [:image, :id, :remove_image]).merge(seller_id: current_user.id)
   end
 
   def move_to_loginpage
