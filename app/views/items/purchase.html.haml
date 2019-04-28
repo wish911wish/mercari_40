@@ -6,8 +6,8 @@
     %h2.purchase-chapter 購入を確定しますか？
     %section.purchase-item
       .purchase-item-image
-        =image_tag "item-2.jpg"
-      .purchase-item-name.bold 
+        =image_tag @item.item_images.first.image
+      .purchase-item-name.bold
         = @item.name
       .purchase-item-form
         .purchase-item-form-flex-center

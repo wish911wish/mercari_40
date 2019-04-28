@@ -25,7 +25,7 @@ class CardController < ApplicationController
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to card_show_path, notice: "追加しました"
+        redirect_to card_index_path, notice: "追加しました"
       else
         redirect_to action: "pay"
       end
@@ -43,11 +43,11 @@ class CardController < ApplicationController
     end
       redirect_to action: "index"
   end
-  
+
   def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "index" 
+      redirect_to action: "index"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
