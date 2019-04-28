@@ -6,7 +6,7 @@
     %h2.purchase-chapter 購入が完了しました！
     %section.purchase-item
       .purchase-item-image
-        =image_tag "item-2.jpg"
+        =image_tag @item.item_images.first.image
       .purchase-item-name.bold
         = @item.name
       .purchase-item-form

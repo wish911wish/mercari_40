@@ -53,7 +53,6 @@ class ItemsController < ApplicationController
 
   def purchase
     @item = Item.find(params[:item_id])
-    # redirect_to root_path, notice: "購入画面実装時に修正します"
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "card", action: "new"
@@ -93,7 +92,23 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description ,:big_category_id , :middle_category_id, :small_category_id, :size_id, :condition_id, :shipping_cost_id, :shipping_method_id, :sender_prefecture, :days_for_shipment_id, :status_id, :price, :item_id, item_images_attributes: [:image, :id, :remove_image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(
+        :name,
+        :description,
+        :big_category_id,
+        :middle_category_id,
+        :small_category_id,
+        :size_id,
+        :condition_id,
+        :shipping_cost_id,
+        :shipping_method_id,
+        :sender_prefecture,
+        :days_for_shipment_id,
+        :status_id,
+        :price,
+        :item_id,
+        item_images_attributes: [:image, :id, :remove_image]
+      ).merge(seller_id: current_user.id)
   end
 
   def move_to_loginpage
