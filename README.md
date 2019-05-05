@@ -5,8 +5,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|index: true, null: false|
-|family_name_kanji|string|null: false|
-|first_name_kanji|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |birthday|date|null: false|
@@ -22,31 +22,10 @@
 
 
 ### Association
-- has_one :address
 - has_many :user_evaluations
 - has_many :item_evaluations
 - has_many :items
-
-
-
-## addresses table
-
-|Column|Type|Options|
-|------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|family_name_kanji|string|null: false|
-|first_name_kanji|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|postal_code|string|null: false|
-|prefecture|string|null: false|
-|city|string|null: false|
-|street_address|string|null: false|
-|building|string||
-|phone_number|string||
-
-### Association
-- belongs_to :user
+- has_many :favorites
 
 
 
@@ -86,14 +65,13 @@
 
 ### Association
 - belongs_to :user
-- has_many :categories
 - has_many :item_images
-- has_many :item_evaluations
 - has_one :condition
 - has_one :shipping_cost
 - has_one :shipping_method
 - has_one :days_for_shipment
 - has_one :status
+
 
 
 ## categories table
@@ -108,6 +86,19 @@
 - has_many :sizes
 
 
+
+## category_sizes table
+
+|Column|Type|Options|
+|------|----|-------|
+|category_id|references|null: false, foreign_key: true|
+|size_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :category
+
+
+
 ## brands table
 
 |Column|Type|Options|
@@ -117,19 +108,6 @@
 
 ### Association
 - has_many :items
-
-
-
-## item_evaluations table
-
-|Column|Type|Options|
-|------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :item
-- belongs_to :user
 
 
 
@@ -151,10 +129,12 @@
 |------|----|-------|
 |name|string|null: false|
 |category_id|references|null: false, foreign_key: true|
+|size_group|integer|null: false|
 
 ### Association
 - belongs_to :category
 - has_many :items
+
 
 
 ## conditions table
@@ -165,6 +145,7 @@
 
 ### Association
 - belongs_to :item
+
 
 
 ## shipping_costs table
@@ -188,6 +169,7 @@
 - belongs_to :item
 
 
+
 ## days_for_shipments table
 
 |Column|Type|Options|
@@ -207,3 +189,16 @@
 
 ### Association
 - belongs_to :item
+
+
+
+## favorites table
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: { to_table: :items }|
+|user_id|references|null: false, foreign_key: { to_table: :users }|
+
+### Association
+- belongs_to :item
+- belongs_to :user

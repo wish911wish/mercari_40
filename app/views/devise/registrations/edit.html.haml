@@ -1,36 +1,61 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+= render "./common/header"
+%nav.breadcrumbs
+  %ul
+    - breadcrumb :mypage
+    %li
+      = breadcrumbs separator: " #{content_tag(:i, '', class: 'fa fa-angle-right')} "
+%main.l-container
+  = render "./users/sidebar"
+  .identification-content.l-content
+    .identification-chapter-container
+      .identification-chapter-head 本人情報の登録
+      .identification-single-inner
+        %p
+          お客さまの本人情報をご登録ください。
+          %br
+          登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+        = form_for(current_user) do |f|
+          .text-right
+            = link_to "#", class: "underline-opacity" do
+              %span 本人確認書類のアップロードについて
+              = fa_icon "angle-right"
+          .identification-form-group
+            %p.bold お名前
+            %p= "#{current_user.family_name} #{current_user.first_name}"
+          .identification-form-group
+            %p.bold お名前カナ
+            %p= "#{current_user.family_name_kana} #{current_user.first_name_kana}"
+          .identification-form-group
+            %p.bold 生年月日
+            %p= current_user.birthday
+          .identification-form-group
+            %label.zip_code 郵便番号
+            %span.form-arbitrary 任意
+            = f.text_field :postal_code, class: "identification-input", placeholder: "例）1234567"
+          .identification-form-group
+            %label.zip_code 都道府県
+            %span.form-arbitrary 任意
+            .identification-select-wrap
+              = f.select :prefectures, options_from_collection_for_select(Prefecture.all, :id, :name, selected: "#{current_user.prefectures}"), { include_blank: "---" }, class: "select-default"
+              = fa_icon "angle-down 2x"
+          .identification-form-group
+            %label.zip_code 市区町村
+            %span.form-arbitrary 任意
+            = f.text_field :city, class: "identification-input", placeholder: "例) 横浜市緑区"
+          .identification-form-group
+            %label.zip_code 番地
+            %span.form-arbitrary 任意
+            = f.text_field :street_address, class: "identification-input", placeholder: "例) 青山1−1−1"
+          .identification-form-group
+            %label.zip_code 建物名
+            %span.form-arbitrary 任意
+            = f.text_field :building, class: "identification-input", placeholder: "例) 柳ビル103"
+          .identification-form-group
+            = f.submit "登録する", class: "btn-default btn-red"
+            .identification-form-group.text-right
+              = link_to "#", class: "underline-opacity" do
+                %span 本人情報の登録について
+                = fa_icon "angle-right"
+= render "./common/app-banner"
+= render "./common/footer"
+= render "./common/sell-btn"

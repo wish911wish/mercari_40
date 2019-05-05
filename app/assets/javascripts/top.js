@@ -77,12 +77,13 @@ $(document).on("turbolinks:load", function() {
     afterDot.addClass("active-for-dot")
   }
 
-  $(window).on("load", function(){
+  function initializeImageWidth(){
     var initialWidth = $(window).width()
     $(".owl-stage").attr("style", `left: -${initialWidth}px; width: ${initialWidth * 5}px;`);
     $(".owl-item").attr("style", `width: ${initialWidth}px;`);
-  })
+  }
 
+  initializeImageWidth()
 
   $(window).on("resize", function(){
     var beforeWidth = parseInt($(".owl-item").css("width"));
